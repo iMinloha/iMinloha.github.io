@@ -473,6 +473,7 @@ ul li {
 }
 .navbar {
   padding: 38px 96px !important;
+  position: absolute;
 }
 .navbar .navbar-brand {
   display: flex;
@@ -503,6 +504,21 @@ ul li {
 .navbar .img-more {
   width: 22px;
   height: 22px;
+}
+.list_right {
+  width: 4cm;
+  height: 7cm;
+  border-radius: 10px;
+  position: fixed;
+  display: none;
+  right: 0px;
+  background-color: #2b2b2b;
+  text-align: center;
+}
+.list_menu {
+  position: absolute;
+  margin-left: auto;
+  margin-top: 1cm;
 }
 @media (max-width: 992px) {
   .navbar {
