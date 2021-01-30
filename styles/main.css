@@ -1851,7 +1851,7 @@ code::-webkit-scrollbar-thumb:hover {
         }
         
         .gt-bg-content-color-second {
-          background: #1098ad!important;
+          background: #e03131!important;
         }
         
         .gt-bg-accent-color-first {
@@ -1875,7 +1875,7 @@ code::-webkit-scrollbar-thumb:hover {
         }
         
         .gt-c-content-color-second {
-          color: #1098ad!important;
+          color: #e03131!important;
         }
         
         .gt-c-accent-color-first {
@@ -1928,7 +1928,7 @@ code::-webkit-scrollbar-thumb:hover {
         }
         
         input::placeholder {
-          color: #1098ad!important;
+          color: #e03131!important;
         }
         
         .search-input {
