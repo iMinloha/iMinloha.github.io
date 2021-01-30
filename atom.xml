@@ -2,13 +2,20 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.minloha.cn</id>
     <title>minloha.cn</title>
-    <updated>2021-01-28T07:01:02.017Z</updated>
+    <updated>2021-01-30T11:07:08.287Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.minloha.cn"/>
     <link rel="self" href="https://www.minloha.cn/atom.xml"/>
     <logo>https://www.minloha.cn/images/avatar.png</logo>
     <icon>https://www.minloha.cn/favicon.ico</icon>
     <rights>All rights reserved 2021, minloha.cn</rights>
+    <entry>
+        <title type="html"><![CDATA[Ps萌新作品]]></title>
+        <id>https://www.minloha.cn/post/ps-meng-xin-zuo-pin/</id>
+        <link href="https://www.minloha.cn/post/ps-meng-xin-zuo-pin/">
+        </link>
+        <updated>2021-01-30T10:57:43.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[整改通知]]></title>
         <id>https://www.minloha.cn/post/edit/</id>
