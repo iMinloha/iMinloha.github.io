@@ -507,12 +507,12 @@ ul li {
 }
 .list_right {
   width: 4cm;
-  height: 7cm;
+  height: 8cm;
   border-radius: 10px;
   position: fixed;
   display: none;
   right: 0px;
-  background-color: #2b2b2b;
+  background-color: #ffe3e3;
   text-align: center;
 }
 .list_menu {
