@@ -798,6 +798,20 @@ ul li {
 .site-footer .footer-info {
   padding-bottom: 10px;
 }
+#vcomments .vcards .vcard {
+  padding: 15px 20px 0 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s;
+}
+#vcomments .vcards .vcard:hover {
+  box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.12);
+}
+#vcomments .vcards .vcard .vh .vcard {
+  border: none;
+  box-shadow: none;
+}
 .friend-box {
   float: left;
   max-width: calc(50% - 20px);
@@ -1843,7 +1857,7 @@ code::-webkit-scrollbar-thumb:hover {
         }
         
         .gt-bg-theme-color-second {
-          background: #f8f9fa!important;
+          background: #f1f3f5!important;
         }
         
         .gt-bg-content-color-first {
@@ -1867,7 +1881,7 @@ code::-webkit-scrollbar-thumb:hover {
         }
         
         .gt-c-theme-color-second {
-          color: #f8f9fa!important;
+          color: #f1f3f5!important;
         }
         
         .gt-c-content-color-first {
@@ -1933,6 +1947,6 @@ code::-webkit-scrollbar-thumb:hover {
         
         .search-input {
           color: #212529!important;
-          background-color: #f8f9fa!important;
+          background-color: #f1f3f5!important;
         }
          
