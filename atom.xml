@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://blog.minloha.cn</id>
+    <id>https://www.minloha.cn</id>
     <title>minloha.cn</title>
-    <updated>2021-03-06T06:46:51.841Z</updated>
+    <updated>2021-03-06T06:49:04.291Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://blog.minloha.cn"/>
-    <link rel="self" href="https://blog.minloha.cn/atom.xml"/>
-    <logo>https://blog.minloha.cn/images/avatar.png</logo>
-    <icon>https://blog.minloha.cn/favicon.ico</icon>
+    <link rel="alternate" href="https://www.minloha.cn"/>
+    <link rel="self" href="https://www.minloha.cn/atom.xml"/>
+    <logo>https://www.minloha.cn/images/avatar.png</logo>
+    <icon>https://www.minloha.cn/favicon.ico</icon>
     <rights>All rights reserved 2021, minloha.cn</rights>
     <entry>
         <title type="html"><![CDATA[轻音乐]]></title>
-        <id>https://blog.minloha.cn/post/music/</id>
-        <link href="https://blog.minloha.cn/post/music/">
+        <id>https://www.minloha.cn/post/music/</id>
+        <link href="https://www.minloha.cn/post/music/">
         </link>
         <updated>2021-02-25T15:00:07.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[基于自然语言处理的反口嗨插件]]></title>
-        <id>https://blog.minloha.cn/post/anti_fuck/</id>
-        <link href="https://blog.minloha.cn/post/anti_fuck/">
+        <id>https://www.minloha.cn/post/anti_fuck/</id>
+        <link href="https://www.minloha.cn/post/anti_fuck/">
         </link>
         <updated>2021-02-07T14:45:47.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[新年快乐]]></title>
-        <id>https://blog.minloha.cn/post/new_year/</id>
-        <link href="https://blog.minloha.cn/post/new_year/">
+        <id>https://www.minloha.cn/post/new_year/</id>
+        <link href="https://www.minloha.cn/post/new_year/">
         </link>
         <updated>2021-02-06T15:22:23.000Z</updated>
     </entry>
