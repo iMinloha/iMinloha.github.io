@@ -44,4 +44,4 @@ visits = 1
 else
 visits = parseInt(visits) + 1
 setCookie("counter", visits, now)
-document.write("<h4>已经有<span style=\"color: red\"> " + visits + " </span>人访问过了~</h4>")
+document.write("<h4>你已经点开过<span style=\"color:red\"> " + visits + " </span>次了~</h4>")
