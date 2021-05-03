@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>川宝居然搞网站</title>
+    <link href="/2021/04/02/trump_NB/"/>
+    <url>/2021/04/02/trump_NB/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>开始</p></blockquote><p>据悉，数日前，特朗普建立了自己的网站，以便于交流，下面是链接</p><p><a href="https://www.45office.com/">点我</a></p><blockquote><p>解释</p></blockquote><p>目前，特朗普开设的办公网站已经上线，大家可以通过这个平台与他进行交流联系，据有关报道称</p><p>前总统办公室仍然致力于维护特朗普政府的宝贵成就，继续推进建设美国的未来。</p><p>有报道披露，上周的一份报告确认特朗普正在计划启动一个新的社交媒体平台，并将在数月内准备</p><p>就绪。特朗普2020年竞选活动发言人杰森·米勒（Jason Miller）证实该消息，并向福克斯新闻</p><p>MediaBuzz披露，该社交媒体平台将“彻底重新定义游戏规则”，必将吸引数千万用户。</p><p>早在2月，米勒（Miller）在周六的布赖特巴特新闻（Breitbart News）上通过爱国者频道接受采访</p><p>时曾透露特朗普的计划。当被问及特朗普下一步计划时，米勒表示希望特朗普总统回归社交媒体，</p><p>无论是加入现有平台还是创建新平台，他们的选择和会面都会非常多，请耐心等待。</p><p>总统官网上线时间似乎比预料中要早，目前唐纳德·特朗普互联网复出计划的第一部分已面世：</p><p><a href="https://45office.com,离特朗普启动自建新社交媒体平台的计划的实现似乎越来越近了./">https://45Office.com,离特朗普启动自建新社交媒体平台的计划的实现似乎越来越近了。</a></p><p>翻译自:  <a href="https://trendingpolitics.com/breaking-news-donald-trump-has-officially-launched-website-for-his-presidency-knab/">链接</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>新鲜事</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>VIP解析</title>
+    <link href="/2021/03/24/vip-hack/"/>
+    <url>/2021/03/24/vip-hack/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>这个页面有附属脚本，酌情访问</p></blockquote><p>这里是Minloha的小站，今天在这里开一个小功能，VIP解析，代码在下面，没多少技术</p><style>.ipt{    width: 80%;    border: 1px solid #ccc;                 padding: 7px 0px;                border-radius: 3px;    border: 1px solid #ccc;                padding: 7px 0px;                border-radius: 3px;                padding-left:5px;                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s    border-color: #66afe9;                    outline: 0;                    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)                padding-left:5px;}.btn{    width: 10%;    height: 50px;    border-width: 0px;     border-radius: 3px;    background: #1E90FF;     outline: none;    font-family: Microsoft YaHei;     color: white; /* 字体颜色 */}</style><input type="text" placeholder="在此处输入链接" class="ipt" id="ipt"/><button onclick="on()" class="btn">GO!</button><br><br><h2 id="正式介绍"><a href="#正式介绍" class="headerlink" title="正式介绍"></a>正式介绍</h2><blockquote><p>首先我们需要一个html</p></blockquote><p>这个很简单，基本随随便便写写就行</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 可以插入一些css或js，这里直接放出来了 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;在此处输入链接&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ipt&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ipt&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;on()&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>点我前往<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure><p>然后就是一个API，其实这个就是造壳子而已，加入一小段js</p><script>function on(){    var id=document.getElementById('ipt').value;    var url ="http://www.wmxz.wang/video.php?url="+id;    var reg=/^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+.*$/;    if(!reg.test(id)){}else{window.location.replace("http://www.wmxz.wang/video.php?url="+id);}}</script><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">on</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> id=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;ipt&#x27;</span>).value;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> url =<span class="hljs-string">&quot;http://www.wmxz.wang/video.php?url=&quot;</span>+id;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> reg=<span class="hljs-regexp">/^([hH][tT]&#123;2&#125;[pP]:\/\/|[hH][tT]&#123;2&#125;[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+.*$/</span>;</span><br>    if(!reg.test(id))&#123;<br><br><span class="javascript">&#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="javascript"><span class="hljs-built_in">window</span>.location.replace(<span class="hljs-string">&quot;http://www.wmxz.wang/video.php?url=&quot;</span>+id);</span><br>&#125;<br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure><p>因为需要对输入的内容进行判断，这里采用了正则表达式进行匹配，正则表达式的用法非常多，这里只做简单</p><p>的用法介绍</p><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs inform7">var reg=/^(<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span>:\/\/|<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span><span class="hljs-comment">[sS]</span>:\/\/)((<span class="hljs-comment">[A-Za-z0-9-~]</span>+)\.)+(<span class="hljs-comment">[A-Za-z0-9-~\/]</span>)+.*$/;<br>/*<br>这句就是对输入的内容进行匹配，关键在于是<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span>:\/\/|<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span><span class="hljs-comment">[sS]</span><br><br>用地球的语言来说就是，输入的内容满足 https://XXXX.XXX 或 http://XXXX.XXX 的格式<br><br>对于网站来说，一般还有接下来的路径，所以满足域名的条件只需在后面进行贪婪匹配就完事了<br><br>*/<br><br></code></pre></td></tr></table></figure><p>最后再写亿点人人都会的css，就完成了</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>.ipt&#123;<br><span class="css">    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>; </span><br><span class="css">                <span class="hljs-attribute">padding</span>: <span class="hljs-number">7px</span> <span class="hljs-number">0px</span>;</span><br><span class="css">                <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;</span><br><span class="css"><span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;</span><br><span class="css">                <span class="hljs-attribute">padding</span>: <span class="hljs-number">7px</span> <span class="hljs-number">0px</span>;</span><br><span class="css">                <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;</span><br><span class="css">                <span class="hljs-attribute">padding-left</span>:<span class="hljs-number">5px</span>;</span><br><span class="css">                -webkit-<span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>);</span><br><span class="css">                <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>);</span><br><span class="css">                -webkit-<span class="hljs-attribute">transition</span>: border-color ease-in-out .<span class="hljs-number">15s</span>,-webkit-box-shadow ease-in-out .<span class="hljs-number">15s</span>;</span><br><span class="css">                -o-<span class="hljs-attribute">transition</span>: border-color ease-in-out .<span class="hljs-number">15s</span>,box-shadow ease-in-out .<span class="hljs-number">15s</span>;</span><br><span class="css">                <span class="hljs-attribute">transition</span>: border-color ease-in-out .<span class="hljs-number">15s</span>,box-shadow ease-in-out .<span class="hljs-number">15s</span></span><br><span class="css"><span class="hljs-attribute">border-color</span>: <span class="hljs-number">#66afe9</span>;</span><br><span class="css">                    <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;</span><br><span class="css">                    -webkit-<span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>),<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">102</span>,<span class="hljs-number">175</span>,<span class="hljs-number">233</span>,.<span class="hljs-number">6</span>);</span><br><span class="css">                    <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>),<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">102</span>,<span class="hljs-number">175</span>,<span class="hljs-number">233</span>,.<span class="hljs-number">6</span>)</span><br><span class="css">                <span class="hljs-attribute">padding-left</span>:<span class="hljs-number">5px</span>;</span><br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>源码</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>轻音乐</title>
+    <link href="/2021/02/25/music/"/>
+    <url>/2021/02/25/music/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>一首简单的轻音乐，听听看看吧</p></blockquote><video width="100%" controls>  <source src="https://pan.mincloud.workers.dev/0:/好康的/soft_music.mp4" type="video/mp4"></video><br><p>如果太卡还想看视频，建议缓存观看，也可以直接听歌。标签就不美化了😏</p><audio controls>  <source src="https://pan.mincloud.workers.dev/0:/blog/soft.mp3" type="audio/mpeg"></audio><p>另外,Minloha的网盘也上线了<a href="https://pan.minloha.cn,用户名和密码都是minloha,有东西/">https://pan.minloha.cn，用户名和密码都是minloha，有东西</a></p><p>我就会向网盘传(这个视频可以在网盘目录找到,就有你来发现了)~</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>娱乐</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>编曲</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>基于自然语言处理的反口嗨插件</title>
+    <link href="/2021/02/07/anti_fuck/"/>
+    <url>/2021/02/07/anti_fuck/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p> 介绍</p></blockquote><p>如今的网络已经发达到很大程度了，网络暴力时刻都在发生，为了营造一个良好的minecraft服务器游戏环</p><p>境，Minloha特意编写了一款基于自然语言处理的反口嗨插件: MUIU，缪μ(miù)</p><blockquote><p>功能原理</p></blockquote><p>这里为大家介绍一下MUIU的原理</p><p>MUIU使用了数学原理，余弦相似度。余弦相似度也叫余弦相似性，余弦相似度用向量空间中两个向量夹角的</p><p>余弦值作为衡量两个个体间差异的大小。余弦值越接近1，就表明夹角越接近0度，也就是两个向量越相似，</p><p>这就叫”余弦相似性”。</p><p>向量的数量积相信上过高中的小伙伴都能知道，表达式为:</p><p><img src="img/1612710668601.png"></p><p><img src="img/1612710673458.png"></p><p>有了这两个表达式，再把文本向量化，就就可以用了</p><hr><blockquote><p>功能介绍</p></blockquote><p>经过Minloha的反复测试，最后处理到的结果显示，MUIU具有监督学习能力，只要有一个情感色彩指向性强</p><p>烈的词库，可以做到精准拦截(插件自带的词库可以解决很大程度的问题,具体情况根据服务器状况来定制)，</p><p>拥有广告拦截功能，词库内部添加几种广告的格式便可以实行精确拦截，同时在处理拆分文本也有很强大的功</p><p>能，在使用特殊字符时也能进行有效拦截，同时也会在服务器端明确标注信息</p><p><img src="img/1612711210538.png"></p><p><img src="img/1612712107159.png"></p><hr><p>2021/2/28，插件更新新功能:</p><p>加入了网址校验功能，有的玩家可能会分享一些网址帮助大家游玩，而有些玩家则会发一些危险的网站，一旦</p><p>不加处理，后果非常严重，所以Muiu新功能，网址安全性校验功能</p><p>当前版本beta-0.4.0，想要了解更多可以去网盘查看，用户名密码都是minloha</p><p><img src="img/1614524066626.png"></p><blockquote><p>下载地址</p></blockquote><p>新版本下载</p><p>站内下载:<a href="https://minloha.gitee.io/resources/Muiu-beta-0.4.0-preview.jar">点我前往</a></p><p>网盘下载:<a href="https://pan.mincloud.workers.dev/0:/blog/Muiu-beta-0.4.0.jar">点我前往</a></p><hr><p>旧版本下载</p><p>百度网盘 :<a href="https://pan.baidu.com/s/15JKw-Dmyzr55eqo7ryRWsQ">zr9c</a> </p><p>腾讯微云:<a href="https://share.weiyun.com/7Dx43Dtz">bmt4z5</a></p><p>站内下载:<a href="https://minloha.gitee.io/resources/Muiu-beta-0.3.6-preview.jar">点我前往</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>minecraft</tag>
+      
+      <tag>java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>新年快乐</title>
+    <link href="/2021/02/06/new_year/"/>
+    <url>/2021/02/06/new_year/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>原神拜年祭</p></blockquote><iframe src="//player.bilibili.com/player.html?aid=416575036&bvid=BV1FV411i7ok&cid=293566868&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="min-height:600px;width:100%;height:100%;"> </iframe><blockquote><p>结尾祝语</p></blockquote><p>新年快乐多多祝:</p><pre><code>祈愿不保底圣遗物词条顺原石多又多</code></pre><p>大家都要赶上11号的拜年祭，同时别忘了支付宝五福开奖哦！</p><p>新年快乐，感谢陪伴！🙂</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>娱乐</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原神</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
