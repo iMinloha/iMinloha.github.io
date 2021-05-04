@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Gridea主题</title>
+    <link href="/2021/05/04/purem/"/>
+    <url>/2021/05/04/purem/</url>
+    
+    <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在2月~4月末期间，我在着手编写一款Gridea的主题，同时也用作个人博客的主题，现在则将它公开</p><p>这是一款Gridea的主题，使用简单快速，并且有丰富的功能以及高度的可扩展性</p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>你可以通过我的Github仓库进行克隆：<a href="https://github.com/iMinloha/purem.git">https://github.com/iMinloha/purem.git</a></p><p><img src="https://cdn.minloha.cn/blog/img/blog.png"></p><h2 id="配置问题"><a href="#配置问题" class="headerlink" title="配置问题"></a>配置问题</h2><p>对于配置文件CDN，你只需要将Gridea所生成的media文件夹与styles文件夹上传到CDN即可</p><p>如果没有文件CDN，留空即可</p><p>在面板没有加入博客运行时间，需要手动改写assets\media\scripts\time_add.js的数字</p><h2 id="更新说明"><a href="#更新说明" class="headerlink" title="更新说明"></a>更新说明</h2><p>目前博客模板已经停止更新，你可以自由创造和修改</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>源码</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>川宝居然搞网站</title>
     <link href="/2021/04/02/trump_NB/"/>
     <url>/2021/04/02/trump_NB/</url>
