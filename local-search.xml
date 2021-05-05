@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>圆锥曲线[1]</title>
+    <link href="/2021/05/05/question/"/>
+    <url>/2021/05/05/question/</url>
+    
+    <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p><img src="https://cdn.minloha.cn/blog/img/%E9%A2%98.png"></p><p>如图，首先看一下问题，已知的只有一个椭圆的方程和一个三角形面积</p><h2 id="第一问"><a href="#第一问" class="headerlink" title="第一问"></a>第一问</h2><p>证明$x_1$²+$x_2$²与$y_1$²+$y_2$²均为定值</p><p>先设直线斜率k等于$\frac{y_2-y_1}{x_2-x_1}$</p><p>接下来进行分类讨论:</p><p>当K=0时，$x_2$=$x_1$,$y_2$=-$y_1$</p><p>当K≠0时，|$x_1$|·|$y_1$|=$\frac{\sqrt[2]{6}}{2}$</p><p>联立椭圆方程，则有 $x_1$²+$x_2$²=3  | $y_1$²+$y_2$²=2</p><p>所以$x_1$²+$x_2$²与$y_1$²+$y_2$²均为定值</p><blockquote><p>当然还有一种更为通俗的解法</p></blockquote><p>根据要求的解，我们首先应该想到韦达定理，那么就可以设直线方程为</p><p>y=kx+b</p><p>由题意可知，b≠0，代入椭圆方程</p><p>(2+3k²)x²+6kmx=3(m²-2)=0</p><p>根据判别式⊿=36k²m²-12(2+3k²)(m²-2)＞0</p><p>有3k²+2&gt;m²</p><p>$x_1$+$x_2$=-$\frac{6km}{2+3k²}$，$x_1$$x_2$=$\frac{3(m²-2)}{2+3k²}$</p><p>根据弦长公式，有PQ长度为$\sqrt[2]{1+k² }$·$\frac{2\sqrt[2]{6}\sqrt[2]{3k²+2-m²}}{2+3k²}$</p><p>根据点到直线距离公式，可以列出距离d=$\frac{|m|}{\sqrt[2]{1+k²}}$</p><p>那么面积$S_{OPQ}$=$\frac{1}{2}$|PQ|d</p><p>而面积又等于$\frac{\sqrt[2]{6}}{2}$</p><p>代入化简，有:</p><p>$x_1$²+$x_2$²=3  | $y_1$²+$y_2$²=2</p><p>所以结论成立</p><blockquote><p>虽然第二种方法计算量大，但是一般不会出错，具体看能接受那种方法了</p></blockquote><h2 id="第二问"><a href="#第二问" class="headerlink" title="第二问"></a>第二问</h2><p>∵4|OM|²+|PQ|²=($x_1$+$x_2$)²+($y_1$+$y_2$)²+($x_2$-$x_1$)²+($y_2$-$y_1$)²=10</p><p>∴2|OM|·|PQ|≤$frac{4|OM|²+|PQ|²}{2}$=5</p><p>所以|OM|·|PQ|最大值为$\frac{5}{2}$</p><h2 id="第三问"><a href="#第三问" class="headerlink" title="第三问"></a>第三问</h2><p><img src="https://cdn.minloha.cn/blog/img/pass.png"></p><blockquote><p>部分答案取自<a href="https://wenku.baidu.com/link?url=reuUhuCNZ131AA4UjNCCRFgkH8xyWcr8CByEUJCs2vcWKqBA5RNSqs2jOpuW5bG6_x1zJ7pcySktfZNlQglKhQRFw7y_frj3IxBsAHSOW1e">百度</a></p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>新鲜事</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Gridea主题</title>
     <link href="/2021/05/04/purem/"/>
     <url>/2021/05/04/purem/</url>
