@@ -15,11 +15,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="一款简洁的Gridea主题">
+  <meta name="description" content="一段简单的html外壳">
   <meta name="author" content="Minloha">
   <meta name="keywords" content="">
   
-  <title>Gridea主题 - minloha.cn</title>
+  <title>VIP解析 - minloha.cn</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.minloha.cn/blog/media/scripts/jquery-ui.min.css" />
@@ -191,7 +191,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Gridea主题">
+            <span class="h2" id="subtitle" title="VIP解析">
               
             </span>
 
@@ -206,8 +206,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-05-04 08:25" pubdate>
-        2021年5月4日 早上
+      <time datetime="2021-03-24 12:48" pubdate>
+        2021年3月24日 下午
       </time>
     </span>
   
@@ -218,7 +218,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      191 字
+      784 字
     </span>
   
 
@@ -228,7 +228,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      13
        分钟
     </span>
   
@@ -266,18 +266,78 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Gridea主题</h1>
+            <h1 style="display: none">VIP解析</h1>
             
             <div class="markdown-body">
-              <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在2月~4月末期间，我在着手编写一款Gridea的主题，同时也用作个人博客的主题，现在则将它公开</p>
-<p>这是一款Gridea的主题，使用简单快速，并且有丰富的功能以及高度的可扩展性</p>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>你可以通过我的Github仓库进行克隆：<a target="_blank" rel="noopener" href="https://github.com/iMinloha/purem.git">https://github.com/iMinloha/purem.git</a></p>
-<p><img src="https://cdn.minloha.cn/blog/img/blog.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="配置问题"><a href="#配置问题" class="headerlink" title="配置问题"></a>配置问题</h2><p>对于配置文件CDN，你只需要将Gridea所生成的media文件夹与styles文件夹上传到CDN即可</p>
-<p>如果没有文件CDN，留空即可</p>
-<p>在面板没有加入博客运行时间，需要手动改写assets\media\scripts\time_add.js的数字</p>
-<h2 id="更新说明"><a href="#更新说明" class="headerlink" title="更新说明"></a>更新说明</h2><p>目前博客模板已经停止更新，你可以自由创造和修改</p>
+              <blockquote>
+<p>这个页面有附属脚本，酌情访问</p>
+</blockquote>
+<p>这里是Minloha的小站，今天在这里开一个小功能，VIP解析，代码在下面，没多少技术</p>
+<style>
+.ipt{
+    width: 80%;
+    border: 1px solid #ccc; 
+                padding: 7px 0px;
+                border-radius: 3px;
+    border: 1px solid #ccc;
+                padding: 7px 0px;
+                border-radius: 3px;
+                padding-left:5px;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+    border-color: #66afe9;
+                    outline: 0;
+                    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+                padding-left:5px;
+}
+.btn{
+    width: 10%;
+    height: 50px;
+    border-width: 0px; 
+    border-radius: 3px;
+    background: #1E90FF; 
+    outline: none;
+    font-family: Microsoft YaHei; 
+    color: white; /* 字体颜色 */
+}
+</style>
 
+<input type="text" placeholder="在此处输入链接" class="ipt" id="ipt"/>
+<button onclick="on()" class="btn">GO!</button>
+<br><br>
+
+<h2 id="正式介绍"><a href="#正式介绍" class="headerlink" title="正式介绍"></a>正式介绍</h2><blockquote>
+<p>首先我们需要一个html</p>
+</blockquote>
+<p>这个很简单，基本随随便便写写就行</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 可以插入一些css或js，这里直接放出来了 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;在此处输入链接&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ipt&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ipt&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;on()&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>点我前往<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后就是一个API，其实这个就是造壳子而已，加入一小段js</p>
+<script>
+function on(){
+    var id=document.getElementById('ipt').value;
+    var url ="http://www.wmxz.wang/video.php?url="+id;
+    var reg=/^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+.*$/;
+    if(!reg.test(id)){
+
+}else{
+window.location.replace("http://www.wmxz.wang/video.php?url="+id);
+}
+}
+</script>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">on</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> id=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;ipt&#x27;</span>).value;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> url =<span class="hljs-string">&quot;http://www.wmxz.wang/video.php?url=&quot;</span>+id;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> reg=<span class="hljs-regexp">/^([hH][tT]&#123;2&#125;[pP]:\/\/|[hH][tT]&#123;2&#125;[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+.*$/</span>;</span><br>    if(!reg.test(id))&#123;<br><br><span class="javascript">&#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="javascript"><span class="hljs-built_in">window</span>.location.replace(<span class="hljs-string">&quot;http://www.wmxz.wang/video.php?url=&quot;</span>+id);</span><br>&#125;<br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>因为需要对输入的内容进行判断，这里采用了正则表达式进行匹配，正则表达式的用法非常多，这里只做简单</p>
+<p>的用法介绍</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs inform7">var reg=/^(<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span>:\/\/|<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span><span class="hljs-comment">[sS]</span>:\/\/)((<span class="hljs-comment">[A-Za-z0-9-~]</span>+)\.)+(<span class="hljs-comment">[A-Za-z0-9-~\/]</span>)+.*$/;<br>/*<br>这句就是对输入的内容进行匹配，关键在于是<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span>:\/\/|<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span><span class="hljs-comment">[sS]</span><br><br>用地球的语言来说就是，输入的内容满足 https://XXXX.XXX 或 http://XXXX.XXX 的格式<br><br>对于网站来说，一般还有接下来的路径，所以满足域名的条件只需在后面进行贪婪匹配就完事了<br><br>*/<br><br></code></pre></td></tr></table></figure>
+
+<p>最后再写亿点人人都会的css，就完成了</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>.ipt&#123;<br><span class="css">    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>; </span><br><span class="css">                <span class="hljs-attribute">padding</span>: <span class="hljs-number">7px</span> <span class="hljs-number">0px</span>;</span><br><span class="css">                <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;</span><br><span class="css">	<span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;</span><br><span class="css">                <span class="hljs-attribute">padding</span>: <span class="hljs-number">7px</span> <span class="hljs-number">0px</span>;</span><br><span class="css">                <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;</span><br><span class="css">                <span class="hljs-attribute">padding-left</span>:<span class="hljs-number">5px</span>;</span><br><span class="css">                -webkit-<span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>);</span><br><span class="css">                <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>);</span><br><span class="css">                -webkit-<span class="hljs-attribute">transition</span>: border-color ease-in-out .<span class="hljs-number">15s</span>,-webkit-box-shadow ease-in-out .<span class="hljs-number">15s</span>;</span><br><span class="css">                -o-<span class="hljs-attribute">transition</span>: border-color ease-in-out .<span class="hljs-number">15s</span>,box-shadow ease-in-out .<span class="hljs-number">15s</span>;</span><br><span class="css">                <span class="hljs-attribute">transition</span>: border-color ease-in-out .<span class="hljs-number">15s</span>,box-shadow ease-in-out .<span class="hljs-number">15s</span></span><br><span class="css">	<span class="hljs-attribute">border-color</span>: <span class="hljs-number">#66afe9</span>;</span><br><span class="css">                    <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;</span><br><span class="css">                    -webkit-<span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>),<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">102</span>,<span class="hljs-number">175</span>,<span class="hljs-number">233</span>,.<span class="hljs-number">6</span>);</span><br><span class="css">                    <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>),<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">102</span>,<span class="hljs-number">175</span>,<span class="hljs-number">233</span>,.<span class="hljs-number">6</span>)</span><br><span class="css">                <span class="hljs-attribute">padding-left</span>:<span class="hljs-number">5px</span>;</span><br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -311,9 +371,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/05/05/%E9%97%AE%E9%A2%98/">
+                      <a href="/2021/05/04/purem/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">圆锥曲线[1]</span>
+                        <span class="hidden-mobile">Gridea主题</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -321,8 +381,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/24/vip%E8%A7%A3%E6%9E%90/">
-                        <span class="hidden-mobile">VIP解析</span>
+                      <a href="/2021/02/25/%E9%9F%B3%E4%B9%90/">
+                        <span class="hidden-mobile">轻音乐</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

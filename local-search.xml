@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>圆锥曲线[1]</title>
-    <link href="/2021/05/05/question/"/>
-    <url>/2021/05/05/question/</url>
+    <title>躺平与内卷</title>
+    <link href="/2021/06/14/%E8%BA%BA%E5%B9%B3%E4%B8%8E%E5%86%85%E5%8D%B7/"/>
+    <url>/2021/06/14/%E8%BA%BA%E5%B9%B3%E4%B8%8E%E5%86%85%E5%8D%B7/</url>
     
-    <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p><img src="https://cdn.minloha.cn/blog/img/%E9%A2%98.png"></p><p>如图，首先看一下问题，已知的只有一个椭圆的方程和一个三角形面积</p><h2 id="第一问"><a href="#第一问" class="headerlink" title="第一问"></a>第一问</h2><p>证明$x_1$²+$x_2$²与$y_1$²+$y_2$²均为定值</p><p>先设直线斜率k等于$\frac{y_2-y_1}{x_2-x_1}$</p><p>接下来进行分类讨论:</p><p>当K=0时，$x_2$=$x_1$,$y_2$=-$y_1$</p><p>当K≠0时，|$x_1$|·|$y_1$|=$\frac{\sqrt[2]{6}}{2}$</p><p>联立椭圆方程，则有 $x_1$²+$x_2$²=3  | $y_1$²+$y_2$²=2</p><p>所以$x_1$²+$x_2$²与$y_1$²+$y_2$²均为定值</p><blockquote><p>当然还有一种更为通俗的解法</p></blockquote><p>根据要求的解，我们首先应该想到韦达定理，那么就可以设直线方程为</p><p>y=kx+b</p><p>由题意可知，b≠0，代入椭圆方程</p><p>(2+3k²)x²+6kmx=3(m²-2)=0</p><p>根据判别式⊿=36k²m²-12(2+3k²)(m²-2)＞0</p><p>有3k²+2&gt;m²</p><p>$x_1$+$x_2$=-$\frac{6km}{2+3k²}$，$x_1$$x_2$=$\frac{3(m²-2)}{2+3k²}$</p><p>根据弦长公式，有PQ长度为$\sqrt[2]{1+k² }$·$\frac{2\sqrt[2]{6}\sqrt[2]{3k²+2-m²}}{2+3k²}$</p><p>根据点到直线距离公式，可以列出距离d=$\frac{|m|}{\sqrt[2]{1+k²}}$</p><p>那么面积$S_{OPQ}$=$\frac{1}{2}$|PQ|d</p><p>而面积又等于$\frac{\sqrt[2]{6}}{2}$</p><p>代入化简，有:</p><p>$x_1$²+$x_2$²=3  | $y_1$²+$y_2$²=2</p><p>所以结论成立</p><blockquote><p>虽然第二种方法计算量大，但是一般不会出错，具体看能接受那种方法了</p></blockquote><h2 id="第二问"><a href="#第二问" class="headerlink" title="第二问"></a>第二问</h2><p>∵4|OM|²+|PQ|²=($x_1$+$x_2$)²+($y_1$+$y_2$)²+($x_2$-$x_1$)²+($y_2$-$y_1$)²=10</p><p>∴2|OM|·|PQ|≤$frac{4|OM|²+|PQ|²}{2}$=5</p><p>所以|OM|·|PQ|最大值为$\frac{5}{2}$</p><h2 id="第三问"><a href="#第三问" class="headerlink" title="第三问"></a>第三问</h2><p><img src="https://cdn.minloha.cn/blog/img/pass.png"></p><blockquote><p>部分答案取自<a href="https://wenku.baidu.com/link?url=reuUhuCNZ131AA4UjNCCRFgkH8xyWcr8CByEUJCs2vcWKqBA5RNSqs2jOpuW5bG6_x1zJ7pcySktfZNlQglKhQRFw7y_frj3IxBsAHSOW1e">百度</a></p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote><p>躺平与内卷</p></blockquote><p>在社会生活中，我们会遇到各种各样的人或事，这其中不乏两类人，躺平的人和内卷的人</p><p>躺平一般是指指无论对方做出什么反应，你内心都毫无波澜，对此不会有任何反应或者反抗，表示顺从心</p><p>理。换句话说就是避免竞争主义</p><p>内卷是个学术名词，举例子解释就是一群人去争一个饼，每个人都为了并不断地努力，最终导致收益与努</p><p>力不成正比。现在则指努力改变的人</p><p>前段时间，一段来自衡水中学的一段演讲走火了，一方面是说了很多家长希望的孩子能够摆脱平凡的生活</p><p>，另一方面则充分的展现了国内刻板的教育模式</p><p>最开始，这篇演讲的初衷是证明衡水中学不是考试工厂，学生们也都不是考试机器，但他的演讲起到了反</p><p>作用，让我们看到了衡水中学对学生的塑造</p><p>这次的演讲透露了很多的问题，我和他很像，但又不一样，我是普高，他是重点高中学</p><h2 id="视频传送门"><a href="#视频传送门" class="headerlink" title="视频传送门"></a>视频传送门</h2><p><a href="https://www.bilibili.com/bangumi/play/ep407243">https://www.bilibili.com/bangumi/play/ep407243</a></p><h2 id="看法"><a href="#看法" class="headerlink" title="看法"></a>看法</h2><p><img src="https://cdn.minloha.cn/www/images/%E8%BA%BA%E8%B5%A2.jpg"></p><p>关于人应该是躺平还是内卷，我个人还是保持积极的看法的，努力的人不一定成功，但不努力一定不成功，</p><p>在社会的内卷大潮流中就像波涛汹涌的海面一样，每个人都是在海上的一条船，平躺就像把船帆落下随波逐</p><p>流，最后可能会被海浪拍在沙滩上，或者被大海撕碎。而内卷就像扬帆与海浪抗争，也有成功闯过大海的人</p><p>,也有被大海撕碎的人</p><hr><p>在演讲中，最让人关注的就是那句”人们过着周而复始、循规蹈矩的生活，一眼，仿佛就能看到死”，这句话</p><p>在演讲中出现，我很震惊，什么样的生活算平凡？周而复始的生活就平凡吗？当你能够掀起波浪的时候，最</p><p>先考虑的时期不是继续努力而是稳固自己吧。</p><p>反观下来，他的内卷主义已经触及到了很多人的生活方式，很多人认为他不应该嘲笑平凡的生活，仔细想想</p><p>我们作为当代的新鲜血液，为什么不去奔腾？</p><p>“中国需要人才，而不是钱财”，在奔跑中，我们不需要记住一件事情，我们的努力不是为了资本与声望，从</p><p>古至今，没有任何人存在的目的就是为了钱与利益，而是为了永远的存在这个世界上，我们有再富有，也终</p><p>究会有人比我们更加的富有，而一个人真正的追求，应该是永远的存在与这个世界，至少能让人记得这个世</p><p>界曾有个你。这才是内卷。</p><p>我们没办法改变世界的格局，也没办法改变国家，我们能做到的只有利用自己的优势去活下去。</p>]]></content>
     
     
     <categories>
@@ -17,6 +17,62 @@
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>标签</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>鸿蒙系统试玩</title>
+    <link href="/2021/06/03/%E9%B8%BF%E8%92%99%E7%B3%BB%E7%BB%9F%E8%AF%95%E7%8E%A9/"/>
+    <url>/2021/06/03/%E9%B8%BF%E8%92%99%E7%B3%BB%E7%BB%9F%E8%AF%95%E7%8E%A9/</url>
+    
+    <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>6月3日凌晨2点21分，华为发布了最新的鸿蒙系统(HarmonyOS 2.0)</p><p>鸿蒙系统采用了面向全场景的分布式操作系统，以手机为主，扩展更多传统设备，未来可期</p><p>同时，鸿蒙系统采用了一个超级终端，满足了个人资源的自由调用，也让更多开发者都能进行拓展开发</p><h2 id="试用"><a href="#试用" class="headerlink" title="试用"></a>试用</h2><p>HarmonyOS采用了自家的编译器DevEco studio进行开发，你可以在官网处(<a href="https://developer.harmonyos.com/cn/develop/deveco-studio#download">https://developer.harmonyos.com/cn/develop/deveco-studio#download</a>)<br>下载自家的编译器</p><p>内部则可以使用C++/Java/Js进行开发</p><p>打开后就会有一个像android studio一样的操作界面</p><h3 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h3><p>(1):打开DevEco Studio，在欢迎页点击Create HarmonyOS Project，创建一个新工程。</p><p>(2):根据工程创建向导，选择需要的Ability工程模板，然后点击Next。关于工程模板的介绍和支持的设备类型，请参考<a href="https://developer.harmonyos.com/cn/docs/documentation/doc-guides/device_template-0000001053702407">支持的设备模板和编程语言</a></p><p><img src="https://alliance-communityfile-drcn.dbankcdn.com/FileServer/getFile/cmtyPub/011/111/111/0000000000011111111.20210603145203.76930725071818537260663788912908:50520602072441:2800:85EDB7056CFE7641A1C7185E729D8B4FCD7BF869EF6D3CA031347E617E0C487E.png?needInitFileName=true?needInitFileName=true"></p><p>(3):填写工程相关信息，Device Type选择Phone，其他保持默认值即可，点击Finish。</p><p><img src="https://alliance-communityfile-drcn.dbankcdn.com/FileServer/getFile/cmtyPub/011/111/111/0000000000011111111.20210603145203.62470303028492835414489709768262:50520602072441:2800:72D3A51492BFA67AC978615E776DC8F4AD05352D4DB52DA498E7ACABDBD0EA63.png?needInitFileName=true?needInitFileName=true"></p><blockquote><p>可以参考Android Studio的使用方法</p></blockquote><h3 id="下载和安装模拟器"><a href="#下载和安装模拟器" class="headerlink" title="下载和安装模拟器"></a>下载和安装模拟器</h3><p>(1):DevEco Studio提供远程模拟器和本地模拟器，本示例以远程模拟器为例进行说明。</p><p>(2):在DevEco Studio菜单栏，点击Tools &gt; Device Manager。</p><p>在浏览器中弹出华为开发者联盟帐号登录界面，请输入已实名认证的华为开发者联盟帐号的用户名和密码进行登录</p><p>(3):登录后，请点击界面的允许按钮进行授权。</p><p><img src="https://alliance-communityfile-drcn.dbankcdn.com/FileServer/getFile/cmtyPub/011/111/111/0000000000011111111.20210603145204.57864751338433815349013907494301:50520602072441:2800:667885C997B440C1207E21F6790089946D08B2796F5FABC80E07267A3C528875.png?needInitFileName=true?needInitFileName=true"></p><p>(4):在设备列表中，选择Phone设备，并点击<img src="https://alliance-communityfile-drcn.dbankcdn.com/FileServer/getFile/cmtyPub/011/111/111/0000000000011111111.20210603145204.10231095390058313368750322139178:50520602072441:2800:77F17402E950BCBE8EDDA84EB2757208F01E07F1E29638321A5FC19E597560FA.png?needInitFileName=true?needInitFileName=true">按钮，运行模拟器。</p><p><img src="https://alliance-communityfile-drcn.dbankcdn.com/FileServer/getFile/cmtyPub/011/111/111/0000000000011111111.20210603145204.06708903617624925946320618194151:50520602072441:2800:58CBB0553EA988B01BF9A1081337B1F4E621F21E49C5A2687CD06F2445418D97.png?needInitFileName=true?needInitFileName=true"></p><p>(5):点击DevEco Studio工具栏中的<img src="https://alliance-communityfile-drcn.dbankcdn.com/FileServer/getFile/cmtyPub/011/111/111/0000000000011111111.20210603145204.76425334528631336832184643354227:50520602072441:2800:4CD6C6E3EDDBF3D163E13EA23C964FDB1416B9953E3B575AEE0DF21A40D941D6.png?needInitFileName=true?needInitFileName=true">按钮运行工程，或使用默认快捷键Shift+F10（Mac为Control+R）运行工程。</p><p><img src="https://alliance-communityfile-drcn.dbankcdn.com/FileServer/getFile/cmtyPub/011/111/111/0000000000011111111.20210603145204.23816813212155850894766587743188:50520602072441:2800:D9F8FBD053FA810216B63D21E45C222B076C7607DB6E0A63FC3CE86B98AD324F.png?needInitFileName=true?needInitFileName=true"></p><h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>经过一圈使用发现，鸿蒙系统与以往的安卓开发比差别不大，鸿蒙系统提供了一套高效的库，可以节省部分时间</p><p>同时鸿蒙系统对硬件的占用还是相当的有发展空间的，总的来讲还是有很大的发展空间的</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>源码</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>圆锥曲线[1]</title>
+    <link href="/2021/05/05/%E9%97%AE%E9%A2%98/"/>
+    <url>/2021/05/05/%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p><img src="https://cdn.minloha.cn/blog/img/%E9%A2%98.png"></p><p>如图，首先看一下问题，已知的只有一个椭圆的方程和一个三角形面积</p><h2 id="第一问"><a href="#第一问" class="headerlink" title="第一问"></a>第一问</h2><p>证明$x_1$²+$x_2$²与$y_1$²+$y_2$²均为定值</p><p>先设直线斜率k等于$\frac{y_2-y_1}{x_2-x_1}$</p><p>接下来进行分类讨论:</p><p>当K=0时，$x_2$=$x_1$,$y_2$=-$y_1$</p><p>当K≠0时，|$x_1$|·|$y_1$|=$\frac{\sqrt[2]{6}}{2}$</p><p>联立椭圆方程，则有 $x_1$²+$x_2$²=3  | $y_1$²+$y_2$²=2</p><p>所以$x_1$²+$x_2$²与$y_1$²+$y_2$²均为定值</p><blockquote><p>当然还有一种更为通俗的解法</p></blockquote><p>根据要求的解，我们首先应该想到韦达定理，那么就可以设直线方程为</p><p>y=kx+b</p><p>由题意可知，b≠0，代入椭圆方程</p><p>(2+3k²)x²+6kmx=3(m²-2)=0</p><p>根据判别式⊿=36k²m²-12(2+3k²)(m²-2)＞0</p><p>有3k²+2&gt;m²</p><p>$x_1$+$x_2$=-$\frac{6km}{2+3k²}$，$x_1$$x_2$=$\frac{3(m²-2)}{2+3k²}$</p><p>根据弦长公式，有PQ长度为$\sqrt[2]{1+k² }$·$\frac{2\sqrt[2]{6}\sqrt[2]{3k²+2-m²}}{2+3k²}$</p><p>根据点到直线距离公式，可以列出距离d=$\frac{|m|}{\sqrt[2]{1+k²}}$</p><p>那么面积$S_{OPQ}$=$\frac{1}{2}$|PQ|d</p><p>而面积又等于$\frac{\sqrt[2]{6}}{2}$</p><p>代入化简，有:</p><p>$x_1$²+$x_2$²=3  | $y_1$²+$y_2$²=2</p><p>所以结论成立</p><blockquote><p>虽然第二种方法计算量大，但是一般不会出错，具体看能接受哪种方法了</p></blockquote><h2 id="第二问"><a href="#第二问" class="headerlink" title="第二问"></a>第二问</h2><p>∵4|OM|²+|PQ|²=($x_1$+$x_2$)²+($y_1$+$y_2$)²+($x_2$-$x_1$)²+($y_2$-$y_1$)²=10</p><p>∴2|OM|·|PQ|≤$\frac{4|OM|²+|PQ|²}{2}$=5</p><p>所以|OM|·|PQ|最大值为$\frac{5}{2}$</p><h2 id="第三问"><a href="#第三问" class="headerlink" title="第三问"></a>第三问</h2><p><img src="https://cdn.minloha.cn/blog/img/pass.png"></p><blockquote><p>部分答案取自<a href="https://wenku.baidu.com/link?url=reuUhuCNZ131AA4UjNCCRFgkH8xyWcr8CByEUJCs2vcWKqBA5RNSqs2jOpuW5bG6_x1zJ7pcySktfZNlQglKhQRFw7y_frj3IxBsAHSOW1e">百度</a></p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>新鲜事</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学术</tag>
+      
+    </tags>
     
   </entry>
   
@@ -48,28 +104,9 @@
   
   
   <entry>
-    <title>川宝居然搞网站</title>
-    <link href="/2021/04/02/trump_NB/"/>
-    <url>/2021/04/02/trump_NB/</url>
-    
-    <content type="html"><![CDATA[<blockquote><p>开始</p></blockquote><p>据悉，数日前，特朗普建立了自己的网站，以便于交流，下面是链接</p><p><a href="https://www.45office.com/">点我</a></p><blockquote><p>解释</p></blockquote><p>目前，特朗普开设的办公网站已经上线，大家可以通过这个平台与他进行交流联系，据有关报道称</p><p>前总统办公室仍然致力于维护特朗普政府的宝贵成就，继续推进建设美国的未来。</p><p>有报道披露，上周的一份报告确认特朗普正在计划启动一个新的社交媒体平台，并将在数月内准备</p><p>就绪。特朗普2020年竞选活动发言人杰森·米勒（Jason Miller）证实该消息，并向福克斯新闻</p><p>MediaBuzz披露，该社交媒体平台将“彻底重新定义游戏规则”，必将吸引数千万用户。</p><p>早在2月，米勒（Miller）在周六的布赖特巴特新闻（Breitbart News）上通过爱国者频道接受采访</p><p>时曾透露特朗普的计划。当被问及特朗普下一步计划时，米勒表示希望特朗普总统回归社交媒体，</p><p>无论是加入现有平台还是创建新平台，他们的选择和会面都会非常多，请耐心等待。</p><p>总统官网上线时间似乎比预料中要早，目前唐纳德·特朗普互联网复出计划的第一部分已面世：</p><p><a href="https://45office.com,离特朗普启动自建新社交媒体平台的计划的实现似乎越来越近了./">https://45Office.com,离特朗普启动自建新社交媒体平台的计划的实现似乎越来越近了。</a></p><p>翻译自:  <a href="https://trendingpolitics.com/breaking-news-donald-trump-has-officially-launched-website-for-his-presidency-knab/">链接</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>新鲜事</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>VIP解析</title>
-    <link href="/2021/03/24/vip-hack/"/>
-    <url>/2021/03/24/vip-hack/</url>
+    <link href="/2021/03/24/vip%E8%A7%A3%E6%9E%90/"/>
+    <url>/2021/03/24/vip%E8%A7%A3%E6%9E%90/</url>
     
     <content type="html"><![CDATA[<blockquote><p>这个页面有附属脚本，酌情访问</p></blockquote><p>这里是Minloha的小站，今天在这里开一个小功能，VIP解析，代码在下面，没多少技术</p><style>.ipt{    width: 80%;    border: 1px solid #ccc;                 padding: 7px 0px;                border-radius: 3px;    border: 1px solid #ccc;                padding: 7px 0px;                border-radius: 3px;                padding-left:5px;                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s    border-color: #66afe9;                    outline: 0;                    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)                padding-left:5px;}.btn{    width: 10%;    height: 50px;    border-width: 0px;     border-radius: 3px;    background: #1E90FF;     outline: none;    font-family: Microsoft YaHei;     color: white; /* 字体颜色 */}</style><input type="text" placeholder="在此处输入链接" class="ipt" id="ipt"/><button onclick="on()" class="btn">GO!</button><br><br><h2 id="正式介绍"><a href="#正式介绍" class="headerlink" title="正式介绍"></a>正式介绍</h2><blockquote><p>首先我们需要一个html</p></blockquote><p>这个很简单，基本随随便便写写就行</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 可以插入一些css或js，这里直接放出来了 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;在此处输入链接&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ipt&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ipt&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;on()&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>点我前往<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure><p>然后就是一个API，其实这个就是造壳子而已，加入一小段js</p><script>function on(){    var id=document.getElementById('ipt').value;    var url ="http://www.wmxz.wang/video.php?url="+id;    var reg=/^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+.*$/;    if(!reg.test(id)){}else{window.location.replace("http://www.wmxz.wang/video.php?url="+id);}}</script><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">on</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> id=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;ipt&#x27;</span>).value;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> url =<span class="hljs-string">&quot;http://www.wmxz.wang/video.php?url=&quot;</span>+id;</span><br><span class="javascript">    <span class="hljs-keyword">var</span> reg=<span class="hljs-regexp">/^([hH][tT]&#123;2&#125;[pP]:\/\/|[hH][tT]&#123;2&#125;[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+.*$/</span>;</span><br>    if(!reg.test(id))&#123;<br><br><span class="javascript">&#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="javascript"><span class="hljs-built_in">window</span>.location.replace(<span class="hljs-string">&quot;http://www.wmxz.wang/video.php?url=&quot;</span>+id);</span><br>&#125;<br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure><p>因为需要对输入的内容进行判断，这里采用了正则表达式进行匹配，正则表达式的用法非常多，这里只做简单</p><p>的用法介绍</p><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs inform7">var reg=/^(<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span>:\/\/|<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span><span class="hljs-comment">[sS]</span>:\/\/)((<span class="hljs-comment">[A-Za-z0-9-~]</span>+)\.)+(<span class="hljs-comment">[A-Za-z0-9-~\/]</span>)+.*$/;<br>/*<br>这句就是对输入的内容进行匹配，关键在于是<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span>:\/\/|<span class="hljs-comment">[hH]</span><span class="hljs-comment">[tT]</span>&#123;2&#125;<span class="hljs-comment">[pP]</span><span class="hljs-comment">[sS]</span><br><br>用地球的语言来说就是，输入的内容满足 https://XXXX.XXX 或 http://XXXX.XXX 的格式<br><br>对于网站来说，一般还有接下来的路径，所以满足域名的条件只需在后面进行贪婪匹配就完事了<br><br>*/<br><br></code></pre></td></tr></table></figure><p>最后再写亿点人人都会的css，就完成了</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>.ipt&#123;<br><span class="css">    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>; </span><br><span class="css">                <span class="hljs-attribute">padding</span>: <span class="hljs-number">7px</span> <span class="hljs-number">0px</span>;</span><br><span class="css">                <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;</span><br><span class="css"><span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;</span><br><span class="css">                <span class="hljs-attribute">padding</span>: <span class="hljs-number">7px</span> <span class="hljs-number">0px</span>;</span><br><span class="css">                <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;</span><br><span class="css">                <span class="hljs-attribute">padding-left</span>:<span class="hljs-number">5px</span>;</span><br><span class="css">                -webkit-<span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>);</span><br><span class="css">                <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>);</span><br><span class="css">                -webkit-<span class="hljs-attribute">transition</span>: border-color ease-in-out .<span class="hljs-number">15s</span>,-webkit-box-shadow ease-in-out .<span class="hljs-number">15s</span>;</span><br><span class="css">                -o-<span class="hljs-attribute">transition</span>: border-color ease-in-out .<span class="hljs-number">15s</span>,box-shadow ease-in-out .<span class="hljs-number">15s</span>;</span><br><span class="css">                <span class="hljs-attribute">transition</span>: border-color ease-in-out .<span class="hljs-number">15s</span>,box-shadow ease-in-out .<span class="hljs-number">15s</span></span><br><span class="css"><span class="hljs-attribute">border-color</span>: <span class="hljs-number">#66afe9</span>;</span><br><span class="css">                    <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;</span><br><span class="css">                    -webkit-<span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>),<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">102</span>,<span class="hljs-number">175</span>,<span class="hljs-number">233</span>,.<span class="hljs-number">6</span>);</span><br><span class="css">                    <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">075</span>),<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">102</span>,<span class="hljs-number">175</span>,<span class="hljs-number">233</span>,.<span class="hljs-number">6</span>)</span><br><span class="css">                <span class="hljs-attribute">padding-left</span>:<span class="hljs-number">5px</span>;</span><br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>]]></content>
     
@@ -93,8 +130,8 @@
   
   <entry>
     <title>轻音乐</title>
-    <link href="/2021/02/25/music/"/>
-    <url>/2021/02/25/music/</url>
+    <link href="/2021/02/25/%E9%9F%B3%E4%B9%90/"/>
+    <url>/2021/02/25/%E9%9F%B3%E4%B9%90/</url>
     
     <content type="html"><![CDATA[<blockquote><p>一首简单的轻音乐，听听看看吧</p></blockquote><video width="100%" controls>  <source src="https://pan.mincloud.workers.dev/0:/好康的/soft_music.mp4" type="video/mp4"></video><br><p>如果太卡还想看视频，建议缓存观看，也可以直接听歌。标签就不美化了😏</p><audio controls>  <source src="https://pan.mincloud.workers.dev/0:/blog/soft.mp3" type="audio/mpeg"></audio><p>另外,Minloha的网盘也上线了<a href="https://pan.minloha.cn,用户名和密码都是minloha,有东西/">https://pan.minloha.cn，用户名和密码都是minloha，有东西</a></p><p>我就会向网盘传(这个视频可以在网盘目录找到,就有你来发现了)~</p>]]></content>
     
@@ -118,8 +155,8 @@
   
   <entry>
     <title>基于自然语言处理的反口嗨插件</title>
-    <link href="/2021/02/07/anti_fuck/"/>
-    <url>/2021/02/07/anti_fuck/</url>
+    <link href="/2021/02/07/Muiu/"/>
+    <url>/2021/02/07/Muiu/</url>
     
     <content type="html"><![CDATA[<blockquote><p> 介绍</p></blockquote><p>如今的网络已经发达到很大程度了，网络暴力时刻都在发生，为了营造一个良好的minecraft服务器游戏环</p><p>境，Minloha特意编写了一款基于自然语言处理的反口嗨插件: MUIU，缪μ(miù)</p><blockquote><p>功能原理</p></blockquote><p>这里为大家介绍一下MUIU的原理</p><p>MUIU使用了数学原理，余弦相似度。余弦相似度也叫余弦相似性，余弦相似度用向量空间中两个向量夹角的</p><p>余弦值作为衡量两个个体间差异的大小。余弦值越接近1，就表明夹角越接近0度，也就是两个向量越相似，</p><p>这就叫”余弦相似性”。</p><p>向量的数量积相信上过高中的小伙伴都能知道，表达式为:</p><p><img src="/img/1612710668601.png"></p><p><img src="/img/1612710673458.png"></p><p>有了这两个表达式，再把文本向量化，就就可以用了</p><hr><blockquote><p>功能介绍</p></blockquote><p>经过Minloha的反复测试，最后处理到的结果显示，MUIU具有监督学习能力，只要有一个情感色彩指向性强</p><p>烈的词库，可以做到精准拦截(插件自带的词库可以解决很大程度的问题,具体情况根据服务器状况来定制)，</p><p>拥有广告拦截功能，词库内部添加几种广告的格式便可以实行精确拦截，同时在处理拆分文本也有很强大的功</p><p>能，在使用特殊字符时也能进行有效拦截，同时也会在服务器端明确标注信息</p><p><img src="/img/1612711210538.png"></p><p><img src="/img/1612712107159.png"></p><hr><p>2021/2/28，插件更新新功能:</p><p>加入了网址校验功能，有的玩家可能会分享一些网址帮助大家游玩，而有些玩家则会发一些危险的网站，一旦</p><p>不加处理，后果非常严重，所以Muiu新功能，网址安全性校验功能</p><p>当前版本beta-0.4.0，想要了解更多可以去网盘查看，用户名密码都是minloha</p><p><img src="/img/1614524066626.png"></p><blockquote><p>下载地址</p></blockquote><p>新版本下载</p><p>站内下载:<a href="https://minloha.gitee.io/resources/Muiu-beta-0.4.0-preview.jar">点我前往</a></p><p>网盘下载:<a href="https://pan.mincloud.workers.dev/0:/blog/Muiu-beta-0.4.0.jar">点我前往</a></p><hr><p>旧版本下载</p><p>百度网盘 :<a href="https://pan.baidu.com/s/15JKw-Dmyzr55eqo7ryRWsQ">zr9c</a> </p><p>腾讯微云:<a href="https://share.weiyun.com/7Dx43Dtz">bmt4z5</a></p><p>站内下载:<a href="https://minloha.gitee.io/resources/Muiu-beta-0.3.6-preview.jar">点我前往</a></p>]]></content>
     
@@ -145,8 +182,8 @@
   
   <entry>
     <title>新年快乐</title>
-    <link href="/2021/02/06/new_year/"/>
-    <url>/2021/02/06/new_year/</url>
+    <link href="/2021/02/06/%E6%96%B0%E5%B9%B4/"/>
+    <url>/2021/02/06/%E6%96%B0%E5%B9%B4/</url>
     
     <content type="html"><![CDATA[<blockquote><p>原神拜年祭</p></blockquote><iframe src="//player.bilibili.com/player.html?aid=416575036&bvid=BV1FV411i7ok&cid=293566868&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="min-height:600px;width:100%;height:100%;"> </iframe><blockquote><p>结尾祝语</p></blockquote><p>新年快乐多多祝:</p><pre><code>祈愿不保底圣遗物词条顺原石多又多</code></pre><p>大家都要赶上11号的拜年祭，同时别忘了支付宝五福开奖哦！</p><p>新年快乐，感谢陪伴！🙂</p>]]></content>
     
@@ -160,7 +197,7 @@
     
     <tags>
       
-      <tag>原神</tag>
+      <tag>游戏</tag>
       
     </tags>
     

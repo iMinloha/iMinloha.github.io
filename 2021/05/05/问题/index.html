@@ -15,11 +15,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="一道bilibili的up发来的题">
   <meta name="author" content="Minloha">
   <meta name="keywords" content="">
   
-  <title>关于我 - minloha.cn</title>
+  <title>圆锥曲线[1] - minloha.cn</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://cdn.minloha.cn/blog/media/scripts/jquery-ui.min.css" />
@@ -37,6 +37,8 @@
     
   
 
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
   
 
 
@@ -77,7 +79,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -184,14 +186,64 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('https://cdn.minloha.cn/www/images/bg4.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="关于我">
+            <span class="h2" id="subtitle" title="圆锥曲线[1]">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Minloha
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-05 10:16" pubdate>
+        2021年5月5日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      375 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      5
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -204,42 +256,168 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<article class="page-content">
-  <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">圆锥曲线[1]</h1>
+            
+            <div class="markdown-body">
+              <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p><img src="https://cdn.minloha.cn/blog/img/%E9%A2%98.png" srcset="/img/loading.gif" lazyload></p>
+<p>如图，首先看一下问题，已知的只有一个椭圆的方程和一个三角形面积</p>
+<h2 id="第一问"><a href="#第一问" class="headerlink" title="第一问"></a>第一问</h2><p>证明$x_1$²+$x_2$²与$y_1$²+$y_2$²均为定值</p>
+<p>先设直线斜率k等于$\frac{y_2-y_1}{x_2-x_1}$</p>
+<p>接下来进行分类讨论:</p>
+<p>当K=0时，$x_2$=$x_1$,$y_2$=-$y_1$</p>
+<p>当K≠0时，|$x_1$|·|$y_1$|=$\frac{\sqrt[2]{6}}{2}$</p>
+<p>联立椭圆方程，则有 $x_1$²+$x_2$²=3  | $y_1$²+$y_2$²=2</p>
+<p>所以$x_1$²+$x_2$²与$y_1$²+$y_2$²均为定值</p>
+<blockquote>
+<p>当然还有一种更为通俗的解法</p>
 </blockquote>
-<h3 id="🏠-关于本站"><a href="#🏠-关于本站" class="headerlink" title="🏠 关于本站"></a>🏠 关于本站</h3><p>本站最开始策划与2019年7月25日晚16:30分，那时候我没有在家，所以印象特别深刻。</p>
-<p>当时采用的是简单的apache+php+端口映射建立的2周的网站，后来开始使用虚拟主机。</p>
-<p>在后来学会了php，接触到了wordpress，在本地部署，玩了几天就删除了😅</p>
-<p>早在初中，我就已经开始学了C语言，也只是略懂，后来学了C++与java，略有造诣。</p>
-<p>精通了php但没有学过框架等知识。</p>
-<p>前些日子博客采用gridea进行编写，平台采用github，纯静态。</p>
-<p>现在则采用hexo进行写作</p>
-<h3 id="👨‍💻-博主是谁"><a href="#👨‍💻-博主是谁" class="headerlink" title="👨‍💻 博主是谁"></a>👨‍💻 博主是谁</h3><p>Minloha，普通高中在读</p>
-<h3 id="⛹-兴趣爱好"><a href="#⛹-兴趣爱好" class="headerlink" title="⛹ 兴趣爱好"></a>⛹ 兴趣爱好</h3><p>在编程方面颇具研究，也精通Ps、Pr、Au的Adobe软件的使用，也在编曲方面有所研究。</p>
-<p>最喜欢听的音乐是电音，风格则有Melodic dubstep、dubstep、dnb、Future bounce、future bass等</p>
-<p>在日常中是个死宅，不锻炼，喜欢二次元，希望能够将ACG文化传播到每个人心中。</p>
-<h3 id="🎎获取友链"><a href="#🎎获取友链" class="headerlink" title="🎎获取友链"></a>🎎获取友链</h3><p>你可以向邮箱<a href="mailto:&#97;&#100;&#x6d;&#x69;&#x6e;&#x40;&#109;&#x69;&#x6e;&#108;&#111;&#x68;&#x61;&#46;&#99;&#x6e;">&#97;&#100;&#x6d;&#x69;&#x6e;&#x40;&#109;&#x69;&#x6e;&#108;&#111;&#x68;&#x61;&#46;&#99;&#x6e;</a>发送详细的信息，或者加QQ：282116350发送你的信息</p>
-<h3 id="📬-联系我呀"><a href="#📬-联系我呀" class="headerlink" title="📬 联系我呀"></a>📬 联系我呀</h3><p>域名邮箱: <a href="mailto:&#97;&#x64;&#109;&#x69;&#110;&#64;&#x6d;&#x69;&#110;&#x6c;&#x6f;&#x68;&#97;&#46;&#x63;&#x6e;">&#97;&#x64;&#109;&#x69;&#110;&#64;&#x6d;&#x69;&#110;&#x6c;&#x6f;&#x68;&#97;&#46;&#x63;&#x6e;</a><br>QQ: 2821163570<br>github地址: <a target="_blank" rel="noopener" href="https://github.com/iMinloha">点我传送</a><br>Discord: @Minloha</p>
+<p>根据要求的解，我们首先应该想到韦达定理，那么就可以设直线方程为</p>
+<p>y=kx+b</p>
+<p>由题意可知，b≠0，代入椭圆方程</p>
+<p>(2+3k²)x²+6kmx=3(m²-2)=0</p>
+<p>根据判别式⊿=36k²m²-12(2+3k²)(m²-2)＞0</p>
+<p>有3k²+2&gt;m²</p>
+<p>$x_1$+$x_2$=-$\frac{6km}{2+3k²}$，$x_1$$x_2$=$\frac{3(m²-2)}{2+3k²}$</p>
+<p>根据弦长公式，有PQ长度为$\sqrt[2]{1+k² }$·$\frac{2\sqrt[2]{6}\sqrt[2]{3k²+2-m²}}{2+3k²}$</p>
+<p>根据点到直线距离公式，可以列出距离d=$\frac{|m|}{\sqrt[2]{1+k²}}$</p>
+<p>那么面积$S_{OPQ}$=$\frac{1}{2}$|PQ|d</p>
+<p>而面积又等于$\frac{\sqrt[2]{6}}{2}$</p>
+<p>代入化简，有:</p>
+<p>$x_1$²+$x_2$²=3  | $y_1$²+$y_2$²=2</p>
+<p>所以结论成立</p>
+<blockquote>
+<p>虽然第二种方法计算量大，但是一般不会出错，具体看能接受哪种方法了</p>
+</blockquote>
+<h2 id="第二问"><a href="#第二问" class="headerlink" title="第二问"></a>第二问</h2><p>∵4|OM|²+|PQ|²=($x_1$+$x_2$)²+($y_1$+$y_2$)²+($x_2$-$x_1$)²+($y_2$-$y_1$)²=10</p>
+<p>∴2|OM|·|PQ|≤$\frac{4|OM|²+|PQ|²}{2}$=5</p>
+<p>所以|OM|·|PQ|最大值为$\frac{5}{2}$</p>
+<h2 id="第三问"><a href="#第三问" class="headerlink" title="第三问"></a>第三问</h2><p><img src="https://cdn.minloha.cn/blog/img/pass.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>部分答案取自<a target="_blank" rel="noopener" href="https://wenku.baidu.com/link?url=reuUhuCNZ131AA4UjNCCRFgkH8xyWcr8CByEUJCs2vcWKqBA5RNSqs2jOpuW5bG6_x1zJ7pcySktfZNlQglKhQRFw7y_frj3IxBsAHSOW1e">百度</a></p>
+</blockquote>
 
-
-  
-</article>
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%96%B0%E9%B2%9C%E4%BA%8B/">新鲜事</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E6%9C%AF/">学术</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/06/03/%E9%B8%BF%E8%92%99%E7%B3%BB%E7%BB%9F%E8%AF%95%E7%8E%A9/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">鸿蒙系统试玩</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/04/purem/">
+                        <span class="hidden-mobile">Gridea主题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "Ow3yVaonRpY1kgtkFYKURDXC-gzGzoHsz",
+          app_key: "TAhgzFzgRDRfgRSPXDG5Pfbr",
+          placeholder: "留下你的评论吧",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img id="myModal" src="https://api.pwmqr.com/qrcode/create/?url=https://www.minloha.cn" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
     
 
     
@@ -319,7 +497,11 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.2/dist/tocbot.min.js" ></script>
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
 
 
 
@@ -365,6 +547,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
