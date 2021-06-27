@@ -4,11 +4,36 @@
   
   
   <entry>
+    <title>JS的LeanCloud试玩</title>
+    <link href="/2021/06/26/LeanCloud/"/>
+    <url>/2021/06/26/LeanCloud/</url>
+    
+    <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>LeanCloud是一款免费的后端数据存储引擎，不仅用法简单方便，而且免费！免费！免费！</p><p>重要的事情说三遍，它可以满足一般的项目需求，支持部分主流语言，用法也非常简单</p><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><p><img src="https://cdn.minloha.cn/blog/img/lc%20(1).png"></p><p>有账号直接登录，根据对应框填写信息即可</p><h2 id="获取ID"><a href="#获取ID" class="headerlink" title="获取ID"></a>获取ID</h2><p>登录成功后一般会要求先实名认证，这里直接认证就可以</p><p>实名认证成功后打开控制台，点击左上角创建应用，根据描述填写对应信息</p><p><img src="https://cdn.minloha.cn/blog/img/lc%20(2).png"></p><p>创建成功后可以进入查看，进入之后选择设置</p><p><img src="https://cdn.minloha.cn/blog/img/lc%20(3).png"></p><p>再点击应用凭证，可以查看到自己的APPID和AppKey，这两个非常重要，记得保存一下</p><h2 id="选择语言"><a href="#选择语言" class="headerlink" title="选择语言"></a>选择语言</h2><p>这里我采用Js进行示范</p><p>你可以在<a href="https://leancloud.cn/docs/%E7%9C%8B%E5%88%B0%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3">https://leancloud.cn/docs/看到官方文档</a></p><h3 id="编写JS"><a href="#编写JS" class="headerlink" title="编写JS"></a>编写JS</h3><p>首先导入LeanCloud的数据存储JS库</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;//cdn.jsdelivr.net/npm/leancloud-storage@4.11.1/dist/av-min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure><p>然后创建对应的对象</p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">const &#123; Query, <span class="hljs-keyword">User</span> <span class="hljs-title">&#125; = AV</span>;<br></code></pre></td></tr></table></figure><p>注册AV对象</p><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dts">AV.init(&#123;<br><span class="hljs-symbol">  appId:</span> <span class="hljs-string">&quot;你的APPID&quot;</span>,<br><span class="hljs-symbol">  appKey:</span> <span class="hljs-string">&quot;你的APPKey&quot;</span>,<br><span class="hljs-symbol">  serverURL:</span> <span class="hljs-string">&quot;你绑定的域名&quot;</span><br>&#125;);<br></code></pre></td></tr></table></figure><p>最后创建对应数据村粗里结构化数据的Class创建对象</p><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">const</span> TestObject = AV.<span class="hljs-keyword">Object</span>.extend(<span class="hljs-string">&#x27;你的类名&#x27;</span>);<br><span class="hljs-keyword">const</span> testObject = <span class="hljs-keyword">new</span> TestObject();<br>testObject.<span class="hljs-built_in">set</span>(<span class="hljs-string">&#x27;列名&#x27;</span>, <span class="hljs-string">&#x27;数据内容&#x27;</span>);<br>testObject.<span class="hljs-built_in">save</span>().then((testObject) =&gt; &#123;<br>  console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;保存成功。&#x27;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure><p>查看一下控制台，如果发现数据存进去了，就说明成功了</p><p><img src="https://leancloud.cn/docs/images/testobject_saved.png"></p><p>这里要注意一下，必须先手动创建Class和对应的列名才可以存储</p><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>LeanCloud也提供了文件存储功能，不过必须绑定一个已备案的域名，对于一般的开发者</p><p>leancloud足够了</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>源码</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>躺平与内卷</title>
     <link href="/2021/06/14/%E8%BA%BA%E5%B9%B3%E4%B8%8E%E5%86%85%E5%8D%B7/"/>
     <url>/2021/06/14/%E8%BA%BA%E5%B9%B3%E4%B8%8E%E5%86%85%E5%8D%B7/</url>
     
-    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote><p>躺平与内卷</p></blockquote><p>在社会生活中，我们会遇到各种各样的人或事，这其中不乏两类人，躺平的人和内卷的人</p><p>躺平一般是指指无论对方做出什么反应，你内心都毫无波澜，对此不会有任何反应或者反抗，表示顺从心</p><p>理。换句话说就是避免竞争主义</p><p>内卷是个学术名词，举例子解释就是一群人去争一个饼，每个人都为了并不断地努力，最终导致收益与努</p><p>力不成正比。现在则指努力改变的人</p><p>前段时间，一段来自衡水中学的一段演讲走火了，一方面是说了很多家长希望的孩子能够摆脱平凡的生活</p><p>，另一方面则充分的展现了国内刻板的教育模式</p><p>最开始，这篇演讲的初衷是证明衡水中学不是考试工厂，学生们也都不是考试机器，但他的演讲起到了反</p><p>作用，让我们看到了衡水中学对学生的塑造</p><p>这次的演讲透露了很多的问题，我和他很像，但又不一样，我是普高，他是重点高中学</p><h2 id="视频传送门"><a href="#视频传送门" class="headerlink" title="视频传送门"></a>视频传送门</h2><p><a href="https://www.bilibili.com/bangumi/play/ep407243">https://www.bilibili.com/bangumi/play/ep407243</a></p><h2 id="看法"><a href="#看法" class="headerlink" title="看法"></a>看法</h2><p><img src="https://cdn.minloha.cn/blog/img/%E8%BA%BA%E8%B5%A2.jpg"></p><p>关于人应该是躺平还是内卷，我个人还是保持积极的看法的，努力的人不一定成功，但不努力一定不成功，</p><p>在社会的内卷大潮流中就像波涛汹涌的海面一样，每个人都是在海上的一条船，平躺就像把船帆落下随波逐</p><p>流，最后可能会被海浪拍在沙滩上，或者被大海撕碎。而内卷就像扬帆与海浪抗争，也有成功闯过大海的人</p><p>,也有被大海撕碎的人</p><hr><p>在演讲中，最让人关注的就是那句”人们过着周而复始、循规蹈矩的生活，一眼，仿佛就能看到死”，这句话</p><p>在演讲中出现，我很震惊，什么样的生活算平凡？周而复始的生活就平凡吗？当你能够掀起波浪的时候，最</p><p>先考虑的时期不是继续努力而是稳固自己吧。</p><p>反观下来，他的内卷主义已经触及到了很多人的生活方式，很多人认为他不应该嘲笑平凡的生活，仔细想想</p><p>我们作为当代的新鲜血液，为什么不去奔腾？</p><p>“中国需要人才，而不是钱财”，在奔跑中，我们不需要记住一件事情，我们的努力不是为了资本与声望，从</p><p>古至今，没有任何人存在的目的就是为了钱与利益，而是为了永远的存在这个世界上，我们有再富有，也终</p><p>究会有人比我们更加的富有，而一个人真正的追求，应该是永远的存在与这个世界，至少能让人记得这个世</p><p>界曾有个你。这才是内卷。</p><p>我们没办法改变世界的格局，也没办法改变国家，我们能做到的只有利用自己的优势去活下去。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote><p>躺平与内卷</p></blockquote><p>在社会生活中，我们会遇到各种各样的人或事，这其中不乏两类人，躺平的人和内卷的人</p><p>躺平一般是指指无论对方做出什么反应，你内心都毫无波澜，对此不会有任何反应或者反抗，表示顺从心</p><p>理。换句话说就是避免竞争主义</p><p>内卷是个学术名词，举例子解释就是一群人去争一个饼，每个人都为了并不断地努力，最终导致收益与努</p><p>力不成正比。现在则指努力改变的人</p><p>前段时间，一段来自衡水中学的一段演讲走火了，一方面是说了很多家长希望的孩子能够摆脱平凡的生活</p><p>，另一方面则充分的展现了国内刻板的教育模式</p><p>最开始，这篇演讲的初衷是证明衡水中学不是考试工厂，学生们也都不是考试机器，但他的演讲起到了反</p><p>作用，让我们看到了衡水中学对学生的塑造</p><p>这次的演讲透露了很多的问题，我和他很像，但又不一样，我是普高，他是重点高中学</p><h2 id="视频传送门"><a href="#视频传送门" class="headerlink" title="视频传送门"></a>视频传送门</h2><p><a href="https://www.bilibili.com/bangumi/play/ep407243">https://www.bilibili.com/bangumi/play/ep407243</a></p><h2 id="看法"><a href="#看法" class="headerlink" title="看法"></a>看法</h2><p><img src="https://cdn.minloha.cn/blog/img/%E8%BA%BA%E8%B5%A2.jpg"></p><p>关于人应该是躺平还是内卷，我个人还是保持积极的看法的，努力的人不一定成功，但不努力一定不成功，</p><p>在社会的内卷大潮流中就像波涛汹涌的海面一样，每个人都是在海上的一条船，平躺就像把船帆落下随波逐</p><p>流，最后可能会被海浪拍在沙滩上，或者被大海撕碎。而内卷就像扬帆与海浪抗争，也有成功闯过大海的人</p><p>,也有被大海撕碎的人</p><hr><p>在演讲中，最让人关注的就是那句”人们过着周而复始、循规蹈矩的生活，一眼，仿佛就能看到死”，这句话</p><p>在演讲中出现，我很震惊，什么样的生活算平凡？周而复始的生活就平凡吗？当你能够掀起波浪的时候，最</p><p>先考虑的时期不是继续努力而是稳固自己吧。</p><p>反观下来，他的内卷主义已经触及到了很多人的生活方式，很多人认为他不应该嘲笑平凡的生活，仔细想想</p><p>我们作为当代的新鲜血液，为什么不去奔腾？</p><p>“中国需要人才，而不是钱财”，在奔跑中，我们不需要记住一件事情，我们的努力不是为了资本与声望，从</p><p>古至今，没有任何人存在的目的就是为了钱与利益，而是为了永远的存在这个世界上，我们有再富有，也终</p><p>究会有人比我们更加的富有，而一个人真正的追求，应该是永远的存在与这个世界，至少能让人记得这个世</p><p>界曾有个你。</p><p>我们没办法改变世界的格局，也没办法改变国家，我们能做到的只有利用自己的优势去活下去。躺平的安逸</p><p>就如同毒药一般，足以让人麻痹，振奋起自己吧！青年！</p>]]></content>
     
     
     <categories>
@@ -17,12 +42,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>标签</tag>
-      
-    </tags>
     
   </entry>
   
