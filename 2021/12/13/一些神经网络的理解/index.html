@@ -1,0 +1,982 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <link rel="icon" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#828282">
+  <meta name="author" content="Minloha">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="人工智能的神经网络算法和人脑的联系，循环神经网络以及深度学习网络的解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些神经网络的理解">
+<meta property="og:url" content="https://blog.minloha.cn/2021/12/13/%E4%B8%80%E4%BA%9B%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="minloha.cn">
+<meta property="og:description" content="人工智能的神经网络算法和人脑的联系，循环神经网络以及深度学习网络的解析">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/img/background13.jpg">
+<meta property="article:published_time" content="2021-12-13T03:07:00.000Z">
+<meta property="article:modified_time" content="2022-07-13T09:48:51.618Z">
+<meta property="article:author" content="Minloha">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/img/background13.jpg">
+  
+  
+  <title>一些神经网络的理解 - minloha.cn</title>
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/github/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.minloha.cn","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"BIl5WGlKcjHORw9IWxwLDGMw-gzGzoHsz","app_key":"ybHHVOBbwvCfDchbKs2WNr3x","server_url":"https://bil5wglk.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/Meting.min.js" ></script>
+  <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/anime.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/fireworks.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/clicktext.js" ></script>
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>minloha.cn</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-articles"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/">
+                    <i class="iconfont icon-tags-fill"></i>
+                    标签
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-map"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/comment/">
+                    <i class="iconfont icon-comment"></i>
+                    闲说
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/albums/">
+                    <i class="iconfont icon-image"></i>
+                    图集
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background13.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="一些神经网络的理解"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Minloha
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-12-13 11:07" pubdate>
+          2021年12月13日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">一些神经网络的理解</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>人工智能(Artifical Intalligent)是人们研究自己的思考与行为，并将其复制出应用的科学。大脑是人体最复杂的器官，目前人类还无法自由控制修改它，只能做出一些黑盒测试，心理学就是这样，通过问题刺激大脑判断其生物反应以及做出的应答。</p>
+<p>人脑的功能很多，它可以调控运动，接受形成感觉，完成语言与对话，拥有情绪并且能操作执行某些行为，这与人类理想的计算机是一样的。通过研究神经科学，人脑可以实现一下功能</p>
+<p>1、自由切换认知模式，同时具有很多决策方式</p>
+<p>2、拥有很多先天具有的处理问题的方法</p>
+<p>3、拥有强大的表达能力已经对抽象事物的描述能力</p>
+<p>4、可以通过学习的行为，迅速组合已有的技能组合成新的技能</p>
+<p>5、具有独立的意识</p>
+<p>人工智能要研究的内容都是参考人脑进行研究的，而上述的5点，目前只能做到前2点。</p>
+<p>神经网络即人工神经网络(Artificial Neural Networks)[ANN]，一般是处理问题以及做出决策的数学模型。</p>
+<h1 id="卷积神经网络-CNN"><a href="#卷积神经网络-CNN" class="headerlink" title="卷积神经网络[CNN]"></a>卷积神经网络[CNN]</h1><p>CNN全名卷积神经网络(Convolutional Neural Networks)，这是一种计算机深度学习最具代表性的算法之一，可以充分利用训练出的多组模型并自由组合。</p>
+<p>卷积神经网络参考了人脑的功能，主要分为自主学习与监督学习，其隐含层内的卷积核参数共享和层间连接的稀疏性使得卷积神经网络能够以较小的计算量对格点化特征，具有稳定高效的特点。</p>
+<h2 id="卷积神经网络模型"><a href="#卷积神经网络模型" class="headerlink" title="卷积神经网络模型"></a>卷积神经网络模型</h2><p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/CNN/CNN1.png" srcset="/img/loading.gif" lazyload alt="CNN1"></p>
+<p>CNN算法通过不断地卷积与池化，实现对模型处理为隐含层的卷积核，将不同的数据与卷积核建立起联系，而不同的联系得到的结果不同，而组成的核与数据的网络就是卷积出的神经网络（像人脑的神经网），所以得名卷积神经网络</p>
+<h2 id="卷积不是毫无根据的卷"><a href="#卷积不是毫无根据的卷" class="headerlink" title="卷积不是毫无根据的卷"></a>卷积不是毫无根据的卷</h2><p>所谓卷积，就是不断从样本中剥离出特征，每一个卷积核都对应着一个权重系数和一个偏移量[τ]（每一个都像神经纤维上的细胞体一样），而卷积需要一个视野，就像人脑看事物并不能同时处理整体，而是用一定的范围观察部分，多次反复观察从而得出对事物整体的认知，卷积也要这样做，这个视野叫做卷积核。</p>
+<hr>
+<p>卷积核就是一个二维的矩阵，矩阵中的每一个元素（卷积层参数）都像人眼中对不同色彩的敏感程度一样（图片解释）</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/CNN/CNN2.jpg" srcset="/img/loading.gif" lazyload alt="CNN2"></p>
+<p>举个生活中的例子吧，视野就是考试时你们老师在纸上烫出的洞（过滤器），而下面的样本就像你的答题卡，老师不会统计你做错多少，而是把纸放在你的答题卡上比较，统计出你有多少个重合的点，进而得出你的分数</p>
+<p>在这个过程就像是在做矩阵的乘法一样，事实也确实如此，通过不断的识别扫描，通过卷积核留下矩阵点乘的结果。</p>
+<blockquote>
+<p>不知道矩阵乘法的看我</p>
+</blockquote>
+<p>矩阵乘法分为点乘和矩阵乘，点乘就是矩阵每个点乘加和</p>
+<script type="math/tex; mode=display">
+X=\left[ \begin{matrix} a11 & a12 & c13 \\ a21 & a22 & a23 \\ a31 & a32 & a33\end{matrix} \right]</script><script type="math/tex; mode=display">
+Y=\left[ \begin{matrix} b11 & b12 & b13 \\ b21 & b22 & b23 \\ b31 & b32 & b33\end{matrix} \right]</script><p>X与Y分别表示两个等型矩阵</p>
+<script type="math/tex; mode=display">
+A=\left[ \begin{matrix} a11 & a12 & c13 \\ a21 & a22 & a23 \\ a31 & a32 & a33\end{matrix} \right]×\left[ \begin{matrix} b11 & b12 & b13 \\ b21 & b22 & b23 \\ b31 & b32 & b33\end{matrix} \right]</script><p>点乘结果就可以表示成下面的形式</p>
+<script type="math/tex; mode=display">
+B=\sum_{i=1}^n a_{ii}*b_{ii}</script><p>叉乘就是行乘列，叉乘得到的是新矩阵C，而新矩阵C的i行j列可以用下面的式子算出(依然是X*Y哦)</p>
+<script type="math/tex; mode=display">
+C_{ij}=\sum_{k=1}^pa_{ik}*b_{kj}</script><p>点乘得出常数，叉乘得出新矩阵，这是一个点</p>
+<blockquote>
+<p>知道矩阵乘法的可以跳转到这里</p>
+</blockquote>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/CNN/CNN3.jpg" srcset="/img/loading.gif" lazyload alt="CNN3"></p>
+<p>卷积核也可以叫做过滤器，就像人眼睛会过滤掉一些不适合的内容，最好的就是feature maps的例子</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/CNN/CNN4.jpg" srcset="/img/loading.gif" lazyload alt="CNN4"></p>
+<p>不断对图片进行卷积得到卷积层，层与层之间没有连接，要想实现，必须将卷积核（过滤器）连接，例如对RGB图片的处理，将图片分解为RGB三个通道，每个通道对应一个过滤器，每个过滤器彼此又相互联系</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/CNN/CNN5.jpg" srcset="/img/loading.gif" lazyload alt="CNN5"></p>
+<h2 id="池化的意义"><a href="#池化的意义" class="headerlink" title="池化的意义"></a>池化的意义</h2><p>1、在卷积层进行特征提取后，输出的特征图会被传递至池化层进行特征选择和信息过滤。池化层包含预设定的池化函数，其功能是将特征图中单个点的结果替换为其相邻区域的特征图统计量。</p>
+<p>2、在激励层的激励函数最常用的不是sigmoid而是 ReLU （<strong>修正线性单元</strong>函数）λ为随机变量</p>
+<script type="math/tex; mode=display">
+f(x)=\begin{cases}
+x & x>0\\
+λx&x≤0\\
+\end{cases}</script><p>3、输入层-&gt;隐含层-&gt;输出层</p>
+<p>隐含层包括卷积层，池化层，（堆积<strong>Inception</strong>），全连接层</p>
+<p>池化分为Max或Avg pooling，与卷积的扫描类似，池化也需要一个窗口去扫描，作为扫描窗口必须有步长(stride)</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/CNN/CNN6.png" srcset="/img/loading.gif" lazyload alt="CNN6"></p>
+<p>Max pooling就是取出扫描区块中的最大值，组成新的池中的数值，而Avg pooling就是取出扫描区域的平均值作为池中的数值，计算出新池中的数据后，经过ReLU的处理可以剔除不正常的数据，也就是负值，保证正常与协调。</p>
+<h2 id="使用python实现对图片的卷积"><a href="#使用python实现对图片的卷积" class="headerlink" title="使用python实现对图片的卷积"></a>使用python实现对图片的卷积</h2><p>首先你要先有图片我这里使用下面的示范</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/img/background10.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>将图片保存在同级目录下，命名为<code>1.jpg</code>，编写出以下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> pyplot<br><span class="hljs-keyword">import</span> pylab<br><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br>filename = <span class="hljs-string">r&quot;1.jpg&quot;</span><br><br><span class="hljs-comment"># 读取图片</span><br>testimg = pyplot.imread(filename)<br><span class="hljs-comment"># 配置卷积核，卷积核不同，得到的效果也不同</span><br>fil = np.array([[<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>],<br>                      [<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],<br>                      [<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>],<br>                      [-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>,-<span class="hljs-number">1</span>]])<br><br><span class="hljs-comment"># 使用卷积核对图片卷积并池化</span><br>result = cv2.filter2D(testimg,-<span class="hljs-number">1</span>,fil)<br><span class="hljs-comment"># 展示出卷积后的图片</span><br>pyplot.imshow(result)<br>pyplot.imsave(<span class="hljs-string">r&quot;C:\Users\13846\Desktop\result.jpg&quot;</span>,result)<br>pylab.show()<br></code></pre></td></tr></table></figure>
+<p>得到的结果是这样的</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/CNN/CNN7.jpg" srcset="/img/loading.gif" lazyload alt="CNN7"></p>
+<h1 id="深度神经网络-DNN"><a href="#深度神经网络-DNN" class="headerlink" title="深度神经网络[DNN]"></a>深度神经网络[DNN]</h1><p>深度神经网络(Deep Neural Networks)[DNN]，可以理解为多个隐藏层并排放置的神经网络</p>
+<h2 id="深度神经网络模型"><a href="#深度神经网络模型" class="headerlink" title="深度神经网络模型"></a>深度神经网络模型</h2><p>感知器是深度神经网络的一个微结构，他是一个有很多个输入，一个输出的模型，如图:</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/CNN/DNN1.png" srcset="/img/loading.gif" lazyload alt="DNN1"></p>
+<p>而经过学习可以得到下面的模型:</p>
+<script type="math/tex; mode=display">
+z=\sum_{i=1}^n\omega_ix_i+b</script><p>其中<code>b</code>叫做偏移量<code>ω</code>则就是要训练出来的权重</p>
+<p>为了限制输出的范围，对得出的y需要套上一个神经元激活函数，使得到的结果为1或-1，经常运用的激活函数是Sigmoid函数。</p>
+<p>不过因为它只能输出两种类型的结果或者达到神经元函数饱和或过饱和时结果相同，这也导致了无法满足复杂的非线性模型，因此无法在工业生产使用，而只能做一些分类</p>
+<p>因为每一个微结构都很简单所以组合起来复杂度就会非常高，这种模型用于计算回归，处理分类或者作为KNN与SVM另一种的分类算法存在，并且表达能力也非常强。</p>
+<script type="math/tex; mode=display">
+Sigmoid(z)=\frac{1}{1+e^{-z}}</script><h2 id="DNN前向传播算法"><a href="#DNN前向传播算法" class="headerlink" title="DNN前向传播算法"></a>DNN前向传播算法</h2><p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/CNN/DNN2.png" srcset="/img/loading.gif" lazyload alt="DNN2"></p>
+<p>利用上层输出计算下一层的输出叫做DNN的前向传播算法，和感知器类似，我们也可以使用同样的计算方法，设我选择的激活函数是σ(z)，指数位表达的是隐藏层，角码表达的是第几个神经元</p>
+<script type="math/tex; mode=display">
+a^2_1=σ(z^2_1)=σ(ω^2_{11}x_1+ω^2_{12}x_2+ω^2_{13}x_3+ω^2_{14}x_4+b^2_1)</script><script type="math/tex; mode=display">
+a^2_2=σ(z^2_2)=σ(ω^2_{21}x_1+ω^2_{22}x_2+ω^2_{23}x_3+ω^2_{24}x_4+b^2_2)</script><script type="math/tex; mode=display">
+a^2_3=σ(z^2_3)=σ(ω^2_{31}x_1+ω^2_{32}x_2+ω^2_{33}x_3+ω^2_{34}x_4+b^2_3)</script><p>第L层共有m个神经元，则对于第L层的第j个神经元的输出得到公式:</p>
+<script type="math/tex; mode=display">
+a^l_j=σ(z^l_j)=σ(\sum^m_{k=1}ω^l_{jk}a^{l-1}_k+b^l_j)</script><p>而每一个权重最终都可以表示在一个矩阵W中，所以也可以用矩阵表示</p>
+<script type="math/tex; mode=display">
+a^l_j=σ(z^l_j)=σ(W^la^{l-1}+b^l)</script><h2 id="DNN反向传播算法"><a href="#DNN反向传播算法" class="headerlink" title="DNN反向传播算法"></a>DNN反向传播算法</h2><blockquote>
+<p>因为我没学过高等数学，所以不懂什么是偏导，我就直接给个链接不搬运了<a target="_blank" rel="noopener" href="https://blog.csdn.net/bitcarmanlee/article/details/78819025">https://blog.csdn.net/bitcarmanlee/article/details/78819025</a></p>
+</blockquote>
+<h1 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h1><p>神经网络是机器学习部分非常重要的算法，目前主要的三种可以解决很多问题，不如知道原理后放心使用。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/">#python</a>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">#机器学习</a>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>一些神经网络的理解</div>
+      <div>https://blog.minloha.cn/2021/12/13/一些神经网络的理解/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Minloha</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年12月13日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年7月13日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                <i class="iconfont icon-nc"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/12/22/Socket%E9%80%9A%E4%BF%A1/" title="Socket通信">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Socket通信</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/03/HTTPS%E3%80%81SSL%E3%80%81TLS%E7%9A%84%E5%85%B3%E7%B3%BB/" title="HTTPS、SSL、TLS的关系">
+                        <span class="hidden-mobile">HTTPS、SSL、TLS的关系</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/valine/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"oqOeqFF1THoj5P7HoADOODoW-MdYXbMMI","appKey":"rKuApNEi6G88fc9Lk9lS0Ozy","path":"window.location.pathname","placeholder":"如果发现错字或者是发现彩蛋都可以在此评论。留下相对完善的信息,会有意想不到的惊喜!","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://oqoeqff1.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Copyright © 2022 <a href="https://www.minloha.cn" target="_blank" rel="nofollow noopener"><span>Minloha</span></a>  |  WebSite Belong minloha.cn<br> <span id="sitetime"></span><br> Power by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank">Fluid</a></br> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      <a href="https://icp.gov.moe/?keyword=20220440" target="_blank">萌ICP备20220440号</a>
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+<!-- 时间自增 -->
+<script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/timeadd.js" ></script>
+<!--aplayer-->
+<div id="aplayer" class="aplayer" data-id="5484247565" style="color:black;" data-server="netease" data-type="playlist" data-fixed="true" fixed="false" data-listfolded="true" data-order="list" data-loop="all" data-theme="#2980b9"></div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/av/av-min.js" ></script>
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/typed/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/tocbot/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/clipboard/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/anchor/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/mathjax/tex-svg.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">允许javascript会更佳哦~</div>
+  </noscript>
+</body>
+</html>

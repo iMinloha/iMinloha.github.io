@@ -1,0 +1,1008 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <link rel="icon" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#828282">
+  <meta name="author" content="Minloha">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="自学线性代数的一些实用的小技巧,线性代数真的好厉害啊！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性方程组的系数增广矩阵解决盖斯定律">
+<meta property="og:url" content="https://blog.minloha.cn/2022/02/27/%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E7%9A%84%E7%B3%BB%E6%95%B0%E5%A2%9E%E5%B9%BF%E7%9F%A9%E9%98%B5%E8%A7%A3%E5%86%B3%E7%9B%96%E6%96%AF%E5%AE%9A%E5%BE%8B/index.html">
+<meta property="og:site_name" content="minloha.cn">
+<meta property="og:description" content="自学线性代数的一些实用的小技巧,线性代数真的好厉害啊！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-27T04:30:45.000Z">
+<meta property="article:modified_time" content="2022-05-20T14:28:14.000Z">
+<meta property="article:author" content="Minloha">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="化学">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>线性方程组的系数增广矩阵解决盖斯定律 - minloha.cn</title>
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/github/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.minloha.cn","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"BIl5WGlKcjHORw9IWxwLDGMw-gzGzoHsz","app_key":"ybHHVOBbwvCfDchbKs2WNr3x","server_url":"https://bil5wglk.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/Meting.min.js" ></script>
+  <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/anime.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/fireworks.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/clicktext.js" ></script>
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>minloha.cn</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-articles"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/">
+                    <i class="iconfont icon-tags-fill"></i>
+                    标签
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-map"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/comment/">
+                    <i class="iconfont icon-comment"></i>
+                    闲说
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/albums/">
+                    <i class="iconfont icon-image"></i>
+                    图集
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background9.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="线性方程组的系数增广矩阵解决盖斯定律"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Minloha
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-27 12:30" pubdate>
+          2022年2月27日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">线性方程组的系数增广矩阵解决盖斯定律</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="线性方程组和矩阵"><a href="#线性方程组和矩阵" class="headerlink" title="线性方程组和矩阵"></a>线性方程组和矩阵</h1><blockquote>
+<p>线性方程组</p>
+</blockquote>
+<p>在中学的学习阶段，我们会接触到直线方程与直线系，它们都可以用一串简单的方程表示。</p>
+<script type="math/tex; mode=display">
+Ax+By+C=0</script><p>而线性方程和直线方程十分类似，假设有一个含有n个变量的方程，它的形式是这样的。这是线性方程的通用格式</p>
+<script type="math/tex; mode=display">
+\sum^n_{i=1}a_ix_i=b\\
+a_1x_1+a_2x_2+a_3x_3+....+a_nx_n=b\\</script><p>而线性方程组就是把多个线性方程列举出来，如果这些线性方程之间在n维空间上存在公共区域，那就说这些线性方程之间相容。当然公共区域可以是点，也可以直线，如果是一个多元函数的话，也可以是一个平面</p>
+<blockquote>
+<p>矩阵</p>
+</blockquote>
+<p>矩阵是线性代数主要研究对象，它具有以下特征。</p>
+<ul>
+<li>具有一定范围的行与列</li>
+<li>至少含有一个非零元素的行或列</li>
+<li>表示n维空间时就会有n列</li>
+</ul>
+<p>矩阵的写法如下：当然，如果我要表示矩阵第i行j列就可以用表示$A_{ij}$(矩阵和行列式不是一个东西哦~)</p>
+<script type="math/tex; mode=display">
+A=\left[\begin{matrix}
+3&2&1\\
+6&8&7\\
+9&-1&2
+\end{matrix} \right]</script><blockquote>
+<p>线性方程的系数矩阵</p>
+</blockquote>
+<p>那么对于一个线性方程而言，它的关键元素就是每一个x前面的系数，也就是线性方程的特征，我们按照一定的次序把这些特征放入一个矩阵中，得到的矩阵就叫线性方程的系数矩阵或者特征矩阵。</p>
+<script type="math/tex; mode=display">
+a_1x_1+a_2x_2+a_3x_3=M\\</script><script type="math/tex; mode=display">
+b_1x_1+b_2x_2+b_3x_3=N\\</script><p>对于每一个x_1都有不同的系数,可以写出系数矩阵A</p>
+<script type="math/tex; mode=display">
+A=\left[\begin{matrix}
+a_1&a_2&a_3\\
+b_1&b_2&b_3\\
+\end{matrix} \right]</script><p>如果包含等号的右半部分，就说A是线性方程组的增广矩阵</p>
+<script type="math/tex; mode=display">
+A=\left[\begin{matrix}
+a_1&a_2&a_3&M\\
+b_1&b_2&b_3&N\\
+\end{matrix} \right]</script><h1 id="盖斯定律"><a href="#盖斯定律" class="headerlink" title="盖斯定律"></a>盖斯定律</h1><p>盖斯定律出现在选修——化学反应原理中，主要用于计算热化学方程式的放热。它有一个功能，多步化学反应放热等于总反应的放热，下面是一个盖斯定律应用的例子</p>
+<script type="math/tex; mode=display">
+As_{(s)}+\frac{3}{2}H_{2(g)}+2O_{2(g)}=H_3AsO_{4(s)}→ΔH_1</script><script type="math/tex; mode=display">
+H_{2(g)}+\frac{1}{2}O_{2(g)}=H_2O_{(l)}→ΔH_2</script><script type="math/tex; mode=display">
+2As_{(s)}+\frac{5}{2}O_{2(g)} =As_2O_{5(s)}→ΔH_3</script><script type="math/tex; mode=display">
+求证As_2O_{5(s)} +3H_2O_{(l)} = 2H_3AsO_{4(s)}→ΔH</script><p>这是一道2017年的全国三卷题，它看起来很复杂，所以我就拿来了，现在就是用线性方程解决它的时候了</p>
+<p>为了方便表示，我们可以先设几个字母，方便我们书写</p>
+<ul>
+<li>$As=x_1$</li>
+<li>$H_2=x_2$</li>
+<li>$O_2=x_3$</li>
+<li>$H_3AsO_4=x_4$</li>
+<li>$H_2O=x_5$</li>
+<li>$As_2O_5=x_6$</li>
+</ul>
+<p>那么对于已知的条件可以写成下面的形式</p>
+<script type="math/tex; mode=display">
+x_1+\frac{3}{2}x_2+2x_3=x_4\\
+x_2+\frac{1}{2}x_3=x_5\\
+2x_1+\frac{5}{2}x_3=x_6\\</script><p>转化为矩阵$[x_1,x_2,x_3,x_4,x_5,x_6]$的格式</p>
+<script type="math/tex; mode=display">
+x_1+\frac{3}{2}x_2+2x_3-x_4+0x_5+0x_6=ΔH_1\\</script><script type="math/tex; mode=display">
+0x_1+x_2+\frac{1}{2}x_3+0x_4-x_5+0x_6=ΔH_2\\</script><script type="math/tex; mode=display">
+2x_1+0x_2+\frac{5}{2}x_3+0x_4+0x_5-x_6=ΔH_3\\</script><p>对于要求证的方程式,我们也用线性方程的形式表示出来</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}
+1&\frac{3}{2}&2&-1&0&0&ΔH_1\\
+0&1&\frac{1}{2}&0&-1&0&ΔH_2\\
+2&0&\frac{5}{2}&0&0&-1&ΔH_3\\
+\end{matrix} \right]</script><p>代证方程:</p>
+<script type="math/tex; mode=display">
+x_6+3x_5=2x_4\\</script><script type="math/tex; mode=display">
+0x_1+0x_2+0x_3-2x_4+3x_5+x_6=ΔH\\</script><p>用矩阵表示一下</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}
+0&0&0&-2&3&1&ΔH
+\end{matrix} \right]</script><p>这就是我们的目标矩阵</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}
+0&0&0&-2&3&1&ΔH
+\end{matrix} \right]</script><p>对与矩阵，我们进行<em>行化简</em>，找主元列，目标方程没有x1,x2,x3，而一三有，所以一式扩大二倍减去三式</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}
+2&3&4&-2&0&0&2ΔH_1\\
+0&1&\frac{1}{2}&0&-1&0&ΔH_2\\
+2&0&\frac{5}{2}&0&0&-1&ΔH_3\\
+\end{matrix} \right]\\</script><script type="math/tex; mode=display">
+2ΔH_1-ΔH_3=\\
+\left[\begin{matrix}
+0&3&\frac{3}{2}&-2&0&1&2ΔH_1-ΔH_3\\
+\end{matrix} \right]\\</script><p>继续化简，目标式没有x2,x3，而二式可以与算出来的$2ΔH_1-ΔH_3$化简一下，我们结合目标矩阵看$x_5$，从-1变成3，要乘以-3然后得到下面的形状</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}
+0&-3&-\frac{3}{2}&0&3&0&-3ΔH_2\\
+\end{matrix} \right]\\</script><p>我们结合一下现有的方程就可以算出结果了</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}
+0&3&\frac{3}{2}&-2&0&1&one\\
+\end{matrix} \right]\\</script><script type="math/tex; mode=display">
+\left[\begin{matrix}
+0&-3&-\frac{3}{2}&0&3&0&two\\
+\end{matrix} \right]\\</script><script type="math/tex; mode=display">
+\left[\begin{matrix}
+0&0&0&-2&3&1&three
+\end{matrix} \right]</script><p>我们这时惊讶的发现，第一步的结果和第二步的结果相加，正好是第三待证结论，所以</p>
+<script type="math/tex; mode=display">
+ΔH=(2ΔH_1-ΔH_3)-3ΔH_2</script><p>没错，结果出来了，对于一些非常复杂，或者结果带有奇奇怪怪系数的题目，这种办法很有效</p>
+<blockquote>
+<p>最后补充</p>
+</blockquote>
+<p>线性方程的行变换还可以转换为阶梯矩阵，如果感兴趣的话，也可以尝试使用向量空间与线性方程组做乘法，看看会不会出现n维公共部分，一样可以求解。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B8%9A/" class="category-chain-item">学业</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+        <a href="/tags/%E5%8C%96%E5%AD%A6/">#化学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>线性方程组的系数增广矩阵解决盖斯定律</div>
+      <div>https://blog.minloha.cn/2022/02/27/线性方程组的系数增广矩阵解决盖斯定律/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Minloha</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月27日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年5月20日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                <i class="iconfont icon-nc"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/19/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" title="离散数学基础">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">离散数学基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/07/%E6%90%93%E6%90%93C++%E7%9A%84%E6%8C%87%E9%92%88/" title="搓搓C++的指针">
+                        <span class="hidden-mobile">搓搓C++的指针</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/valine/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"oqOeqFF1THoj5P7HoADOODoW-MdYXbMMI","appKey":"rKuApNEi6G88fc9Lk9lS0Ozy","path":"window.location.pathname","placeholder":"如果发现错字或者是发现彩蛋都可以在此评论。留下相对完善的信息,会有意想不到的惊喜!","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://oqoeqff1.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Copyright © 2022 <a href="https://www.minloha.cn" target="_blank" rel="nofollow noopener"><span>Minloha</span></a>  |  WebSite Belong minloha.cn<br> <span id="sitetime"></span><br> Power by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank">Fluid</a></br> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      <a href="https://icp.gov.moe/?keyword=20220440" target="_blank">萌ICP备20220440号</a>
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+<!-- 时间自增 -->
+<script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/timeadd.js" ></script>
+<!--aplayer-->
+<div id="aplayer" class="aplayer" data-id="5484247565" style="color:black;" data-server="netease" data-type="playlist" data-fixed="true" fixed="false" data-listfolded="true" data-order="list" data-loop="all" data-theme="#2980b9"></div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/av/av-min.js" ></script>
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/typed/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/tocbot/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/clipboard/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/anchor/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/mathjax/tex-svg.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">允许javascript会更佳哦~</div>
+  </noscript>
+</body>
+</html>

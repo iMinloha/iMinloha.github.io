@@ -1,0 +1,920 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <link rel="icon" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#828282">
+  <meta name="author" content="Minloha">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="C++中的内存模型将会存在开发的各个角落,它的理性理论很少,需要记得东西很多,当然是非常简单的啦！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搓搓C++的指针">
+<meta property="og:url" content="https://blog.minloha.cn/2022/02/07/%E6%90%93%E6%90%93C++%E7%9A%84%E6%8C%87%E9%92%88/index.html">
+<meta property="og:site_name" content="minloha.cn">
+<meta property="og:description" content="C++中的内存模型将会存在开发的各个角落,它的理性理论很少,需要记得东西很多,当然是非常简单的啦！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/efi/pointer.png">
+<meta property="article:published_time" content="2022-02-07T09:57:57.000Z">
+<meta property="article:modified_time" content="2022-07-13T09:35:50.489Z">
+<meta property="article:author" content="Minloha">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/efi/pointer.png">
+  
+  
+  <title>搓搓C++的指针 - minloha.cn</title>
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/github/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.minloha.cn","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"BIl5WGlKcjHORw9IWxwLDGMw-gzGzoHsz","app_key":"ybHHVOBbwvCfDchbKs2WNr3x","server_url":"https://bil5wglk.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/Meting.min.js" ></script>
+  <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/anime.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/fireworks.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/clicktext.js" ></script>
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>minloha.cn</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-articles"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/">
+                    <i class="iconfont icon-tags-fill"></i>
+                    标签
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-map"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/comment/">
+                    <i class="iconfont icon-comment"></i>
+                    闲说
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/albums/">
+                    <i class="iconfont icon-image"></i>
+                    图集
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background9.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="搓搓C++的指针"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Minloha
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-02-07 17:57" pubdate>
+          2022年2月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">搓搓C++的指针</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><p>指针是一种底层的数据类型，可以实现对各种内存的操作，无论内存是位于栈上还是堆上，有权限就可以操作。如果说变量是盒子，那指针就是盒子的编号或者标签，<code>*</code>就是一种表示指针的操作符。</p>
+<p>指针可以根据描述对象分为很多种，但是其本质就是一种表达内存的数据。一个非野指针或非空指针变量会拥有两个内存地址，一个是本身位于栈上的内存地址，另一个是其指向的内存地址。</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/efi/pointer.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>为了解释的更具体，Minloha采购了<code>C Primer Plus</code>并且深入的和书籍交流了一番，做出以下解释</p>
+<h2 id="结构体指针"><a href="#结构体指针" class="headerlink" title="结构体指针"></a>结构体指针</h2><p>结构体指针就是指向一个结构体变量的指针，其调用都可以像正常结构体对象一样。先写出一个结构体并实现结构体指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">A</span></span><br><span class="hljs-class">&#123;</span><br>	<span class="hljs-keyword">int</span> number;<br>&#125; T;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	T.number = <span class="hljs-number">123123</span>;<br>	<span class="hljs-comment">//使用已有的结构对象作为指针的指向</span><br>	A* p = &amp;T;<br>	<span class="hljs-comment">//从栈中分配出新的区域作为指针指向</span><br>	A* p2 = <span class="hljs-keyword">new</span> A;<br>	<span class="hljs-comment">//分别修改各自的内容</span><br>	p-&gt;number = <span class="hljs-number">114514</span>;<br>	p2-&gt;number = <span class="hljs-number">123</span>;<br>	<span class="hljs-comment">//T中原本保留的内容[123123]被修改为[114514]</span><br>	cout &lt;&lt; T.number &lt;&lt; endl;<br>	<span class="hljs-comment">//p2内容正常输出:123</span><br>	cout &lt;&lt; p2-&gt;number &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>对结构体<code>A</code>,在它声明的同时也创建了一个对象<code>T</code>，这个对象可以被一个同为<code>A</code>的指针指向，这个指针就叫结构体指针，也就是代码中的<code>*p</code>，指针的初始化可以通过取值符<code>&amp;</code>取已有对象的地址。</p>
+<p>底层的说是不存在变量什么的，都是内存地址的移动，所以当指针被一个对象地址初始化之后，指针就是对象了，之后对指针的增删改都会直接影响到对象，因为它们两个是在一个内存上生长的。</p>
+<h2 id="野指针-amp-空指针-amp-无类型指针"><a href="#野指针-amp-空指针-amp-无类型指针" class="headerlink" title="野指针&amp;空指针&amp;无类型指针"></a>野指针&amp;空指针&amp;无类型指针</h2><p>野指针是一种指向地址不确定的指针，空指针就是指向地址为空的指针，无类型指针就是用<code>void</code>定义的指针</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">int</span> num = <span class="hljs-number">114514</span>;<br>    <span class="hljs-comment">//三种声明指针的方法</span><br>	<span class="hljs-keyword">void</span>* a = &amp;num;<br>	<span class="hljs-keyword">int</span>* b = &amp;num;<br>	<span class="hljs-keyword">int</span>* c = (<span class="hljs-keyword">int</span> *)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">2</span>);<span class="hljs-comment">//</span><br>	<span class="hljs-comment">//void*是无类型指针,可以指向任何数据类型,输出时要进行强制转换</span><br>	cout &lt;&lt; *(<span class="hljs-keyword">int</span>*) a &lt;&lt; endl;<br>	<span class="hljs-comment">//正常指针类型</span><br>	cout &lt;&lt; *b &lt;&lt; endl;<br>	<span class="hljs-comment">//*c的定义是从栈中随机取出的,所以输出内容就非常不可懂了</span><br>	cout &lt;&lt; *c &lt;&lt; endl;<br>	<span class="hljs-comment">//释放内存空间,*c变成了野指针</span><br>	<span class="hljs-comment">//释放内存空间也可以用   delete c;</span><br>	<span class="hljs-built_in">free</span>(c);<br>	cout &lt;&lt; *c &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在内存管理部分中要尽可能避免这小部分提到的指针，主要是为了保证内存的安全性。</p>
+<h2 id="数组指针"><a href="#数组指针" class="headerlink" title="数组指针"></a>数组指针</h2><p>数组的定义是<code>int array[]</code>，而这个<code>array</code>就是一种数组指针，指向了数组头</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">int</span> list[] = &#123; <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span> &#125;;<br>	<span class="hljs-keyword">int</span>* p = list;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>;i++) &#123;<br>		cout &lt;&lt; p[i] &lt;&lt; endl;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h2><p>函数指针与指针函数一直被区分着，其实可以用偏意词的角度理解，函数指针即指向函数的指针，指针函数就是返回值为指针的函数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">//这是一个指针函数,返回值是int*类型</span><br><span class="hljs-function"><span class="hljs-keyword">int</span>* <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>	<span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>*)n;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	cout &lt;&lt; *<span class="hljs-built_in">func</span>(<span class="hljs-number">9</span>) &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>函数指针的写法是<code>类型 (*指针名)(参数表)</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> a+b;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sub</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> a-b;<br>&#125;<br><span class="hljs-comment">//这是函数指针</span><br><span class="hljs-built_in"><span class="hljs-keyword">int</span></span> (*func)(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b);<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">//函数指针可以被函数名初始化(换个角度,函数名就是函数指针)</span><br>    func = add;<br>    cout &lt;&lt; <span class="hljs-built_in">func</span>(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>) &lt;&lt; endl;<span class="hljs-comment">//输出:3</span><br>    func = sub;<br>    cout &lt;&lt; <span class="hljs-built_in">func</span>(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>) &lt;&lt; endl;<span class="hljs-comment">//输出:1</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="多级指针"><a href="#多级指针" class="headerlink" title="多级指针"></a>多级指针</h2><p>指针也是一种数据类型，也会在栈中留下自己的地址，而指向指针地址的指针就叫二级指针，无限套娃下去就会出现各种等级的指针，这里说说二级指针。</p>
+<p>在出现函数传参为指针的时候需要注意，函数所传的指针是以引用的形式传递，意味着离开函数后不会对原有指针产生任何影响，这时就需要二级指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">//无法修改案例</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">int</span> gb = <span class="hljs-number">4</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">getAddress</span><span class="hljs-params">(<span class="hljs-keyword">int</span> *q)</span> </span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;函数内:q=&quot;</span> &lt;&lt; q &lt;&lt; <span class="hljs-string">&quot;|&quot;</span> &lt;&lt; <span class="hljs-string">&quot;&amp;q=&quot;</span> &lt;&lt; &amp;q &lt;&lt; endl;<br>    q = &amp;gb;<br>    cout &lt;&lt; <span class="hljs-string">&quot;函数内:q=&quot;</span> &lt;&lt; q &lt;&lt; <span class="hljs-string">&quot;|&quot;</span> &lt;&lt; <span class="hljs-string">&quot;&amp;q=&quot;</span> &lt;&lt; &amp;q &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> num = <span class="hljs-number">3</span>;<br>    cout &lt;&lt; <span class="hljs-string">&quot;num=&quot;</span> &lt;&lt; num &lt;&lt; <span class="hljs-string">&quot;|&quot;</span> &lt;&lt; <span class="hljs-string">&quot;&amp;num=&quot;</span> &lt;&lt; &amp;num &lt;&lt; endl;<br>    <span class="hljs-keyword">int</span>* p = &amp;num;<br>    <span class="hljs-built_in">getAddress</span>(p);<br>    cout &lt;&lt; <span class="hljs-string">&quot;p=&quot;</span> &lt;&lt; p &lt;&lt; <span class="hljs-string">&quot;|&quot;</span> &lt;&lt; <span class="hljs-string">&quot;&amp;p=&quot;</span> &lt;&lt; &amp;p &lt;&lt; endl;<br>&#125;<br><span class="hljs-comment">//----------------------------------------------------------</span><br>控制台输出:<br>num=<span class="hljs-number">3</span>|&amp;num=<span class="hljs-number">00000045030F</span>FB34<br>函数内:q=<span class="hljs-number">00000045030F</span>FB34|&amp;q=<span class="hljs-number">00000045030F</span>FB10<br>函数内:q=<span class="hljs-number">00007F</span>F75DD5D000|&amp;q=<span class="hljs-number">00000045030F</span>FB10<br>p=<span class="hljs-number">00000045030F</span>FB34|&amp;p=<span class="hljs-number">00000045030F</span>FB58<br></code></pre></td></tr></table></figure>
+<p>此时的<code>p</code>指向的地址并未被修改</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">//使用二级指针成功案例</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">int</span> gb = <span class="hljs-number">4</span>;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">getAddress</span><span class="hljs-params">(<span class="hljs-keyword">int</span> **q)</span> </span>&#123;<br>    cout &lt;&lt; <span class="hljs-string">&quot;函数内:q=&quot;</span> &lt;&lt; q &lt;&lt; <span class="hljs-string">&quot;|&quot;</span> &lt;&lt; <span class="hljs-string">&quot;&amp;q=&quot;</span> &lt;&lt; &amp;q &lt;&lt; endl;<br>    *q = &amp;gb;<br>    cout &lt;&lt; <span class="hljs-string">&quot;函数内:q=&quot;</span> &lt;&lt; q &lt;&lt; <span class="hljs-string">&quot;|&quot;</span> &lt;&lt; <span class="hljs-string">&quot;&amp;q=&quot;</span> &lt;&lt; &amp;q &lt;&lt; endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> num = <span class="hljs-number">3</span>;<br>    cout &lt;&lt; <span class="hljs-string">&quot;&amp;gb=&quot;</span> &lt;&lt; &amp;gb &lt;&lt; <span class="hljs-string">&quot;|&quot;</span> &lt;&lt; <span class="hljs-string">&quot;&amp;num=&quot;</span> &lt;&lt; &amp;num &lt;&lt; endl;<br>    <span class="hljs-keyword">int</span>* p = &amp;num;<br>    <span class="hljs-built_in">getAddress</span>(&amp;p);<br>    cout &lt;&lt; <span class="hljs-string">&quot;p=&quot;</span> &lt;&lt; p &lt;&lt; <span class="hljs-string">&quot;|&quot;</span> &lt;&lt; <span class="hljs-string">&quot;&amp;p=&quot;</span> &lt;&lt; &amp;p &lt;&lt; endl;<br>&#125;<br><span class="hljs-comment">//-------------------------------------------------------------</span><br>控制台输出:<br>&amp;gb=<span class="hljs-number">00007F</span>F6F5CBD000|&amp;num=<span class="hljs-number">00000051B</span>A2FF9C4<br>函数内:q=<span class="hljs-number">00000051B</span>A2FF9E8|&amp;q=<span class="hljs-number">00000051B</span>A2FF9A0<br>函数内:q=<span class="hljs-number">00000051B</span>A2FF9E8|&amp;q=<span class="hljs-number">00000051B</span>A2FF9A0<br>p=<span class="hljs-number">00007F</span>F6F5CBD000|&amp;p=<span class="hljs-number">00000051B</span>A2FF9E8<br></code></pre></td></tr></table></figure>
+<p>可以明显看到经过函数操作后传递的参数<code>&amp;p</code>指向被修改为<code>gb</code>的地址了，在函数内直接通过指针的地址实现的二级指针修改了参数指针指向地址……(嗯)</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>挺复杂的，但是理解之后很爽！非常建议收藏保存。</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/C/">#C++</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>搓搓C++的指针</div>
+      <div>https://blog.minloha.cn/2022/02/07/搓搓C++的指针/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Minloha</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年2月7日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年7月13日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                <i class="iconfont icon-nc"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/27/%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E7%9A%84%E7%B3%BB%E6%95%B0%E5%A2%9E%E5%B9%BF%E7%9F%A9%E9%98%B5%E8%A7%A3%E5%86%B3%E7%9B%96%E6%96%AF%E5%AE%9A%E5%BE%8B/" title="线性方程组的系数增广矩阵解决盖斯定律">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">线性方程组的系数增广矩阵解决盖斯定律</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/05/C++%E7%9A%84Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="C++的Lambda表达式">
+                        <span class="hidden-mobile">C++的Lambda表达式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/valine/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"oqOeqFF1THoj5P7HoADOODoW-MdYXbMMI","appKey":"rKuApNEi6G88fc9Lk9lS0Ozy","path":"window.location.pathname","placeholder":"如果发现错字或者是发现彩蛋都可以在此评论。留下相对完善的信息,会有意想不到的惊喜!","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://oqoeqff1.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Copyright © 2022 <a href="https://www.minloha.cn" target="_blank" rel="nofollow noopener"><span>Minloha</span></a>  |  WebSite Belong minloha.cn<br> <span id="sitetime"></span><br> Power by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank">Fluid</a></br> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      <a href="https://icp.gov.moe/?keyword=20220440" target="_blank">萌ICP备20220440号</a>
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+<!-- 时间自增 -->
+<script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/timeadd.js" ></script>
+<!--aplayer-->
+<div id="aplayer" class="aplayer" data-id="5484247565" style="color:black;" data-server="netease" data-type="playlist" data-fixed="true" fixed="false" data-listfolded="true" data-order="list" data-loop="all" data-theme="#2980b9"></div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/av/av-min.js" ></script>
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/typed/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/tocbot/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/clipboard/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/anchor/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/mathjax/tex-svg.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">允许javascript会更佳哦~</div>
+  </noscript>
+</body>
+</html>

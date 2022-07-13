@@ -1,0 +1,928 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <link rel="icon" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#828282">
+  <meta name="author" content="Minloha">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Webassembly是一种新技术,它使用了一种新的字符解码格式,可以使用非标签语言完成Html的开发,当然这只是功能之一,他还有更大的发展潜力待我们发现.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创意化的Webassembly">
+<meta property="og:url" content="https://blog.minloha.cn/2022/05/24/%E5%88%9B%E6%84%8F%E5%8C%96%E7%9A%84Webassembly/index.html">
+<meta property="og:site_name" content="minloha.cn">
+<meta property="og:description" content="Webassembly是一种新技术,它使用了一种新的字符解码格式,可以使用非标签语言完成Html的开发,当然这只是功能之一,他还有更大的发展潜力待我们发现.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/img/background28.jpg">
+<meta property="article:published_time" content="2022-05-24T04:18:18.000Z">
+<meta property="article:modified_time" content="2022-07-13T10:17:33.289Z">
+<meta property="article:author" content="Minloha">
+<meta property="article:tag" content="html">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="源码">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/img/background28.jpg">
+  
+  
+  <title>创意化的Webassembly - minloha.cn</title>
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/github/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.minloha.cn","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"BIl5WGlKcjHORw9IWxwLDGMw-gzGzoHsz","app_key":"ybHHVOBbwvCfDchbKs2WNr3x","server_url":"https://bil5wglk.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/Meting.min.js" ></script>
+  <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/anime.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/fireworks.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/clicktext.js" ></script>
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>minloha.cn</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-articles"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/">
+                    <i class="iconfont icon-tags-fill"></i>
+                    标签
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-map"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/comment/">
+                    <i class="iconfont icon-comment"></i>
+                    闲说
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/albums/">
+                    <i class="iconfont icon-image"></i>
+                    图集
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background28.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="创意化的Webassembly"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Minloha
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-24 12:18" pubdate>
+          2022年5月24日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">创意化的Webassembly</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="Webassembly"><a href="#Webassembly" class="headerlink" title="Webassembly"></a>Webassembly</h1><p>Webassembly是一种兼容Web的容器，它并不是一门新的编程语言，它更像一种新的编译器，可以帮助代码解释到二进制方向。同时它是一套完整的语义系统，你也可以像使用Docker一样使用Webassembly。从命名的角度Webassembly可以写作单词的组合，也就是：Web base simply（简单网络基础）读音一定也是这样的（确信）</p>
+<h2 id="完成开发"><a href="#完成开发" class="headerlink" title="完成开发"></a>完成开发</h2><p>我将会使用CMake完成这次开发，首先如果你不会CMake你可以看我之前的博客，地址都在文末。操作系统使用Ubuntu。</p>
+<p>首先我们需要安装Emscripten：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bas"># 获取emsdk<br>git clone https:&#x2F;&#x2F;github.com&#x2F;juj&#x2F;emsdk.git<br><br>cd emsdk<br><br># 补齐文件库,如果速度过慢就需要代理咯,两串指令等价,用哪个都可以<br>.&#x2F;emsdk install latest<br>.&#x2F;emsdk activate latest<br><br># 添加指令<br>source .&#x2F;emsdk_env.sh<br># 注意官方汉语文档有误，请以博客所写为主<br></code></pre></td></tr></table></figure>
+<p>然后再<code>emsdk</code>文件夹内创建一个文件夹，我们叫他<code>ahh</code></p>
+<p>然后我们创建CMake项目文件夹，<code>CmakeLists.txt</code>的写法可以参考我的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@minloha:~/WebAssembly/demo01<span class="hljs-comment"># tree</span><br>.<br>├── build<br>├── CMakeLists.txt<br>└── src<br>    ├── CMakeLists.txt<br>    └── main.cpp<br></code></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 这是项目根目录</span><br><span class="hljs-keyword">PROJECT</span> (MinuiW)<br><span class="hljs-keyword">ADD_SUBDIRECTORY</span>(src)<br></code></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 这是src目录</span><br><span class="hljs-keyword">PROJECT</span> (MinuiW)<br><span class="hljs-keyword">SET</span>(SRC_LIST main.cpp)<br><span class="hljs-keyword">MESSAGE</span>(STATUS <span class="hljs-string">&quot;Building project!&quot;</span>)<br><span class="hljs-keyword">ADD_EXECUTABLE</span>(MinuiW <span class="hljs-variable">$&#123;SRC_LIST&#125;</span>)<br></code></pre></td></tr></table></figure>
+<p>我们在项目<code>main.cpp</code>写入我们的代码。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">/* 一段十分恶趣味的代码</span><br><span class="hljs-comment"> * @author Minloha</span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;emscripten.h&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Exam</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    ~<span class="hljs-built_in">Exam</span>() &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;分数是:&quot;</span> &lt;&lt; <span class="hljs-keyword">this</span>-&gt;score &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-built_in">Exam</span>(<span class="hljs-keyword">int</span> score) &#123;<br>        <span class="hljs-keyword">this</span>-&gt;score = score;<br>    &#125;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">int</span> score;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    Exam* e = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Exam</span>(<span class="hljs-number">10</span>);<br>    <span class="hljs-keyword">delete</span> e;<br>    cout &lt;&lt; <span class="hljs-string">&quot;哈哈哈&quot;</span> &lt;&lt; endl;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>写完之后我们切换到<code>build</code>文件夹，完成代码编译：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> build/<br><br><span class="hljs-comment"># 使用emcmake进行make编译</span><br>emcmake cmake ..<br><br><span class="hljs-comment"># 生成最后的js文件</span><br>emmake make<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@minloha:~/WebAssembly/demo01<span class="hljs-comment"># cd build/</span><br>root@minloha:~/WebAssembly/demo01/build<span class="hljs-comment"># emcmake cmake ..</span><br>configure: cmake .. -DCMAKE_TOOLCHAIN_FILE=/root/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/root/emsdk/node/14.18.2_64bit/bin/node;--experimental-wasm-threads<br>-- Building project!<br>CMake Warning (dev) <span class="hljs-keyword">in</span> CMakeLists.txt:<br>  No cmake_minimum_required <span class="hljs-built_in">command</span> is present.  A line of code such as<br><br>    cmake_minimum_required(VERSION 3.16)<br><br>  should be added at the top of the file.  The version specified may be lower<br>  <span class="hljs-keyword">if</span> you wish to support older CMake versions <span class="hljs-keyword">for</span> this project.  For more<br>  information run <span class="hljs-string">&quot;cmake --help-policy CMP0000&quot;</span>.<br>This warning is <span class="hljs-keyword">for</span> project developers.  Use -Wno-dev to suppress it.<br><br>-- Configuring <span class="hljs-keyword">done</span><br>-- Generating <span class="hljs-keyword">done</span><br>-- Build files have been written to: /root/WebAssembly/demo01/build<br>root@minloha:~/WebAssembly/demo01/build<span class="hljs-comment"># ls</span><br>CMakeCache.txt  CMakeFiles  cmake_install.cmake  Makefile  src<br>root@minloha:~/WebAssembly/demo01/build<span class="hljs-comment"># emmake make</span><br>make: make<br>Scanning dependencies of target MinuiW<br>[ 50%] Building CXX object src/CMakeFiles/MinuiW.dir/main.o<br>[100%] Linking CXX executable MinuiW.js<br>[100%] Built target MinuiW<br>root@minloha:~/WebAssembly/demo01/build<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure>
+<p>我们可以看到已经生成了<code>MinuiW.js</code>文件，我们浅浅的看一下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">root@minloha:~/WebAssembly/demo01/build<span class="hljs-comment"># cd src</span><br>root@minloha:~/WebAssembly/demo01/build/src<span class="hljs-comment"># ls</span><br>CMakeFiles  cmake_install.cmake  Makefile  MinuiW.js  MinuiW.wasm<br></code></pre></td></tr></table></figure>
+<p>我们看到了出现wasm文件和基础js文件，我们把两个文件同时取出，把Js引入我们的html文件中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>WebAssembly<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;MinuiW.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>我们简单运行一下，按F12打开控制台可以看到输出了内容</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/webass/img1.png" srcset="/img/loading.gif" lazyload alt="img1" style="zoom:150%;" /></p>
+<p>当然这是一种完全不同于CGI渲染的体系，它把C++代码用自己的方式渲染为了JS文件，我们浅浅的看一下生成的文件</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/webass/img2.png" srcset="/img/loading.gif" lazyload alt="img2"></p>
+<p>足足有5k行，可见一斑。</p>
+<h2 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h2><p>这种技术也有缺点，那就是没办法完成DOM，仅仅是BOM，这也意味着无法真正做到一个Html蜕变成媲美服务器的性能，当然也需要依赖最基础的HTTPS服务器，那么就先期待着吧！</p>
+<h2 id="网址大全"><a href="#网址大全" class="headerlink" title="网址大全"></a>网址大全</h2><p>官网：<a target="_blank" rel="noopener" href="https://www.wasm.com.cn/">https://www.wasm.com.cn/</a></p>
+<p>Cmake使用：<a href="https://blog.minloha.cn/2022/01/26/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8BCMAKE%E7%9A%84%E7%AC%94%E8%AE%B0/">https://blog.minloha.cn/2022/01/26/记录一下CMAKE的笔记</a></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%96%B0%E4%BA%8B%E7%89%A9/" class="category-chain-item">新事物</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/html/">#html</a>
+      
+        <a href="/tags/C/">#C++</a>
+      
+        <a href="/tags/%E6%BA%90%E7%A0%81/">#源码</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>创意化的Webassembly</div>
+      <div>https://blog.minloha.cn/2022/05/24/创意化的Webassembly/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Minloha</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月24日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年7月13日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                <i class="iconfont icon-nc"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/22/The%20COW%20finish%20the%20copy/" title="See how the COW finish the copy">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">See how the COW finish the copy</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/21/%E5%91%BD%E9%A2%98%E5%9C%A8%E7%A6%BB%E6%95%A3%E4%B8%AD/" title="完整的命题论">
+                        <span class="hidden-mobile">完整的命题论</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/valine/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"oqOeqFF1THoj5P7HoADOODoW-MdYXbMMI","appKey":"rKuApNEi6G88fc9Lk9lS0Ozy","path":"window.location.pathname","placeholder":"如果发现错字或者是发现彩蛋都可以在此评论。留下相对完善的信息,会有意想不到的惊喜!","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://oqoeqff1.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Copyright © 2022 <a href="https://www.minloha.cn" target="_blank" rel="nofollow noopener"><span>Minloha</span></a>  |  WebSite Belong minloha.cn<br> <span id="sitetime"></span><br> Power by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank">Fluid</a></br> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      <a href="https://icp.gov.moe/?keyword=20220440" target="_blank">萌ICP备20220440号</a>
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+<!-- 时间自增 -->
+<script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/timeadd.js" ></script>
+<!--aplayer-->
+<div id="aplayer" class="aplayer" data-id="5484247565" style="color:black;" data-server="netease" data-type="playlist" data-fixed="true" fixed="false" data-listfolded="true" data-order="list" data-loop="all" data-theme="#2980b9"></div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/av/av-min.js" ></script>
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/typed/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/tocbot/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/clipboard/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/anchor/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/mathjax/tex-svg.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">允许javascript会更佳哦~</div>
+  </noscript>
+</body>
+</html>

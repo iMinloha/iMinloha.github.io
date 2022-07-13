@@ -1,0 +1,956 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <link rel="icon" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#828282">
+  <meta name="author" content="Minloha">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="线性代数是大学考研的必修内容,同泛函分析类似,矩阵分析也是一门必修课,除此之外就是数学分析与数学优化了,这些东西都很难,因为不直观,但是我会尽我所能去描述这些抽象的知识点,也会兼顾知识的严谨与逻辑,所以会很硬核">
+<meta property="og:type" content="article">
+<meta property="og:title" content="细说矩阵与变换">
+<meta property="og:url" content="https://blog.minloha.cn/2022/04/17/%E7%BB%86%E8%AF%B4%E7%9F%A9%E9%98%B5%E4%B8%8E%E5%8F%98%E6%8D%A2/index.html">
+<meta property="og:site_name" content="minloha.cn">
+<meta property="og:description" content="线性代数是大学考研的必修内容,同泛函分析类似,矩阵分析也是一门必修课,除此之外就是数学分析与数学优化了,这些东西都很难,因为不直观,但是我会尽我所能去描述这些抽象的知识点,也会兼顾知识的严谨与逻辑,所以会很硬核">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://coding-pages-bucket-3540993-8525891-15130-549609-1302067249.cos-website.ap-hongkong.myqcloud.com/blog/images/matrix/img1.png">
+<meta property="og:image" content="https://coding-pages-bucket-3540993-8525891-15130-549609-1302067249.cos-website.ap-hongkong.myqcloud.com/blog/images/matrix/img2.png">
+<meta property="article:published_time" content="2022-04-17T14:03:32.000Z">
+<meta property="article:modified_time" content="2022-05-20T14:28:08.000Z">
+<meta property="article:author" content="Minloha">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://coding-pages-bucket-3540993-8525891-15130-549609-1302067249.cos-website.ap-hongkong.myqcloud.com/blog/images/matrix/img1.png">
+  
+  
+  <title>细说矩阵与变换 - minloha.cn</title>
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/github/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.minloha.cn","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"BIl5WGlKcjHORw9IWxwLDGMw-gzGzoHsz","app_key":"ybHHVOBbwvCfDchbKs2WNr3x","server_url":"https://bil5wglk.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/Meting.min.js" ></script>
+  <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/anime.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/fireworks.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/clicktext.js" ></script>
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>minloha.cn</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-articles"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/">
+                    <i class="iconfont icon-tags-fill"></i>
+                    标签
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-map"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/comment/">
+                    <i class="iconfont icon-comment"></i>
+                    闲说
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/albums/">
+                    <i class="iconfont icon-image"></i>
+                    图集
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background9.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="细说矩阵与变换"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Minloha
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-17 22:03" pubdate>
+          2022年4月17日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">细说矩阵与变换</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="基础概述"><a href="#基础概述" class="headerlink" title="基础概述"></a>基础概述</h2><p>为了让大家能更好理解这些内容，我会结合矩阵分析与泛函分析两个重量级选手说一说，大家一定要睁大眼睛哦！</p>
+<p>需要知识：</p>
+<ul>
+<li>范数相关</li>
+<li>矩阵相关</li>
+<li>向量空间相关</li>
+</ul>
+<h2 id="向量与向量空间"><a href="#向量与向量空间" class="headerlink" title="向量与向量空间"></a>向量与向量空间</h2><p>向量（Vector）是一种有向线段，它是沟通代数和几何（注意是几何不是解析几何这种具体的）的桥梁，对于任意任意两个或两个以上的向量都可以按照线性关系组合成一定范围的其他向量，比如平面直角坐标系内常用的<code>i</code>和<code>j</code>向量，对于向量<strong>a</strong>(1,2)可以写作    <code>i+2j</code>的形式，表示线性组合。假设任意两个不共线的向量，它们可以组成平面内任意一个向量，所以我们就说两向量张成平面，同理，如果是两个共线向量，就说这两个向量可以张成直线。也可以推出三维空间内的任意三个不共线向量都可以张成三维空间。张成的向量就叫基向量或者简称为基（Base）。</p>
+<p>向量的表示可以用有序数对表示，如<strong>a</strong>=（1，2）这种，也可以用矩阵的列向量表示，写作:</p>
+<script type="math/tex; mode=display">
+\vec a=\left[\begin{matrix}
+1\\
+2\\
+\end{matrix} \right]</script><p>所以对于有限个向量从$n_1$直到$n_m$，对它们的张成向量空间（Vector Space）可以用下面的符号表示：</p>
+<script type="math/tex; mode=display">
+Span \left\{ n_1,n_2,n_3,...,n_m \right\}</script><p>相似的这些向量可以按一定权重组成一个矩阵（Matrix）A，反之矩阵A也可以拆分为多个向量的线性组合：</p>
+<script type="math/tex; mode=display">
+A=\left[\begin{matrix}
+\vec n_1,\vec n_2,\vec n_3,...,\vec n_m
+\end{matrix} \right]</script><p>我们所常用的平面系和空间系都是向量空间，可以通过轴线上的基向量张成，同时要是满足赋范向量空间则要满足三个性质：</p>
+<ul>
+<li>非负性<ul>
+<li>$||\vec a ||≥0$</li>
+</ul>
+</li>
+<li>齐次性<ul>
+<li>$||a · \vec v|| = |a|·||\vec v||$</li>
+</ul>
+</li>
+<li>三角不等式<ul>
+<li>$||\vec v_1||+||\vec v_2|| ≥ ||\vec v_1 + \vec v_2||$</li>
+</ul>
+</li>
+</ul>
+<p>相似的对于向量空间的形状，我们可以将有限个基向量组合变成矩阵M，通过计算det(M)与0的大小关系判断向量张成是否为直线或者原点，这里要注意，n个向量最大可以张成的向量空间维度是n，我们就可以说把n组合成的矩阵的最大秩为n，且组合的矩阵秩不能大于n，应该小于或等于n，而这n个向量组合的矩阵也可以叫做线性向量组。注意！线性向量组中存在一个非零行或者叫行内存在主元，就给秩加一，如果存在一行的主元不存在，则不对秩加一操作。</p>
+<h2 id="矩阵与向量结合"><a href="#矩阵与向量结合" class="headerlink" title="矩阵与向量结合"></a>矩阵与向量结合</h2><p>上一小部分我们浅谈了一句，就是说矩阵可以拆分为多组向量，对于这种运算，我们可以运用符号<code>vec()</code>表示，对于A来说，如果在<strong>x</strong>的变量向量内存在矩阵方程Ax=b，则我们就说这是一种矩阵变换（Matrix Translate），这种变换与映射十分类似，不过映射描述的是原像与像之间的对应关系（像序偶一样），而矩阵变换重在变换，它是一个过程，可以看作是原基向量空间内的任意向量通过矩阵A变换到vec(A)为基的新向量。</p>
+<p>那么我们可以实现基本的矩阵变换了，我们随便取照片，利用python的numpy计算并演示一下！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pylab <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> matplotlib.patches <span class="hljs-keyword">import</span> Ellipse<br><span class="hljs-comment"># 这是仿射规则,可以随便改改</span><br>rule = np.array([<br>    [<span class="hljs-number">1</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]<br>])<br><span class="hljs-comment"># 规定椭圆的半长轴和半短轴</span><br>a,b=<span class="hljs-number">2</span>,<span class="hljs-number">1.141</span><br>res = np.array([[a,<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>,b]]).dot(rule)<br><br>fig = plt.figure(<span class="hljs-number">0</span>)<br>ax = fig.add_subplot(<span class="hljs-number">111</span>, aspect=<span class="hljs-string">&#x27;equal&#x27;</span>)<br><span class="hljs-comment"># 规定圆心为(0,0),绘制未经过仿射的椭圆</span><br>e = Ellipse(xy = (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>), width = a, height = b)<br><span class="hljs-comment"># 规定圆心为(0,0)并使用仿射结果</span><br>e2 = Ellipse(xy = (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>), width = res[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>], height = res[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>])<br><span class="hljs-comment"># 显示e(未经过仿射变换)或者e2(经过仿射变换)</span><br>ax.add_artist(e)<br><span class="hljs-comment">#ax.add_artist(e2)</span><br><br>e.set_facecolor(<span class="hljs-string">&quot;black&quot;</span>)<br>plt.xlim(-<span class="hljs-number">3</span>, <span class="hljs-number">3</span>)<br>plt.ylim(-<span class="hljs-number">3</span>, <span class="hljs-number">3</span>)<br>ax.grid(<span class="hljs-literal">True</span>)<br>plt.title(<span class="hljs-string">&quot;We had been translated&quot;</span>)<br><br>plt.show()<br></code></pre></td></tr></table></figure>
+<p>为经过仿射变换的椭圆如图：</p>
+<p><img src="https://coding-pages-bucket-3540993-8525891-15130-549609-1302067249.cos-website.ap-hongkong.myqcloud.com/blog/images/matrix/img1.png" srcset="/img/loading.gif" lazyload alt="img1"></p>
+<p>修改python代码中的rule矩阵，变为下面形式，表示y轴放大二倍，得到的就是下图：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">rule = np.<span class="hljs-built_in">array</span>([<br><span class="hljs-string">    [1,0]</span>,<br><span class="hljs-string">    [0,2]</span><br>])<br></code></pre></td></tr></table></figure>
+<p><img src="https://coding-pages-bucket-3540993-8525891-15130-549609-1302067249.cos-website.ap-hongkong.myqcloud.com/blog/images/matrix/img2.png" srcset="/img/loading.gif" lazyload alt="img2"></p>
+<p>当然变换也有旋转变换和剪切变换，这里大家可以通过修改代码或者效果，我这里只说明理论：</p>
+<p>比如对于坐标系Oxyz而言，存在一个正方体，他的边长为1，那么他的体积就是1，接下来简称它为单位体，对坐标系沿着某一个坐标轴进行旋转变换（比如z轴），我们可以使用下面的矩阵：</p>
+<script type="math/tex; mode=display">
+T_z=\left[\begin{matrix}
+cosα&&sinα&&0\\
+-sinα&&cosα&&0\\
+0&&0&&1\\
+\end{matrix} \right]</script><p>相似的，我们也可以按照不同的方向对矩阵进行旋转变换。变换规则可以参考下面的链接</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/f5f2f106ac45b307e87101f69e3143323968f593.html">https://wenku.baidu.com/view/f5f2f106ac45b307e87101f69e3143323968f593.html</a></p>
+</blockquote>
+<p>我们都知道或者不知道，研究生需要学习各种数学模型的分析，比如泛函分析矩阵分析或者数学分析数学优化（如有列举错误可以在评论区指正，我会尽快修改）那么本次的博文就是出于增长基础见识为前提写的，所以研究生们加油！</p>
+<h2 id="小小总结一下"><a href="#小小总结一下" class="headerlink" title="小小总结一下"></a>小小总结一下</h2><p>线性代数绝对不是我短短一篇文字能说的完的，这些需要不断学习理解与想象，而泛函分析这部分的知识，我还不是十分透彻，因为我只学过图论看过离散，却没有学过拓扑学，特别是使用拓扑代数，我完全不懂。所以小小博文到此结束，记得分享出去哦~</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/">#python</a>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>细说矩阵与变换</div>
+      <div>https://blog.minloha.cn/2022/04/17/细说矩阵与变换/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Minloha</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月17日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年5月20日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                <i class="iconfont icon-nc"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/25/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E5%8F%98%E6%8D%A2/" title="关于函数变换">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">关于函数变换</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/04/%E6%B5%85%E8%B0%88%E5%9B%BE%E8%AE%BA/" title="浅谈图论">
+                        <span class="hidden-mobile">浅谈图论</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/valine/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"oqOeqFF1THoj5P7HoADOODoW-MdYXbMMI","appKey":"rKuApNEi6G88fc9Lk9lS0Ozy","path":"window.location.pathname","placeholder":"如果发现错字或者是发现彩蛋都可以在此评论。留下相对完善的信息,会有意想不到的惊喜!","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://oqoeqff1.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Copyright © 2022 <a href="https://www.minloha.cn" target="_blank" rel="nofollow noopener"><span>Minloha</span></a>  |  WebSite Belong minloha.cn<br> <span id="sitetime"></span><br> Power by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank">Fluid</a></br> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      <a href="https://icp.gov.moe/?keyword=20220440" target="_blank">萌ICP备20220440号</a>
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+<!-- 时间自增 -->
+<script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/timeadd.js" ></script>
+<!--aplayer-->
+<div id="aplayer" class="aplayer" data-id="5484247565" style="color:black;" data-server="netease" data-type="playlist" data-fixed="true" fixed="false" data-listfolded="true" data-order="list" data-loop="all" data-theme="#2980b9"></div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/av/av-min.js" ></script>
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/typed/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/tocbot/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/clipboard/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/anchor/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/mathjax/tex-svg.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">允许javascript会更佳哦~</div>
+  </noscript>
+</body>
+</html>

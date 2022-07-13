@@ -1,0 +1,1221 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <link rel="icon" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#828282">
+  <meta name="author" content="Minloha">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="系统的说说命题!这可是好东西">
+<meta property="og:type" content="article">
+<meta property="og:title" content="完整的命题论">
+<meta property="og:url" content="https://blog.minloha.cn/2022/05/21/%E5%91%BD%E9%A2%98%E5%9C%A8%E7%A6%BB%E6%95%A3%E4%B8%AD/index.html">
+<meta property="og:site_name" content="minloha.cn">
+<meta property="og:description" content="系统的说说命题!这可是好东西">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/img/background23.jpg">
+<meta property="article:published_time" content="2022-05-21T04:03:33.000Z">
+<meta property="article:modified_time" content="2022-07-13T09:43:40.208Z">
+<meta property="article:author" content="Minloha">
+<meta property="article:tag" content="离散数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/img/background23.jpg">
+  
+  
+  <title>完整的命题论 - minloha.cn</title>
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/github/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.minloha.cn","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"BIl5WGlKcjHORw9IWxwLDGMw-gzGzoHsz","app_key":"ybHHVOBbwvCfDchbKs2WNr3x","server_url":"https://bil5wglk.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/Meting.min.js" ></script>
+  <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/anime.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/fireworks.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/clicktext.js" ></script>
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>minloha.cn</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-articles"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/">
+                    <i class="iconfont icon-tags-fill"></i>
+                    标签
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-map"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/comment/">
+                    <i class="iconfont icon-comment"></i>
+                    闲说
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/albums/">
+                    <i class="iconfont icon-image"></i>
+                    图集
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background23.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="完整的命题论"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Minloha
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-21 12:03" pubdate>
+          2022年5月21日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">完整的命题论</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="命题论"><a href="#命题论" class="headerlink" title="命题论"></a>命题论</h1><p>人类的语言是高级的，人脑的抽象功能为我们抽象出了各种思维模式，当然也包含推理判断能力，而命题就是将这种判断的逻辑取出研究的工具，让我们好好看看什么是命题吧！</p>
+<h2 id="命题和联结词"><a href="#命题和联结词" class="headerlink" title="命题和联结词"></a>命题和联结词</h2><p>命题的定义：具有确切真假值的陈述句叫做命题。命题可以取值，叫做真值，也就是真假一般写作1(T)和0(F)</p>
+<p>命题的联结词：只有五种，有一部分在高中的命题中叫他们<code>与</code>、<code>或</code>、<code>非</code>，符号分别是<code>∧</code>、<code>∨</code>、$\neg$，而在离散数学中按顺序它们分别被叫做<code>合取联结词</code>、<code>析取联结词</code>、<code>否定联结词</code>。同时命题还有蕴含联结词，他的符号是<code>→</code>，写法是$P→Q$，其中P叫做蕴含的前件，Q叫做蕴含的后件，读法是P蕴含于Q，真值情况是只有当P的解集是Q解集的子集时，蕴含真值为1。那么既然有蕴含就有等价，等价联结词是<code>⇿</code>，记作$P↔Q$，读作P等价于Q，只有当P和Q解集相等时，真值为1。</p>
+<h3 id="列举"><a href="#列举" class="headerlink" title="列举"></a>列举</h3><p>以下是所有联结词：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>联结词</th>
+<th>符号</th>
+<th>含义</th>
+<th>读法</th>
+<th>写法</th>
+<th>逻辑含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>否定</td>
+<td>$\neg$</td>
+<td>真值结果否定</td>
+<td>非P</td>
+<td>$\neg P$</td>
+<td>真假互换</td>
+</tr>
+<tr>
+<td>合取</td>
+<td>∧</td>
+<td>真值取和运算</td>
+<td>P合取Q</td>
+<td>P∧Q</td>
+<td>同真异假</td>
+</tr>
+<tr>
+<td>析取</td>
+<td>∨</td>
+<td>真值取或运算</td>
+<td>P析取Q</td>
+<td>P∨Q</td>
+<td>一真为真</td>
+</tr>
+<tr>
+<td>蕴含</td>
+<td>→</td>
+<td>真值的包含运算</td>
+<td>P蕴含Q</td>
+<td>P→Q</td>
+<td>大数含小数</td>
+</tr>
+<tr>
+<td>等价</td>
+<td>⇿</td>
+<td>真值结果相等运算</td>
+<td>P等价Q</td>
+<td>P⇿Q</td>
+<td>完全相等</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>以下是真值表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>Q</th>
+<th>$\neg$P</th>
+<th>P∧Q</th>
+<th>P∨Q</th>
+<th>P→Q</th>
+<th>P⇿Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p>命题分为几种，其中最常用的就是原子命题，<strong>原子命题</strong>是一类命题的总称，它是不可再分的极简命题，有明确的真值。而将原子命题通过联结词组合起来就有了<strong>复合命题</strong>。</p>
+<blockquote>
+<p>例子</p>
+</blockquote>
+<p>P：我是好人</p>
+<p>Q：我是Minloha</p>
+<p>那么P∧Q=我是好人并且我是Minloha，P∨Q=我是好人或者我是Minloha，$\neg P$=我不是好人。</p>
+<h3 id="符号化"><a href="#符号化" class="headerlink" title="符号化"></a>符号化</h3><p>下面是如何将命题符号化，举几个例子就可以了！</p>
+<blockquote>
+<p> 如果明天女朋友过生日，我就不能陪你出去买书</p>
+</blockquote>
+<p>P：明天女朋友过生日</p>
+<p>Q：我陪你去买书</p>
+<p>那么符号化就是$P→\neg Q$</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>命题可以解决一些逻辑门的问题，比如下面的电路图：</p>
+<p><img src="https://pics6.baidu.com/feed/dc54564e9258d10937cf0c969b8a8bb76d814dc4.jpeg?token=811f0708d705d9b16381c59b627c12f9" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对于灯泡L，它可以选择在A开关闭合时亮起，也可以是B开关闭合时亮起，也可以是AB同时闭合，那么他的表达就是：$A∧B$</p>
+<h2 id="命题公式"><a href="#命题公式" class="headerlink" title="命题公式"></a>命题公式</h2><p>命题公式是一个难点。我们先前定义过原子命题的含义，如果一个命题在没有赋予具体内容的前提下真假性不确定，我们叫这种命题为<strong>命题变量</strong>，反之被赋予内容的命题叫做<strong>常值命题</strong>，当一个原子命题是命题变量时，我们也叫他<strong>原子命题变元</strong>，将不同的命题变元、原子命题变元组合起来时，组成的复合命题也被叫做命题函数，或者按照离散数学所述，叫做<code>命题公式</code>或者真值函数。</p>
+<p>命题公式的表达必须满足复合命题，比如$P→Q$就可以表示一个命题公式，但是$P∧Q→$就不是一个命题公式，因为蕴含联结词没有后件。</p>
+<p>命题公式的表达也被叫做合式公式(WFF)，下面给出几点推论：</p>
+<ul>
+<li>命题变元本身就是一个命题公式</li>
+<li>如果命题P是公式，其否定也是公式</li>
+<li>如果多个命题都是公式，则它们通过联结词连接的复合命题也是公式</li>
+<li>通过有限步骤使用上述推论的才是命题公式</li>
+</ul>
+<p>那么命题公式的使用可以使用真值表技术</p>
+<p>在介绍真值表前我们需要了解，通过给命题变元赋值得到真值这个过程中，对命题变元的一组值叫做命题的一个<code>解释</code>，下面给出一个命题公式：</p>
+<script type="math/tex; mode=display">
+(P∧Q)→(\neg P ∨Q)</script><p>那么对于公式真值可以画出下表，其中蕴含一列表示最后的真值：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>Q</th>
+<th>P∧Q</th>
+<th>→</th>
+<th>$\neg P$</th>
+<th>$\neg P$∨Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>看了上面的真值表，不免让人联想，如果命题变元无论取何真值，命题公式的真值都为1，那这种命题公式叫什么呢？</p>
+<h2 id="命题公式分类"><a href="#命题公式分类" class="headerlink" title="命题公式分类"></a>命题公式分类</h2><p>对于无论给定何种解释，命题公式的真值始终为1的叫做永真公式，反之叫做永假公式，而对于并不是所有解释都可以为真的命题公式，它是<strong>可满足的</strong>，解释一般用字母<code>I</code>表示。</p>
+<p>简单的过度例子来一个，请判断下面的命题是否为永真公式：</p>
+<script type="math/tex; mode=display">
+(P→Q)↔\neg P∨Q</script><p>列出真值表，可以看出这个命题公式是永真的，下一部分我们会细致讲解这个公式：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>→</th>
+<th>Q</th>
+<th>↔(最终真值)</th>
+<th>$\neg P$∨Q</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="命题的演算公式"><a href="#命题的演算公式" class="headerlink" title="命题的演算公式"></a>命题的演算公式</h2><p>因为这里的公式比较多，我也写不过来，有兴趣可以在评论区补充，我挑几个常用的列举以下</p>
+<ul>
+<li>分配律<ul>
+<li>P∧(Q∨R)=(P∧Q)∨(P∧R)</li>
+<li>P∨(Q∧R)=(P∨Q)∧(P∨R)</li>
+</ul>
+</li>
+<li>德摩根律<ul>
+<li>$\neg (P∨Q)=\neg P∧\neg Q$</li>
+<li>$\neg (P∧Q)=\neg P∨\neg Q$</li>
+</ul>
+</li>
+<li>蕴含律<ul>
+<li>(P→Q)=$\neg P∨Q$</li>
+</ul>
+</li>
+<li>吸收律<ul>
+<li>P∧(P∨Q)=P</li>
+<li>P∨(P∧Q)=P</li>
+</ul>
+</li>
+<li>常值运算<ul>
+<li>G∧1=G</li>
+<li>G∨0=G</li>
+<li>$\neg G∧G=0$</li>
+<li>$\neg G∨G=0$</li>
+</ul>
+</li>
+</ul>
+<p>你可以选择使用真值表证明，也可以像集合一样使用Venn图表示。</p>
+<p>下面介绍两个需要当作常识的定理。</p>
+<ul>
+<li>设G是一个含有n个命题变元P的公式，假设它是永真或永假公式，那么它的演算结果也是永真或永假的</li>
+<li>设$G_1$是G的一个子公式，H为任意一个公式，它的一个子公式为$H_1$，如果$G_1=H_1$那么G=H</li>
+</ul>
+<p>那么运用上面所讲内容完成下面命题公式的化简吧！</p>
+<script type="math/tex; mode=display">
+(\neg P∧(\neg Q∧R))∨((Q∧R)∨(P∧R))</script><h2 id="联结词的完备集"><a href="#联结词的完备集" class="headerlink" title="联结词的完备集"></a>联结词的完备集</h2><p>这里主要讲完备集的定义，对于联结词主要涉及基本的联结词，而完备集只是一个集合的特殊名称，它是一个由联结词组成的集合，它依然拥有集合的性质，比如互异性，确定性什么的，可以看第一章</p>
+<h3 id="符号扩充"><a href="#符号扩充" class="headerlink" title="符号扩充"></a>符号扩充</h3><p>除了之前说过的<code>合取联结词</code>、<code>析取联结词</code>、<code>否定联结词</code>、<code>蕴含联结词</code>、<code>等价联结词</code>之外，通过对电路分析得到了更多的计算符号，因为Markdown支持的符号有限，我就直接给个传送门，自己看看就好，我就不写了</p>
+<p>传送门：<a target="_blank" rel="noopener" href="https://blog.csdn.net/myRealization/article/details/120175992">https://blog.csdn.net/myRealization/article/details/120175992</a></p>
+<h3 id="联结词的完备集-1"><a href="#联结词的完备集-1" class="headerlink" title="联结词的完备集"></a>联结词的完备集</h3><p>如果一个命题公式，都有由一个联结词集合S表示出来的命题公式和它是等价的，那么S是完备的联结词集合。如果S刚好满足完备集的定义并且元素足够少，那么就说它是一个极小完备的联结词集合，比如最经典的蕴含式：</p>
+<script type="math/tex; mode=display">
+P→Q=\lnot P∨Q</script><p>可以看到左侧的命题公式可以由<code>&#123;→&#125;</code>的集合表示，而它的等价公式，由两种联结词组成，那么这两个联结词组成了一个极小完备的联结词集合，{$\lnot$，∨}，这种表示方法也被称作布尔代数系统</p>
+<p>这里的知识点用于题目中给定，让你推到命题公式到仅由完备联结词集合表示。</p>
+<h2 id="项与范式"><a href="#项与范式" class="headerlink" title="项与范式"></a>项与范式</h2><p>范式是一种公式的表达形式，准确的说它是一种约定俗成的表达格式，它可以完成很多事情，也在接下来的命题推理与证明中使用。</p>
+<p>为了接下来的讲述，我们先下几个定义：</p>
+<ul>
+<li>命题变元或者其否定我们叫他<em>文字</em></li>
+<li>有限个文字的析取叫做析取式，也被叫做<strong>子句</strong></li>
+<li>有限个文字的合取叫做合取式，也叫做<strong>短语</strong></li>
+<li>命题P和它的否定称为<strong>互补对</strong></li>
+</ul>
+<p>而范式的定义如下：</p>
+<ul>
+<li>有限个短语的析取式叫做<strong>析取范式</strong></li>
+<li>有限个子句的合取式叫做<strong>合取范式</strong></li>
+</ul>
+<p>简单做一个题试试，求出公式的合取范式与析取范式：</p>
+<script type="math/tex; mode=display">
+(P→\lnot H)∨(P↔R)</script><p>答案是这样的：</p>
+<script type="math/tex; mode=display">
+合取范式:(\lnot P∨\lnot Q∨\lnot P∨R)∧(\lnot P∨\lnot Q∨\lnot R∨P)</script><script type="math/tex; mode=display">
+析取范式:\lnot P∨\lnot Q∨R</script><p>在理解了范式之后就是关于主合取范式和主析取范式的解释，在开始时，我们先介绍一下极小项和极大项。</p>
+<p>在一个含有n个命题变元P的短语或者子句中，如果每个命题变元与其否定不同时存在，并且两者中的一个出现仅出现一次，那么就说这个短语或者子句是关于含有n个命题变元P短语或子句的极小项或者极大项。</p>
+<p>这个定义是修饰后的，为了理解我简单举一个例子，假设命题变元P和Q：</p>
+<script type="math/tex; mode=display">
+极小项:P∧Q,P∧\lnot Q,\lnot P∧Q,\lnot P∧\lnot Q</script><script type="math/tex; mode=display">
+极大项:P∨Q,P∨\lnot Q,\lnot P∨Q,\lnot P∨\lnot Q</script><p>而如果在给定的析取范式中，如果每一个短语都是极小项，那么这个范式叫做主析取范式。同理，一个合取范式，如果每一个短语都是极大项，那么这个范式就叫主合取范式。</p>
+<h2 id="演绎推理与证明"><a href="#演绎推理与证明" class="headerlink" title="演绎推理与证明"></a>演绎推理与证明</h2><p>演绎并不一定推出真结果，只要过程是真的就是有效的推理，对于所有给出的前提，如果前提Q和结论H能够满足下面的条件，才能说明这是永真公式。</p>
+<script type="math/tex; mode=display">
+\vee _{i=1}Q_i→H</script><p>推理符与蕴含符不同，写作<code>⇨</code>，常用的推理公式我列举一下：</p>
+<ul>
+<li>选言三段论：$\lnot G,G∨H\Rightarrow H$$\lnot G,G\bar ∨H⇨ H$</li>
+<li>肯定前件式：$G,G→H⇨ H$</li>
+<li>否定后件式：$\lnot H,G→H⇨ \lnot G$</li>
+<li>假言三段论：$G→H,H→I⇨G→I$</li>
+</ul>
+<p>推理满足三个规则：</p>
+<ul>
+<li>(P)前提引用规则：在推理过程中，任何位置都可以引入前提</li>
+<li>(T)结果引用规则：推理结果可以引用多前提推出的结果</li>
+<li>(CP)如果前提集合和公式P能推导出S，那么集合就可以推出P→S</li>
+</ul>
+<p>推理也可以用真值表，给出合理的解释判断结果是否恒真，是则一致</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">#离散数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>完整的命题论</div>
+      <div>https://blog.minloha.cn/2022/05/21/命题在离散中/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Minloha</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月21日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年7月13日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                <i class="iconfont icon-nc"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/24/%E5%88%9B%E6%84%8F%E5%8C%96%E7%9A%84Webassembly/" title="创意化的Webassembly">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">创意化的Webassembly</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/12/%E4%BF%A1%E6%81%AF%E7%86%B5%E4%B8%8E%E8%B5%AB%E5%A4%AB%E6%9B%BC%E7%AE%97%E6%B3%95/" title="信息熵与赫夫曼算法">
+                        <span class="hidden-mobile">信息熵与赫夫曼算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/valine/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"oqOeqFF1THoj5P7HoADOODoW-MdYXbMMI","appKey":"rKuApNEi6G88fc9Lk9lS0Ozy","path":"window.location.pathname","placeholder":"如果发现错字或者是发现彩蛋都可以在此评论。留下相对完善的信息,会有意想不到的惊喜!","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://oqoeqff1.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Copyright © 2022 <a href="https://www.minloha.cn" target="_blank" rel="nofollow noopener"><span>Minloha</span></a>  |  WebSite Belong minloha.cn<br> <span id="sitetime"></span><br> Power by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank">Fluid</a></br> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      <a href="https://icp.gov.moe/?keyword=20220440" target="_blank">萌ICP备20220440号</a>
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+<!-- 时间自增 -->
+<script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/timeadd.js" ></script>
+<!--aplayer-->
+<div id="aplayer" class="aplayer" data-id="5484247565" style="color:black;" data-server="netease" data-type="playlist" data-fixed="true" fixed="false" data-listfolded="true" data-order="list" data-loop="all" data-theme="#2980b9"></div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/av/av-min.js" ></script>
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/typed/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/tocbot/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/clipboard/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/anchor/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/mathjax/tex-svg.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">允许javascript会更佳哦~</div>
+  </noscript>
+</body>
+</html>

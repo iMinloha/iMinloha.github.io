@@ -1,0 +1,1037 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <link rel="icon" href="https://minloha.oss-cn-hongkong.aliyuncs.com/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#828282">
+  <meta name="author" content="Minloha">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="MiraiQQ机器人框架相关介绍解析,运行一周年纪念">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mirai框架开发QQ机器人">
+<meta property="og:url" content="https://blog.minloha.cn/2021/11/11/Mirai%E6%9C%BA%E5%99%A8%E4%BA%BA/index.html">
+<meta property="og:site_name" content="minloha.cn">
+<meta property="og:description" content="MiraiQQ机器人框架相关介绍解析,运行一周年纪念">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/1.png">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/2.png">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/3.png">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/4.png">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/5.png">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/6.png">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/7.png">
+<meta property="article:published_time" content="2021-11-11T13:39:35.000Z">
+<meta property="article:modified_time" content="2022-07-13T09:52:28.172Z">
+<meta property="article:author" content="Minloha">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="教程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/1.png">
+  
+  
+  <title>Mirai框架开发QQ机器人 - minloha.cn</title>
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.css" />
+<link  rel="stylesheet" href="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/github/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.minloha.cn","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"BIl5WGlKcjHORw9IWxwLDGMw-gzGzoHsz","app_key":"ybHHVOBbwvCfDchbKs2WNr3x","server_url":"https://bil5wglk.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/Meting.min.js" ></script>
+  <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/anime.min.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/fireworks.js" ></script>
+  <script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/clicktext.js" ></script>
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>minloha.cn</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-articles"></i>
+                文章
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-category-fill"></i>
+                    分类
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/tags/">
+                    <i class="iconfont icon-tags-fill"></i>
+                    标签
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/archives/">
+                    <i class="iconfont icon-archive-fill"></i>
+                    归档
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-map"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/comment/">
+                    <i class="iconfont icon-comment"></i>
+                    闲说
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/albums/">
+                    <i class="iconfont icon-image"></i>
+                    图集
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background9.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Mirai框架开发QQ机器人"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Minloha
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-11-11 21:39" pubdate>
+          2021年11月11日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          27 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Mirai框架开发QQ机器人</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="QQ机器人"><a href="#QQ机器人" class="headerlink" title="QQ机器人"></a>QQ机器人</h2><p>酷Q机器人已经从叱诧风云的QQ机器人框架中消失，仅存的几款开源框架，不是效果不理想，就是自定义度不高。而Mirai就是这样一个框架，其内部的功能并不是很强大，但他对一些功能的封装并不严格，所以也就有机会能和底层进行交流。</p>
+<h2 id="必要的知识"><a href="#必要的知识" class="headerlink" title="必要的知识"></a>必要的知识</h2><p>首先你要保证你已经掌握了Java或者kotlin的语法规则，并且能够写出最基本的代码(Hello world)</p>
+<h1 id="安装MCL"><a href="#安装MCL" class="headerlink" title="安装MCL"></a>安装MCL</h1><h3 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h3><p><a target="_blank" rel="noopener" href="https://github.com/iTXTech/mcl-installer">MCL Installer自动安装工具</a>可以获取到所有系统的<code>iTXTech MCL</code></p>
+<h3 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h3><ol>
+<li>安装 Java 运行时（版本必须 &gt;= 11）</li>
+<li>从 <a target="_blank" rel="noopener" href="https://github.com/iTXTech/mirai-console-loader/releases">Releases</a> 下载最新版本的<code>MCL</code></li>
+<li>解压到某处</li>
+<li>在命令行中执行<code>.\mcl</code>以启动<code>MCL</code></li>
+<li>启动过程中或许会需要安装openjdk，不推荐安装（使用你自己安装的jdk就可以）</li>
+<li>如果启动过程中出现类文件版本高低等问题，都可以通过修改jdk版本解决</li>
+</ol>
+<h2 id="下载Mirai"><a href="#下载Mirai" class="headerlink" title="下载Mirai"></a>下载Mirai</h2><h3 id="IDEA插件"><a href="#IDEA插件" class="headerlink" title="IDEA插件"></a>IDEA插件</h3><p>打开IDEA，在<code>文件-&gt;设置-&gt;插件</code>中搜索Mirai Console</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>安装完成后重启IDEA，然后就可以新建一个Mirai项目了</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选择jdk版本，新版本使用11及以上</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>你可以选择Kotlin或者Java，希望使用什么语言就选择什么语言，我这里用Java举例</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>一些简单的基本信息</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>文件路径</p>
+<h3 id="开始编写"><a href="#开始编写" class="headerlink" title="开始编写"></a>开始编写</h3><p>创建新项目的过程可能会有点慢，静静等待一会就好了</p>
+<p>新项目创建好的主类应该含有下面这些代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Plugin INSTANCE = <span class="hljs-keyword">new</span> Plugin();<br><span class="hljs-comment">//这里是注册方法</span><br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Plugin</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">super</span>(<span class="hljs-keyword">new</span> JvmPluginDescriptionBuilder(<span class="hljs-string">&quot;主类&quot;</span>, <span class="hljs-string">&quot;1.0&quot;</span>)<br>                .name(<span class="hljs-string">&quot;插件名字&quot;</span>)<br>                .author(<span class="hljs-string">&quot;作者名&quot;</span>)<br>                .build());<br>    &#125;<br>&#125;<br><span class="hljs-comment">//插件被加载时的方法</span><br><span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onLoad</span><span class="hljs-params">(<span class="hljs-meta">@NotNull</span> PluginComponentStorage $<span class="hljs-keyword">this</span>$onLoad)</span> </span>&#123;<br>        <span class="hljs-comment">//一般在这里写有关配置文件的加载</span><br>    &#125;<br><span class="hljs-comment">//插件运行时的方法</span><br><span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onEnable</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//主要功能的注册和事件的监听写在这里</span><br>    &#125;<br><span class="hljs-comment">//插件卸载时执行的方法</span><br><span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDisable</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//一般这里写保存配置文件或者关闭流</span><br>    &#125;<br></code></pre></td></tr></table></figure>
+<h4 id="加载配置文件"><a href="#加载配置文件" class="headerlink" title="加载配置文件"></a>加载配置文件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onLoad</span><span class="hljs-params">(<span class="hljs-meta">@NotNull</span> PluginComponentStorage $<span class="hljs-keyword">this</span>$onLoad)</span> </span>&#123;<br>    getConfigFolder();<span class="hljs-comment">//获取配置文件目录，是以你插件的名字命名的</span><br>&#125;    <br></code></pre></td></tr></table></figure>
+<h4 id="默认代码"><a href="#默认代码" class="headerlink" title="默认代码"></a>默认代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onEnable</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//注册监听事件</span><br>        EventChannel&lt;Event&gt; eventChannel = GlobalEventChannel.INSTANCE.parentScope(<span class="hljs-keyword">this</span>);<br>        <br>        <span class="hljs-comment">//可以选择监听群聊消息</span><br>        eventChannel.subscribeAlways(GroupMessageEvent.class, g -&gt; &#123;<br>            <span class="hljs-comment">//监听群消息</span><br>            System.out.println(g.getMessage().contentToString());<br>        &#125;);<br>        <br>        <span class="hljs-comment">//也可以选择监听好友消息</span><br>        eventChannel.subscribeAlways(FriendMessageEvent.class, f -&gt; &#123;<br>            <span class="hljs-comment">//好友消息</span><br>            System.out.println(f.getMessage().contentToString());<br>        &#125;);<br>        <span class="hljs-comment">//事件的种类很多就不意一一列举了，不过写法都是类似的</span><br>    &#125;<br></code></pre></td></tr></table></figure>
+<h4 id="常用事件"><a href="#常用事件" class="headerlink" title="常用事件"></a>常用事件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">EventChannel&lt;Event&gt; eventChannel = GlobalEventChannel.INSTANCE.parentScope(<span class="hljs-keyword">this</span>);<br><span class="hljs-comment">//定义操作</span><br>eventChannel.subscribeAlways(事件种类.class, g -&gt; &#123;<br>    <span class="hljs-comment">//操作</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>功能</th>
+<th>可供选择的操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GroupEvent</td>
+<td>群聊事件</td>
+<td>.getBot()获取机器人Bot对象</td>
+</tr>
+<tr>
+<td>FriendEvent</td>
+<td>好友事件</td>
+<td>.getBot()获取机器人Bot对象</td>
+</tr>
+<tr>
+<td>StrangerEvent</td>
+<td>陌生人事件</td>
+<td>.getBot()获取机器人Bot对象</td>
+</tr>
+<tr>
+<td>下面就是一些细化事件</td>
+<td>—-</td>
+<td>—-</td>
+</tr>
+<tr>
+<td>FriendAddEvent</td>
+<td>添加好友事件</td>
+<td>.getFriend()获取添加者的Friend对象</td>
+</tr>
+<tr>
+<td>StrangerAddEvent</td>
+<td>陌生人添加事件</td>
+<td>.getStranger()获取Stranger对象（一般Stranger都是临时会话的对象）</td>
+</tr>
+<tr>
+<td>FriendAvatarChangedEvent</td>
+<td>好友头像改变事件</td>
+<td>.getBot()获取机器人Bot对象</td>
+</tr>
+<tr>
+<td>MemberJoinEvent</td>
+<td>群聊新成员加入事件</td>
+<td>.getMember()获得成员对象</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="对象常用方法"><a href="#对象常用方法" class="headerlink" title="对象常用方法"></a>对象常用方法</h4><p>GroupEvent:</p>
+<p>​    1、getBot()获取机器人</p>
+<p>​    2、getGroup()获取群聊对象：</p>
+<p>Group:</p>
+<p>​    1、contains(QQ号)判断是否在群聊内</p>
+<p>​    2、getAvatarUrl()获取群头像链接</p>
+<p>​    3、getBotAsMember()作为群成员对象获取机器人</p>
+<p>​    4、getBotMuteRemaining()查看机器人被禁言的剩余时间</p>
+<p>​    5、getBotPermission()获得机器人许可等级</p>
+<p>​    6、getMembers()获得某个群成员</p>
+<p>​    7、getName()获得机器人的群昵称</p>
+<p>​    8、getSettings()获得群聊的设置</p>
+<p>​    9、sendMessage()在群聊发消息</p>
+<p>FriendEvent:</p>
+<p>​    1、getFriend()获得朋友对象</p>
+<p>Friend：</p>
+<p>​    1、sendMessage()发送消息</p>
+<p>​    2、delete()删除好友</p>
+<p>Member:</p>
+<p>​    1、getNameCard()获得名片</p>
+<p>​    2、isMuted()判断是否禁言</p>
+<p>​    3、unmute()解除禁言</p>
+<p><strong>更多的</strong>方法可以在IDEA中尝试，命名还是很好懂的</p>
+<h4 id="消息元素"><a href="#消息元素" class="headerlink" title="消息元素"></a>消息元素</h4><p>在java中，一般这么构建消息链</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">MessageChainBuilder builder = <span class="hljs-keyword">new</span> MessageChainBuilder();<br></code></pre></td></tr></table></figure>
+<p>针对<code>builder</code>对象，我们可以对他插入消息元素等</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">AtAll.<span class="hljs-constructor">INSTANCE(@所有人)</span><br><span class="hljs-keyword">new</span> <span class="hljs-constructor">Face(Face.表情名)</span><br><span class="hljs-keyword">new</span> <span class="hljs-constructor">At(114514L)</span> (@某个人，加QQ号)<br></code></pre></td></tr></table></figure>
+<hr>
+<p>图片：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java">EventChannel&lt;Event&gt; eventChannel = GlobalEventChannel.INSTANCE.parentScope(<span class="hljs-keyword">this</span>);<br>eventChannel.subscribeAlways(FriendEvent.class, event-&gt;&#123;<br>    <span class="hljs-comment">//发送本地图片</span><br>    <span class="hljs-comment">//构建资源对象</span><br>    ExternalResource res = ExternalResource.create(<span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;本地图片&quot;</span>));<br>    <span class="hljs-comment">//构建图片对象</span><br>    Image image = event.getFriend().uploadImage(res);<br>    <span class="hljs-comment">//关闭资源流</span><br>    res.close();<br>    <span class="hljs-comment">//发送图片</span><br>    event.getFriend().sendMessage(image);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>也可以通过图片ID发送图片，不过图片ID一般看不到</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">EventChannel&lt;Event&gt; eventChannel = GlobalEventChannel.INSTANCE.parentScope(<span class="hljs-keyword">this</span>);<br>eventChannel.subscribeAlways(FriendEvent.class, event-&gt;&#123;<br>    <span class="hljs-comment">//发送图片</span><br>    event.getFriend().sendMessage(Image.fromId(<span class="hljs-string">&quot;图片ID&quot;</span>));<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>发出声音：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">EventChannel&lt;Event&gt; eventChannel = GlobalEventChannel.INSTANCE.parentScope(<span class="hljs-keyword">this</span>);<br>eventChannel.subscribeAlways(FriendEvent.class, event-&gt;&#123;<br>    <span class="hljs-comment">//还是资源对象</span><br>	ExternalResource res = ExternalResource.create(<span class="hljs-keyword">new</span> File(<span class="hljs-string">&quot;声音文件.amr&quot;</span>));<br>	Audio audio = event.getFriend().uploadAudio(res); <span class="hljs-comment">// 适用于2.7+</span><br>	<span class="hljs-comment">// Voice audio = contact.uploadVoice(res); // 可用于2.0~2.7</span><br>	<span class="hljs-comment">//关闭资源流</span><br>	res.close();<br>	event.getFriend().sendMessage(audio);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><p>新建一个java文件，命名随意，我这里使用了echo</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> 指令类 <span class="hljs-keyword">extends</span> <span class="hljs-title">JSimpleCommand</span> </span>&#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> 指令类 INSTANCE = <span class="hljs-keyword">new</span> 指令类();<br><br>    <span class="hljs-comment">//构造函数，用于初始化对象</span><br>    <span class="hljs-keyword">private</span> 指令类() &#123;<br>        <span class="hljs-keyword">super</span>(主类名.INSTANCE, <span class="hljs-string">&quot;指令&quot;</span>, <span class="hljs-string">&quot;功能&quot;</span>);<br>        <span class="hljs-keyword">this</span>.setDescription(<span class="hljs-string">&quot;描述&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Handler</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handle</span><span class="hljs-params">(CommandSender sender, User target, String msg)</span> </span>&#123;<br>        <span class="hljs-comment">//然后就可以实现你的算法了</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然后在主类内进行注册指令</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//在启用运行函数内注册方法</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onEnable</span><span class="hljs-params">()</span> </span>&#123;<br>    CommandManager.INSTANCE.registerCommand(指令类.INSTANCE, <span class="hljs-keyword">false</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="插件的编译"><a href="#插件的编译" class="headerlink" title="插件的编译"></a>插件的编译</h3><p>在项目构建工具的右侧，会有一条工具栏，侧边的Gradle中点击拉开build，找到jar工具，双击即可编译出jar文件</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>导出的jar文件在你的项目路径下<code>build/libs/文件名.jar</code>将他拖入MCL启动器的plugins文件夹下</p>
+<h1 id="配置MCL"><a href="#配置MCL" class="headerlink" title="配置MCL"></a>配置MCL</h1><p>在上述操作完成后，可以打开MCL启动器的目录，找到<code>config/Console/AutoLogin.yml</code>，向里面添加你的机器人QQ，方便之后进行自动登录，第一次登录可能会出现拦截，不过只需在一部<em>手机</em>上打开弹窗的链接，进行安全认证即可</p>
+<hr>
+<p>MCL的其他文件夹或文件的功能我就不多赘述了，当你完成上述操作后，回到MCL的根路径下，就可以开启机器人了</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/mirai/7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>(放一张正常运行的图片)</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>如果有不会的可以查看大佬的非官方文档（虽然是kotlin，不过大体是相似的）</p>
+<p>觉得不错就分享出去吧~</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://mirai.mamoe.net/topic/802">https://mirai.mamoe.net/topic/802</a></p>
+</blockquote>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/java/">#java</a>
+      
+        <a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Mirai框架开发QQ机器人</div>
+      <div>https://blog.minloha.cn/2021/11/11/Mirai机器人/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Minloha</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年11月11日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年7月13日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                <i class="iconfont icon-nc"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/12/03/HTTPS%E3%80%81SSL%E3%80%81TLS%E7%9A%84%E5%85%B3%E7%B3%BB/" title="HTTPS、SSL、TLS的关系">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTTPS、SSL、TLS的关系</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/10/Muiu%E6%8F%92%E4%BB%B6/" title="Muiu插件">
+                        <span class="hidden-mobile">Muiu插件</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/valine/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"oqOeqFF1THoj5P7HoADOODoW-MdYXbMMI","appKey":"rKuApNEi6G88fc9Lk9lS0Ozy","path":"window.location.pathname","placeholder":"如果发现错字或者是发现彩蛋都可以在此评论。留下相对完善的信息,会有意想不到的惊喜!","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://oqoeqff1.api.lncldglobal.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Copyright © 2022 <a href="https://www.minloha.cn" target="_blank" rel="nofollow noopener"><span>Minloha</span></a>  |  WebSite Belong minloha.cn<br> <span id="sitetime"></span><br> Power by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> | Theme <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank">Fluid</a></br> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      <a href="https://icp.gov.moe/?keyword=20220440" target="_blank">萌ICP备20220440号</a>
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+<!-- 时间自增 -->
+<script  src="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/item/timeadd.js" ></script>
+<!--aplayer-->
+<div id="aplayer" class="aplayer" data-id="5484247565" style="color:black;" data-server="netease" data-type="playlist" data-fixed="true" fixed="false" data-listfolded="true" data-order="list" data-loop="all" data-theme="#2980b9"></div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/nprogress/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/av/av-min.js" ></script>
+<script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/typed/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/tocbot/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/clipboard/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/anchor/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://minloha.oss-accelerate.aliyuncs.com/blog/script/fancybox/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://minloha.oss-accelerate.aliyuncs.com/blog/script/mathjax/tex-svg.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">允许javascript会更佳哦~</div>
+  </noscript>
+</body>
+</html>
