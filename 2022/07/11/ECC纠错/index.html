@@ -23,11 +23,13 @@
 <meta property="og:site_name" content="minloha.cn">
 <meta property="og:description" content="服务器常用的带有ECC纠错的内存条到底是怎么纠错的？为什么大家不希望买到服务器内存条？">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/img/background19.jpg">
 <meta property="article:published_time" content="2022-07-11T13:53:42.000Z">
-<meta property="article:modified_time" content="2022-07-12T04:41:46.335Z">
+<meta property="article:modified_time" content="2022-07-14T09:21:33.431Z">
 <meta property="article:author" content="Minloha">
 <meta property="article:tag" content="计算机组成原理">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/img/background19.jpg">
   
   
   <title>ECC纠错的原理 - minloha.cn</title>
@@ -246,7 +248,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background9.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background19.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -280,7 +282,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          533 字
+          2.6k 字
         
       </span>
     
@@ -291,7 +293,7 @@
         
         
         
-          3 分钟
+          15 分钟
         
       </span>
     
@@ -353,10 +355,106 @@
               
               <h1 id="ECC内存条"><a href="#ECC内存条" class="headerlink" title="ECC内存条"></a>ECC内存条</h1><p>内存条属于RAM，在电脑每次启动运行时，内存读取硬盘数据保存并便于CPU使用，但是在读取过程中因为存在电子干扰，所以对于载流子传递过程中可能会有点位的变化，也就是正电变负电等等，二进制中就是1变成0，或者0变成1，在宇宙射线较强或者人工电子仪器过多的地方，计算机对读取过程精度要求较高，所以需要在读取过程进行主动的纠错，那都有什么方法纠错呢？</p>
 <h2 id="三遍传输"><a href="#三遍传输" class="headerlink" title="三遍传输"></a>三遍传输</h2><p>如何进行纠错呢？一般通过把数据同时传输三次，如果出现不同，则相互比较替换，比如我传输:11001011001</p>
-<p>假设它发生了错误，变成了11001111001，我们把错误和其他两次传输内容比较，很容易就找出并改正错误，但也就有一个问题，如果我的数据量很大，那就要牺牲内存2/3的区域用于存储这些进行纠错的编码（纠错码）所以这种方法的缺点就是对内存的利用率偏低</p>
+<p>假设它发生了错误，变成了11001111001，我们把错误和其他两次传输内容比较，很容易就找出并改正错误，但也就有一个问题，如果我的数据量很大，那就要牺牲内存2/3的区域用于存储这些进行纠错的编码（纠错码）所以这种方法的缺点就是对内存的利用率偏低。</p>
 <h2 id="奇偶校验"><a href="#奇偶校验" class="headerlink" title="奇偶校验"></a>奇偶校验</h2><p>通过统计一段二进制码中1的基偶数，判断数据是否被修改。通常加入一位纠错码，比如11001011001，我们看到有6个1，也就是偶数个，那么我们在最前面加上0作为纠错码，这样二进制总体的基偶数并没有改变。也就是011001011001，如果在传输过程中改变任何一位，基偶性就会改变。</p>
-<p>但是知道了改变却不知道哪里改变，所以只能重新发送一遍🤔</p>
-<h2 id="汉明码"><a href="#汉明码" class="headerlink" title="汉明码"></a>汉明码</h2>
+<p>但是知道了改变却不知道哪里改变，所以只能重新发送一遍（🤔）比较浪费资源</p>
+<h2 id="汉明码"><a href="#汉明码" class="headerlink" title="汉明码"></a>汉明码</h2><p>我们在线性代数和离散数学中学过邻接矩阵，如果我们把传输数据折叠为邻接矩阵呢？我们先假设数据内容够我们折叠为4×4方阵。假设数据为1100|1010|1001|1011</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}
+1&1&0&0\\
+1&0&1&0\\
+1&0&0&1\\
+1&0&1&0\\
+\end{matrix} \right]</script><p>我们横向折叠的原因是，如果我们把每一位都用二进制形式表示，那么邻接矩阵的位数二进制就是：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>0000</strong></th>
+<th style="text-align:center"><strong>0001</strong></th>
+<th>0010</th>
+<th>0011</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0100</strong></td>
+<td style="text-align:center">0101</td>
+<td><strong>0110</strong></td>
+<td>0111</td>
+</tr>
+<tr>
+<td><strong>1000</strong></td>
+<td style="text-align:center">1001</td>
+<td>1010</td>
+<td><strong>1011</strong></td>
+</tr>
+<tr>
+<td><strong>1100</strong></td>
+<td style="text-align:center">1101</td>
+<td><strong>1110</strong></td>
+<td>1111</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>我们看到每一列都是具有规律的。我们把列的倒数第一位为1的几位C1组，倒数第二位记为C2组，相似的，行正数第三位为1的记为L1，行第一位为1的记为L2。结合容斥原理，我们只需统计各组内1的基偶就能定位出传输错误的位置了！</p>
+<p>如果你学过数字电路技术，哪怕是群论的布尔运算，我们都能知道，统计数字对电路很难但逻辑运算对电路很简单，所以我们用哪种运算符可以发现变化位置呢？答案是异或，即不同为1相同为0，我们把上面的矩阵改个数字。</p>
+<script type="math/tex; mode=display">
+\left[\begin{matrix}
+1&1&0&0\\
+1&0&1&0\\
+0&0&0&1\\
+1&0&1&0\\
+\end{matrix} \right]</script><p>我们把1的位置都统计出来。</p>
+<p>0000，0001，0100，0110，1011，1100，1110。我们按位异或，得到结果为1000，这个结果恰好是我们改动的位置。这不是偶然而是必然，原理就是：</p>
+<p>当传递数据中1的个数是基数个时，无论怎么运算，总会出现位数为1，而原数据1的个数是偶数，无论怎么运算，都只会是0000，这也是邻接矩阵的二进制性质。</p>
+<p>至于如何保证原数据1的个数是偶数，我们只要让邻接矩阵一行和一列修改就可以，而每位都是2的整数次幂，实现过程只需要像C语言的”&gt;&gt;”进行一次移位就可以了。</p>
+<h2 id="LDPC编码"><a href="#LDPC编码" class="headerlink" title="LDPC编码"></a>LDPC编码</h2><blockquote>
+<p>这部分会有难度，小心！</p>
+</blockquote>
+<p>LDPC主要应用于固态硬盘读取过程中的纠错，他的全名是：Low Density Parity Check Code，中文名：低密度奇偶校验码.</p>
+<p>首先我们引入，如果n位是有效的数据位为信息位，码字总长位m(m&gt;n)，那么监督位就是剩下的m-n位，因为LDPC编码能够逼近香农编码极限………</p>
+<p>信息论没学过？香农极限表达式不知道？没事，我告诉你，香农第二定理就是我们要的：</p>
+<script type="math/tex; mode=display">
+C=Blog\,(1+\frac{S}{N})</script><p>其中C表示信道容量，B为信道的宽度，S/N为信噪比，N为噪音。</p>
+<p>信息论完事后就是线性代数：</p>
+<p>我们的LDPC编码本质上是块码，我们假设传递过来的数据是一个向量（只有1和0的向量）记作<strong>D</strong>，我们只要让：</p>
+<script type="math/tex; mode=display">
+\left(\begin{matrix}
+0&0&0
+\end{matrix} \right)^T=D\oplus\left(\begin{matrix}
+1&0&0&1&0&1\\
+0&1&0&1&1&1\\
+0&0&1&0&1&1\\
+\end{matrix} \right)</script><p>其中令<strong>H</strong>为校验矩阵即：</p>
+<script type="math/tex; mode=display">
+H=\left(\begin{matrix}
+1&0&0&0&1&1\\
+0&1&0&1&1&0\\
+0&0&1&1&1&1\\
+\end{matrix} \right)</script><p>校验矩阵虽然看起来比较复杂，但实际上他是Tanner图的邻接矩阵，如果你学过那就会非常好懂，得到LDPC码余下的几位可以用通式表示：</p>
+<script type="math/tex; mode=display">
+L_i=P_{in}\oplus D_n</script><p>而最后得到的L就是我们的LDPC码，可喜可贺。</p>
+<p>至于H矩阵的求法，结合Tanner图就可以了，如果D的秩为n，那么H秩为n+2。进行运算后就可以了~</p>
+<p>至于使用如果原数据出现任意位的数据改变，就一定不会满足与H运算后仍未0向量。完成了编码，我们尝试一下解码:</p>
+<p>举个解码的例子：</p>
+<h3 id="软解码"><a href="#软解码" class="headerlink" title="软解码"></a>软解码</h3><p>迭代1：第一次信息传递迭代之后，Hard decode解码，此时n0，n4，n6仍为1。</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.co/blog/page/ecc/1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>迭代2：第二次信息传递迭代之后，Hard decode解码，此时n0仍为1。</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.co/blog/page/ecc/2.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>迭代3：第二次信息传递迭代之后，Hard decode解码，奇偶校验归0。</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.co/blog/page/ecc/3.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="软解码-1"><a href="#软解码-1" class="headerlink" title="软解码"></a>软解码</h3><p>软解码的原理是调整不同read level，根据读取结果后，判断bit是1或者0的概率，然后根据1或者0概率实现软解码, 如下图：</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.co/blog/page/ecc/4.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>LDPC在SSD中的纠错流程如下图所示。值得注意的是，NAND硬判决、数据传输到控制器，以及硬判决解码这几个过程的速度都很快。软判决要读很多次，传输数据很多次，所以会对SSD的性能产生不好的影响。</p>
+<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.co/blog/page/ecc/5.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="总结与参考"><a href="#总结与参考" class="headerlink" title="总结与参考"></a>总结与参考</h2><p>本文主要列举了ECC纠错使用的编码以及拓展内容固态硬盘的纠错码，通过阅读本文，可以简单了解到基本内容，更深入的希望读者自己发掘！</p>
+<p>本文LDPC部分参考了：(太难了~)</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/514670102">https://zhuanlan.zhihu.com/p/514670102</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ccsss22/article/details/123261025">https://blog.csdn.net/ccsss22/article/details/123261025</a></p>
+<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1726156569403131467">https://baijiahao.baidu.com/s?id=1726156569403131467</a></p>
+
               
             </div>
             <hr/>
@@ -419,7 +517,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年7月12日</div>
+          <div>2022年7月14日</div>
         </div>
       
       <div class="license-meta-item">
@@ -455,6 +553,23 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/01/mathsystem/" title="吃饭遇到的代数系统">
+                        <span class="hidden-mobile">吃饭遇到的代数系统</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
