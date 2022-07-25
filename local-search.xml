@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>说说最近的情况</title>
+    <link href="/2022/07/24/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%B9%B2%E5%98%9B/"/>
+    <url>/2022/07/24/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%B9%B2%E5%98%9B/</url>
+    
+    <content type="html"><![CDATA[<h2 id="最近在忙的"><a href="#最近在忙的" class="headerlink" title="最近在忙的"></a>最近在忙的</h2><p>最近嘛，不是刚刚高考完嘛，虽然本人高考成绩不算出众，在文科方面确实差了一些，但是都是我自己学出来的也就没有什么后悔的。今年黑龙江一本线是429，我考了454，在小县城的普通高中，感觉还不错。</p><p>回到主线，因为这个分数比较尴尬吧，不能走出省，也就只能在当地找一个比较好的大学读着（等到考研时在南下吧），所以就选学校选了好久。写完志愿后又忙着学After Effect做特效啥的，也弄了好久。头些日子电脑又出问题，我又重装了一下系统。</p><p>在一切破事完成后，我就开始学习了，我主要完成了线性代数部分的内容以及精通一下C和C++，</p><p>前一周吧，因为时间稍微款搜了哈，就鼓捣鼓捣博客的CDN，结果不小心给对象存储删除了，没办法呀，也没有备份，又花了一点时间从腾讯的对象存储换到阿里云的（阿里云的性价比挺高）</p><p>这一周吧，忽然有了一个想法，打算写一篇研究报告当毕业设计了，就是关于《JDK源码阅读理解底层实现》，我查阅了一下发现百度上并没有关于AOT对Java的预热原理，所以我就创新的完成啦！</p><h2 id="现在的实力"><a href="#现在的实力" class="headerlink" title="现在的实力"></a>现在的实力</h2><div class="table-container"><table><thead><tr><th>技术</th><th>能力值(10)</th></tr></thead><tbody><tr><td>C/C++</td><td>7</td></tr><tr><td>Java</td><td>8</td></tr><tr><td>Python</td><td>5</td></tr><tr><td>Html/Css/Javascript</td><td>6</td></tr><tr><td>Mysql/Redis</td><td>6</td></tr><tr><td>UI设计</td><td>4</td></tr><tr><td>高等数学</td><td>6</td></tr><tr><td>线性代数</td><td>6.5</td></tr><tr><td>算法</td><td>7.5</td></tr><tr><td>离散数学</td><td>10</td></tr><tr><td>深度学习</td><td>3</td></tr></tbody></table></div><h2 id="发展方向"><a href="#发展方向" class="headerlink" title="发展方向"></a>发展方向</h2><p>这应该算是一个阶段的展望吧，我个人是比较希望向深度学习神经网络或者算法工程师这方面发展的，不过我还是喜欢偏向理论研究的。</p><p>目前最想做的事情就是静下心能有个好地方让我认认真真的研究计算机，所以我就寄希望于大学的计算机科学院了……</p><p>最近主要在Qt方面下功夫，因为我除了Html就没有什么拿得出手的UI能力了…..</p><p>至于博客这里我肯定还会继续做的，而且我还要做的更好，这点毋庸置疑。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>娱乐</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>新鲜事</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ECC纠错的原理</title>
     <link href="/2022/07/11/ECC%E7%BA%A0%E9%94%99/"/>
     <url>/2022/07/11/ECC%E7%BA%A0%E9%94%99/</url>

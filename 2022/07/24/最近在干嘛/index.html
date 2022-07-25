@@ -16,23 +16,21 @@
   <meta name="author" content="Minloha">
   <meta name="keywords" content="">
   
-    <meta name="description" content="服务器常用的带有ECC纠错的内存条到底是怎么纠错的？为什么大家不希望买到服务器内存条？">
+    <meta name="description" content="好久没有更新博客内容,就简单的说说近况吧">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ECC纠错的原理">
-<meta property="og:url" content="https://blog.minloha.cn/2022/07/11/ECC%E7%BA%A0%E9%94%99/index.html">
+<meta property="og:title" content="说说最近的情况">
+<meta property="og:url" content="https://blog.minloha.cn/2022/07/24/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%B9%B2%E5%98%9B/index.html">
 <meta property="og:site_name" content="minloha.cn">
-<meta property="og:description" content="服务器常用的带有ECC纠错的内存条到底是怎么纠错的？为什么大家不希望买到服务器内存条？">
+<meta property="og:description" content="好久没有更新博客内容,就简单的说说近况吧">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/img/background19.jpg">
-<meta property="article:published_time" content="2022-07-11T13:53:42.000Z">
-<meta property="article:modified_time" content="2022-07-14T09:21:33.431Z">
+<meta property="article:published_time" content="2022-07-24T12:08:54.000Z">
+<meta property="article:modified_time" content="2022-07-25T07:00:05.536Z">
 <meta property="article:author" content="Minloha">
-<meta property="article:tag" content="计算机组成原理">
+<meta property="article:tag" content="新鲜事">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://minloha.oss-cn-hongkong.aliyuncs.com/img/background19.jpg">
   
   
-  <title>ECC纠错的原理 - minloha.cn</title>
+  <title>说说最近的情况 - minloha.cn</title>
 
   <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.css" />
@@ -247,13 +245,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background19.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background9.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ECC纠错的原理"></span>
+            <span id="subtitle" data-typed-text="说说最近的情况"></span>
           
         </div>
 
@@ -269,8 +267,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-11 21:53" pubdate>
-          2022年7月11日 晚上
+        <time datetime="2022-07-24 20:08" pubdate>
+          2022年7月24日 晚上
         </time>
       </span>
     
@@ -281,7 +279,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          723 字
         
       </span>
     
@@ -292,7 +290,7 @@
         
         
         
-          15 分钟
+          5 分钟
         
       </span>
     
@@ -348,111 +346,75 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ECC纠错的原理</h1>
+            <h1 style="display: none">说说最近的情况</h1>
             
             <div class="markdown-body">
               
-              <h1 id="ECC内存条"><a href="#ECC内存条" class="headerlink" title="ECC内存条"></a>ECC内存条</h1><p>内存条属于RAM，在电脑每次启动运行时，内存读取硬盘数据保存并便于CPU使用，但是在读取过程中因为存在电子干扰，所以对于载流子传递过程中可能会有点位的变化，也就是正电变负电等等，二进制中就是1变成0，或者0变成1，在宇宙射线较强或者人工电子仪器过多的地方，计算机对读取过程精度要求较高，所以需要在读取过程进行主动的纠错，那都有什么方法纠错呢？</p>
-<h2 id="三遍传输"><a href="#三遍传输" class="headerlink" title="三遍传输"></a>三遍传输</h2><p>如何进行纠错呢？一般通过把数据同时传输三次，如果出现不同，则相互比较替换，比如我传输:11001011001</p>
-<p>假设它发生了错误，变成了11001111001，我们把错误和其他两次传输内容比较，很容易就找出并改正错误，但也就有一个问题，如果我的数据量很大，那就要牺牲内存2/3的区域用于存储这些进行纠错的编码（纠错码）所以这种方法的缺点就是对内存的利用率偏低。</p>
-<h2 id="奇偶校验"><a href="#奇偶校验" class="headerlink" title="奇偶校验"></a>奇偶校验</h2><p>通过统计一段二进制码中1的基偶数，判断数据是否被修改。通常加入一位纠错码，比如11001011001，我们看到有6个1，也就是偶数个，那么我们在最前面加上0作为纠错码，这样二进制总体的基偶数并没有改变。也就是011001011001，如果在传输过程中改变任何一位，基偶性就会改变。</p>
-<p>但是知道了改变却不知道哪里改变，所以只能重新发送一遍（🤔）比较浪费资源</p>
-<h2 id="汉明码"><a href="#汉明码" class="headerlink" title="汉明码"></a>汉明码</h2><p>我们在线性代数和离散数学中学过邻接矩阵，如果我们把传输数据折叠为邻接矩阵呢？我们先假设数据内容够我们折叠为4×4方阵。假设数据为1100|1010|1001|1011</p>
-<script type="math/tex; mode=display">
-\left[\begin{matrix}
-1&1&0&0\\
-1&0&1&0\\
-1&0&0&1\\
-1&0&1&0\\
-\end{matrix} \right]</script><p>我们横向折叠的原因是，如果我们把每一位都用二进制形式表示，那么邻接矩阵的位数二进制就是：</p>
-<div class="table-container">
+              <h2 id="最近在忙的"><a href="#最近在忙的" class="headerlink" title="最近在忙的"></a>最近在忙的</h2><p>最近嘛，不是刚刚高考完嘛，虽然本人高考成绩不算出众，在文科方面确实差了一些，但是都是我自己学出来的也就没有什么后悔的。今年黑龙江一本线是429，我考了454，在小县城的普通高中，感觉还不错。</p>
+<p>回到主线，因为这个分数比较尴尬吧，不能走出省，也就只能在当地找一个比较好的大学读着（等到考研时在南下吧），所以就选学校选了好久。写完志愿后又忙着学After Effect做特效啥的，也弄了好久。头些日子电脑又出问题，我又重装了一下系统。</p>
+<p>在一切破事完成后，我就开始学习了，我主要完成了线性代数部分的内容以及精通一下C和C++，</p>
+<p>前一周吧，因为时间稍微款搜了哈，就鼓捣鼓捣博客的CDN，结果不小心给对象存储删除了，没办法呀，也没有备份，又花了一点时间从腾讯的对象存储换到阿里云的（阿里云的性价比挺高）</p>
+<p>这一周吧，忽然有了一个想法，打算写一篇研究报告当毕业设计了，就是关于《JDK源码阅读理解底层实现》，我查阅了一下发现百度上并没有关于AOT对Java的预热原理，所以我就创新的完成啦！</p>
+<h2 id="现在的实力"><a href="#现在的实力" class="headerlink" title="现在的实力"></a>现在的实力</h2><div class="table-container">
 <table>
 <thead>
 <tr>
-<th><strong>0000</strong></th>
-<th style="text-align:center"><strong>0001</strong></th>
-<th>0010</th>
-<th>0011</th>
+<th>技术</th>
+<th>能力值(10)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>0100</strong></td>
-<td style="text-align:center">0101</td>
-<td><strong>0110</strong></td>
-<td>0111</td>
+<td>C/C++</td>
+<td>7</td>
 </tr>
 <tr>
-<td><strong>1000</strong></td>
-<td style="text-align:center">1001</td>
-<td>1010</td>
-<td><strong>1011</strong></td>
+<td>Java</td>
+<td>8</td>
 </tr>
 <tr>
-<td><strong>1100</strong></td>
-<td style="text-align:center">1101</td>
-<td><strong>1110</strong></td>
-<td>1111</td>
+<td>Python</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Html/Css/Javascript</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Mysql/Redis</td>
+<td>6</td>
+</tr>
+<tr>
+<td>UI设计</td>
+<td>4</td>
+</tr>
+<tr>
+<td>高等数学</td>
+<td>6</td>
+</tr>
+<tr>
+<td>线性代数</td>
+<td>6.5</td>
+</tr>
+<tr>
+<td>算法</td>
+<td>7.5</td>
+</tr>
+<tr>
+<td>离散数学</td>
+<td>10</td>
+</tr>
+<tr>
+<td>深度学习</td>
+<td>3</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>我们看到每一列都是具有规律的。我们把列的倒数第一位为1的几位C1组，倒数第二位记为C2组，相似的，行正数第三位为1的记为L1，行第一位为1的记为L2。结合容斥原理，我们只需统计各组内1的基偶就能定位出传输错误的位置了！</p>
-<p>如果你学过数字电路技术，哪怕是群论的布尔运算，我们都能知道，统计数字对电路很难但逻辑运算对电路很简单，所以我们用哪种运算符可以发现变化位置呢？答案是异或，即不同为1相同为0，我们把上面的矩阵改个数字。</p>
-<script type="math/tex; mode=display">
-\left[\begin{matrix}
-1&1&0&0\\
-1&0&1&0\\
-0&0&0&1\\
-1&0&1&0\\
-\end{matrix} \right]</script><p>我们把1的位置都统计出来。</p>
-<p>0000，0001，0100，0110，1011，1100，1110。我们按位异或，得到结果为1000，这个结果恰好是我们改动的位置。这不是偶然而是必然，原理就是：</p>
-<p>当传递数据中1的个数是基数个时，无论怎么运算，总会出现位数为1，而原数据1的个数是偶数，无论怎么运算，都只会是0000，这也是邻接矩阵的二进制性质。</p>
-<p>至于如何保证原数据1的个数是偶数，我们只要让邻接矩阵一行和一列修改就可以，而每位都是2的整数次幂，实现过程只需要像C语言的”&gt;&gt;”进行一次移位就可以了。</p>
-<h2 id="LDPC编码"><a href="#LDPC编码" class="headerlink" title="LDPC编码"></a>LDPC编码</h2><blockquote>
-<p>这部分会有难度，小心！</p>
-</blockquote>
-<p>LDPC主要应用于固态硬盘读取过程中的纠错，他的全名是：Low Density Parity Check Code，中文名：低密度奇偶校验码.</p>
-<p>首先我们引入，如果n位是有效的数据位为信息位，码字总长位m(m&gt;n)，那么监督位就是剩下的m-n位，因为LDPC编码能够逼近香农编码极限………</p>
-<p>信息论没学过？香农极限表达式不知道？没事，我告诉你，香农第二定理就是我们要的：</p>
-<script type="math/tex; mode=display">
-C=Blog\,(1+\frac{S}{N})</script><p>其中C表示信道容量，B为信道的宽度，S/N为信噪比，N为噪音。</p>
-<p>信息论完事后就是线性代数：</p>
-<p>我们的LDPC编码本质上是块码，我们假设传递过来的数据是一个向量（只有1和0的向量）记作<strong>D</strong>，我们只要让：</p>
-<script type="math/tex; mode=display">
-\left(\begin{matrix}
-0&0&0
-\end{matrix} \right)^T=D\oplus\left(\begin{matrix}
-1&0&0&1&0&1\\
-0&1&0&1&1&1\\
-0&0&1&0&1&1\\
-\end{matrix} \right)</script><p>其中令<strong>H</strong>为校验矩阵即：</p>
-<script type="math/tex; mode=display">
-H=\left(\begin{matrix}
-1&0&0&0&1&1\\
-0&1&0&1&1&0\\
-0&0&1&1&1&1\\
-\end{matrix} \right)</script><p>校验矩阵虽然看起来比较复杂，但实际上他是Tanner图的邻接矩阵，如果你学过那就会非常好懂，得到LDPC码余下的几位可以用通式表示：</p>
-<script type="math/tex; mode=display">
-L_i=P_{in}\oplus D_n</script><p>而最后得到的L就是我们的LDPC码，可喜可贺。</p>
-<p>至于H矩阵的求法，结合Tanner图就可以了，如果D的秩为n，那么H秩为n+2。进行运算后就可以了~</p>
-<p>至于使用如果原数据出现任意位的数据改变，就一定不会满足与H运算后仍未0向量。完成了编码，我们尝试一下解码:</p>
-<p>举个解码的例子：</p>
-<h3 id="软解码"><a href="#软解码" class="headerlink" title="软解码"></a>软解码</h3><p>迭代1：第一次信息传递迭代之后，Hard decode解码，此时n0，n4，n6仍为1。</p>
-<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.co/blog/page/ecc/1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>迭代2：第二次信息传递迭代之后，Hard decode解码，此时n0仍为1。</p>
-<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.co/blog/page/ecc/2.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>迭代3：第二次信息传递迭代之后，Hard decode解码，奇偶校验归0。</p>
-<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.co/blog/page/ecc/3.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h3 id="软解码-1"><a href="#软解码-1" class="headerlink" title="软解码"></a>软解码</h3><p>软解码的原理是调整不同read level，根据读取结果后，判断bit是1或者0的概率，然后根据1或者0概率实现软解码, 如下图：</p>
-<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.co/blog/page/ecc/4.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>LDPC在SSD中的纠错流程如下图所示。值得注意的是，NAND硬判决、数据传输到控制器，以及硬判决解码这几个过程的速度都很快。软判决要读很多次，传输数据很多次，所以会对SSD的性能产生不好的影响。</p>
-<p><img src="https://minloha.oss-cn-hongkong.aliyuncs.co/blog/page/ecc/5.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h2 id="总结与参考"><a href="#总结与参考" class="headerlink" title="总结与参考"></a>总结与参考</h2><p>本文主要列举了ECC纠错使用的编码以及拓展内容固态硬盘的纠错码，通过阅读本文，可以简单了解到基本内容，更深入的希望读者自己发掘！</p>
-<p>本文LDPC部分参考了：(太难了~)</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/514670102">https://zhuanlan.zhihu.com/p/514670102</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ccsss22/article/details/123261025">https://blog.csdn.net/ccsss22/article/details/123261025</a></p>
-<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1726156569403131467">https://baijiahao.baidu.com/s?id=1726156569403131467</a></p>
+<h2 id="发展方向"><a href="#发展方向" class="headerlink" title="发展方向"></a>发展方向</h2><p>这应该算是一个阶段的展望吧，我个人是比较希望向深度学习神经网络或者算法工程师这方面发展的，不过我还是喜欢偏向理论研究的。</p>
+<p>目前最想做的事情就是静下心能有个好地方让我认认真真的研究计算机，所以我就寄希望于大学的计算机科学院了……</p>
+<p>最近主要在Qt方面下功夫，因为我除了Html就没有什么拿得出手的UI能力了…..</p>
+<p>至于博客这里我肯定还会继续做的，而且我还要做的更好，这点毋庸置疑。</p>
 
               
             </div>
@@ -470,7 +432,7 @@ L_i=P_{in}\oplus D_n</script><p>而最后得到的L就是我们的LDPC码，可�
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  <a href="/categories/%E5%A8%B1%E4%B9%90/" class="category-chain-item">娱乐</a>
   
   
 
@@ -485,7 +447,7 @@ L_i=P_{in}\oplus D_n</script><p>而最后得到的L就是我们的LDPC码，可�
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">#计算机组成原理</a>
+        <a href="/tags/%E6%96%B0%E9%B2%9C%E4%BA%8B/">#新鲜事</a>
       
     </div>
   
@@ -497,8 +459,8 @@ L_i=P_{in}\oplus D_n</script><p>而最后得到的L就是我们的LDPC码，可�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ECC纠错的原理</div>
-      <div>https://blog.minloha.cn/2022/07/11/ECC纠错/</div>
+      <div>说说最近的情况</div>
+      <div>https://blog.minloha.cn/2022/07/24/最近在干嘛/</div>
     </div>
     <div class="license-meta">
       
@@ -510,13 +472,13 @@ L_i=P_{in}\oplus D_n</script><p>而最后得到的L就是我们的LDPC码，可�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月11日</div>
+          <div>2022年7月24日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年7月14日</div>
+          <div>2022年7月25日</div>
         </div>
       
       <div class="license-meta-item">
@@ -557,18 +519,12 @@ L_i=P_{in}\oplus D_n</script><p>而最后得到的L就是我们的LDPC码，可�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/24/%E6%9C%80%E8%BF%91%E5%9C%A8%E5%B9%B2%E5%98%9B/" title="说说最近的情况">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">说说最近的情况</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/07/01/mathsystem/" title="吃饭遇到的代数系统">
-                        <span class="hidden-mobile">吃饭遇到的代数系统</span>
+                      <a href="/2022/07/11/ECC%E7%BA%A0%E9%94%99/" title="ECC纠错的原理">
+                        <span class="hidden-mobile">ECC纠错的原理</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
