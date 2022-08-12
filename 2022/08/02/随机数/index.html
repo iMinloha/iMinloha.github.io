@@ -16,21 +16,23 @@
   <meta name="author" content="Minloha">
   <meta name="keywords" content="">
   
-    <meta name="description" content="简介">
+    <meta name="description" content="随机数大家可能都知道，但是随机数的种子有什么用呢?世界上到底有多少种生成随机数的算法呢？这篇文章带大家看看C++如何实现随机数算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高数存在但又不存在的内容">
-<meta property="og:url" content="https://blog.minloha.cn/2022/07/11/%E5%8F%8C%E6%9B%B2%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:title" content="随机数怎么样随机的">
+<meta property="og:url" content="https://blog.minloha.cn/2022/08/02/%E9%9A%8F%E6%9C%BA%E6%95%B0/index.html">
 <meta property="og:site_name" content="minloha.cn">
-<meta property="og:description" content="简介">
+<meta property="og:description" content="随机数大家可能都知道，但是随机数的种子有什么用呢?世界上到底有多少种生成随机数的算法呢？这篇文章带大家看看C++如何实现随机数算法">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-11T10:12:38.000Z">
-<meta property="article:modified_time" content="2022-07-11T10:13:03.553Z">
+<meta property="og:image" content="http://minloha.oss-cn-hongkong.aliyuncs.com/img/background32.jpg">
+<meta property="article:published_time" content="2022-08-02T11:30:23.000Z">
+<meta property="article:modified_time" content="2022-08-12T11:36:45.393Z">
 <meta property="article:author" content="Minloha">
-<meta property="article:tag" content="数学">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://minloha.oss-cn-hongkong.aliyuncs.com/img/background32.jpg">
   
   
-  <title>高数存在但又不存在的内容 - minloha.cn</title>
+  <title>随机数怎么样随机的 - minloha.cn</title>
 
   <link  rel="stylesheet" href="https://minloha.oss-accelerate.aliyuncs.com/blog/script/bootstrap/bootstrap.min.css" />
 <link  rel="stylesheet" href="https://minloha.oss-cn-hongkong.aliyuncs.com/blog/script/aplayer/APlayer.min.css" />
@@ -245,13 +247,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://minloha.oss-cn-hongkong.aliyuncs.com/img/background9.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('http://minloha.oss-cn-hongkong.aliyuncs.com/img/background32.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="高数存在但又不存在的内容"></span>
+            <span id="subtitle" data-typed-text="随机数怎么样随机的"></span>
           
         </div>
 
@@ -267,8 +269,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-11 18:12" pubdate>
-          2022年7月11日 晚上
+        <time datetime="2022-08-02 19:30" pubdate>
+          2022年8月2日 晚上
         </time>
       </span>
     
@@ -279,7 +281,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          2.3k 字
         
       </span>
     
@@ -290,7 +292,7 @@
         
         
         
-          1 分钟
+          13 分钟
         
       </span>
     
@@ -346,11 +348,38 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">高数存在但又不存在的内容</h1>
+            <h1 style="display: none">随机数怎么样随机的</h1>
             
             <div class="markdown-body">
               
-              
+              <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>都说计算机的随机都是伪随机，其实无论是生活的各个角落都是伪随机而不是真随机，真随机可能真的不存在，所有的事件都可以用简单的P(A)表示，无论是否有条件，那么我们如果实现这种随机呢？</p>
+<h2 id="随机算法"><a href="#随机算法" class="headerlink" title="随机算法"></a>随机算法</h2><p>随机数对人来说可能是随机的也可能不是，处于量子态，不过目前的计算机所生成的随机数其实不算真随机，而是一种周期很大的循环数，那这样的数怎么生成呢？</p>
+<h3 id="线性同余法-LCG"><a href="#线性同余法-LCG" class="headerlink" title="线性同余法[LCG]"></a>线性同余法[LCG]</h3><p>这种方法较为常用，在《C primer plus》中介绍了一段魔术语句，可以实现随机数，那么很多人可能好奇为什么这串代码可以生成随机数，这些已知的数字都是什么含义等等。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">m_rand</span><span class="hljs-params">(<span class="hljs-keyword">int</span> seed)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (<span class="hljs-number">214013</span>*seed+<span class="hljs-number">2531011</span>)&gt;&gt;<span class="hljs-number">16</span>&amp;((<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">15</span>)<span class="hljs-number">-1</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>其实学过数学的人都对这种Ax+B的格式不陌生，一般都以线性开头命名，即线性同余算法，这种算法用通式表示为：</p>
+<script type="math/tex; mode=display">
+seed = (A * seed + B) \% C</script><p>其中最大周期为C，A、B均为整数且C的所有因数中的质数都可以被A-1整除，即满足C%(A-1)==0</p>
+<p>对于A、B是经过计算得到的，通过移位运算不难算出重复周期为2^15-1即(1&lt;&lt;15)-1。代码中的种子常使用时间。在C++的Random头文件中使用了这种算法。</p>
+<p><img src="http://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/random/1.png" srcset="/img/loading.gif" lazyload alt="1"></p>
+<h3 id="平方取中法"><a href="#平方取中法" class="headerlink" title="平方取中法"></a>平方取中法</h3><p>这个算法的爹是冯诺依曼，算法主要讲的是：给定一个m位数记作x，其中m是偶数（基数计算带分数），计算x的平方，得到2m位数（不足在首端补0）然后从乘数中间得到m位数，然后重复这一步骤。</p>
+<h3 id="梅森旋转-Mersenne-Twister-算法"><a href="#梅森旋转-Mersenne-Twister-算法" class="headerlink" title="梅森旋转(Mersenne Twister)算法"></a>梅森旋转(Mersenne Twister)算法</h3><p>衡量梅森旋转(MT)的质量，需要使用K分布，K分布的定义是：一个周期为T的随机序列Xi，每一位都有w位，当满足下面条件就成为w位的K分布</p>
+<blockquote>
+<p>假设f(x)表示x的前v位形成的数字，并且长度为P的kv位序列：</p>
+<p>($f(x<em>i)$，$f(x</em>{i+1})$，$f(x<em>{i+2})$…….$f(x</em>{i+k-1})$)</p>
+<p>其中每个可能出现的$2^{kv}$组合在一个周期内出现相同的次数（除全0序列出现次数次数比其他序列少1次）</p>
+</blockquote>
+<p>算法需要借助线性反馈移位寄存器(LFSR)生成随机数，主要使用的运算符是异或(xor)，我们采用8位寄存器的形式演示，初始化寄存器位10001010，然后定义反馈函数为：</p>
+<script type="math/tex; mode=display">
+x^8+x^4+x^2+1</script><p>所以我们根据x的重数可知，只需对第8、4、2、1按顺序做一次异或即可。然后丢掉最后一位，把当前结果插入首端。然后循环这个过程多次，就得到了随机序列。这便是旋转的过程。</p>
+<p><img src="http://minloha.oss-cn-hongkong.aliyuncs.com/blog/page/random/2.png" srcset="/img/loading.gif" lazyload alt="2"></p>
+<p>我们使用C++实现这个过程。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-comment">// 十进制转二进制</span><br><span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">DextoBin</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>    vector&lt;<span class="hljs-keyword">int</span>&gt; bincode;<br>    <span class="hljs-keyword">while</span>(num!=<span class="hljs-number">0</span>)&#123;<br>        bincode.<span class="hljs-built_in">push_back</span>(num % <span class="hljs-number">2</span>);<br>        num /= <span class="hljs-number">2</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> bincode;<br>&#125;<br><span class="hljs-comment">// 二进制转十进制</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">BintoDex</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt; arr)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> dex = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n = <span class="hljs-number">0</span>; n &lt; arr.<span class="hljs-built_in">size</span>(); n++) &#123;<br>        <span class="hljs-keyword">int</span> t = arr.<span class="hljs-built_in">size</span>() - n - <span class="hljs-number">1</span>;<br>        dex += (arr[n] &lt;&lt; t);<br>    &#125;<br>    <span class="hljs-keyword">return</span> dex;<br>&#125;<br><span class="hljs-comment">// 移位</span><br><span class="hljs-function">vector&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">moveBack</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt;&amp; arr,<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (vector&lt;<span class="hljs-keyword">int</span>&gt;::iterator it = arr.<span class="hljs-built_in">begin</span>()+<span class="hljs-number">1</span>; it != arr.<span class="hljs-built_in">end</span>();it++) &#123;<br>        *it -= <span class="hljs-number">1</span>;<br>    &#125;<br>    arr[<span class="hljs-number">0</span>] = num;<br>    <span class="hljs-keyword">return</span> arr;<br>&#125;<br><br><span class="hljs-comment">// 生成MT数</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">MT_random</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> m = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> p = <span class="hljs-number">0</span>;<br>    vector&lt;<span class="hljs-keyword">int</span>&gt; bin = <span class="hljs-built_in">DextoBin</span>(num);<br>    <span class="hljs-keyword">if</span> (bin.<span class="hljs-built_in">size</span>() % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>) bin.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-comment">// 取得反馈函数的最高次</span><br>    <span class="hljs-keyword">while</span> ((bin.<span class="hljs-built_in">size</span>() - (<span class="hljs-number">2</span> &lt;&lt; m<span class="hljs-number">-1</span>)) &gt; bin.<span class="hljs-built_in">size</span>() - (<span class="hljs-number">2</span> &lt;&lt; m)) m++;<br>    <span class="hljs-keyword">for</span> (; m == <span class="hljs-number">1</span>; m /= <span class="hljs-number">4</span>) p = bin[m] ^ bin[m &gt;&gt; <span class="hljs-number">2</span>];<br>    vector&lt;<span class="hljs-keyword">int</span>&gt; res = <span class="hljs-built_in">moveBack</span>(bin,p);<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">BintoDex</span>(res);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 设置循环次数</span><br>    <span class="hljs-keyword">int</span> time = <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">while</span> (time &gt; <span class="hljs-number">1</span>) cout&lt;&lt; <span class="hljs-built_in">MT_random</span>(<span class="hljs-number">123</span>) &lt;&lt;endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>通过修改传递的MT_random参数就可以得到不同的随机数</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>通过阅读本文，读者可以了解随机数生成的基本过程，也能了解背后的理论基础，同时对MT算法可以深入理解。</p>
+<p>MT算法部分参考：</p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Mersenne_Twister">https://en.wikipedia.org/wiki/Mersenne_Twister</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freesion.com/article/8091743663/">https://www.freesion.com/article/8091743663/</a></p>
+
               
             </div>
             <hr/>
@@ -382,7 +411,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+        <a href="/tags/C/">#C++</a>
       
     </div>
   
@@ -394,8 +423,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>高数存在但又不存在的内容</div>
-      <div>https://blog.minloha.cn/2022/07/11/双曲函数/</div>
+      <div>随机数怎么样随机的</div>
+      <div>https://blog.minloha.cn/2022/08/02/随机数/</div>
     </div>
     <div class="license-meta">
       
@@ -407,13 +436,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月11日</div>
+          <div>2022年8月2日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年7月11日</div>
+          <div>2022年8月12日</div>
         </div>
       
       <div class="license-meta-item">
@@ -449,6 +478,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/11/%E8%B0%88%E8%B0%88%E5%9B%BD%E6%BC%AB/" title="幻想在娱乐作品中举足轻重">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">幻想在娱乐作品中举足轻重</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/25/%E4%B8%80%E4%B8%AA%E5%AE%9E%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95/" title="关于我在填报志愿时使用的妙法">
+                        <span class="hidden-mobile">关于我在填报志愿时使用的妙法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
