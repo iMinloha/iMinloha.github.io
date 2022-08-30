@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>结构体究竟是不是类</title>
+    <link href="/2022/08/29/%E4%B8%80%E4%B8%AA%E5%A5%87%E6%80%AA%E7%9A%84%E5%90%8D%E5%AD%97/"/>
+    <url>/2022/08/29/%E4%B8%80%E4%B8%AA%E5%A5%87%E6%80%AA%E7%9A%84%E5%90%8D%E5%AD%97/</url>
+    
+    <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>C++本没有结构体都是从C沿袭过来的，所以自然结构体也不如C结构体的定义丰富，所以在C++中，结构体与类并没有太大区别，甚至可以看作是亲兄弟。对于结构体，他的所有属性都是public而类所有属性都是private。仅此</p><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>我们都有oop的概念，所以对于类的内存模型也会知道，其实类的内存模型完全适用于结构体，两者并无差距。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _MYSTRU_H_</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _MYSTRU_H_</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> ConfidetReclude</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MyStru</span> &#123;</span><br><span class="hljs-comment">// 属性</span><br><span class="hljs-keyword">int</span> param;<br><span class="hljs-comment">// 成员方法(构造函数)</span><br><span class="hljs-built_in">MyStru</span>() : <span class="hljs-built_in">param</span>(<span class="hljs-number">0</span>) &#123;cout &lt;&lt; <span class="hljs-string">&quot;无参构造函数&quot;</span> &lt;&lt; endl;&#125;;<br><span class="hljs-built_in">MyStru</span>(<span class="hljs-keyword">int</span> p) : <span class="hljs-built_in">param</span>(p) &#123;<br>cout &lt;&lt; <span class="hljs-string">&quot;有参构造函数,param值:&quot;</span> &lt;&lt; param &lt;&lt; endl;<br>&#125;;<br><span class="hljs-comment">// 成员方法(操作符)</span><br><span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>&lt; (MyStru&amp; b) &#123;<br><span class="hljs-keyword">return</span> param &lt; b.param;<br>&#125;<br><span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>&gt; (MyStru&amp; b) &#123;<br><span class="hljs-keyword">return</span> param &gt; b.param;<br>&#125;<br><span class="hljs-comment">// 成员方法(输出方法)</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printParam</span><span class="hljs-params">()</span> </span>&#123;<br>cout &lt;&lt; param &lt;&lt; endl;<br>&#125;<br><span class="hljs-comment">// 留给外部重写的虚方法</span><br><span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">attriMethod</span><span class="hljs-params">()</span></span>;<br>&#125;;<br><br><span class="hljs-comment">// 子</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sunStru</span> :</span> <span class="hljs-keyword">public</span> MyStru &#123;<br><span class="hljs-comment">// 可以重写虚方法</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">attriMethod</span><span class="hljs-params">()</span> </span>&#123;<br>cout &lt;&lt; <span class="hljs-string">&quot;儿子的方法&quot;</span> &lt;&lt; endl;<br>&#125;<br>&#125;;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> _MYSTRU_H_</span><br><br><span class="hljs-comment">// 外部重写方法</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">MyStru::attriMethod</span><span class="hljs-params">()</span> </span>&#123;<br>cout &lt;&lt; <span class="hljs-string">&quot;外部重写了&quot;</span> &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure><p>如代码所写的一样，结构体可以使用构造函数，也可以使用析构函数，也可以继承重写，所以C++的结构体就是类。</p><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本文解释了结构体和类的相似处，以至于可以看作是一个东西。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>C++</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>幻想在娱乐作品中举足轻重</title>
     <link href="/2022/08/11/%E8%B0%88%E8%B0%88%E5%9B%BD%E6%BC%AB/"/>
     <url>/2022/08/11/%E8%B0%88%E8%B0%88%E5%9B%BD%E6%BC%AB/</url>
@@ -144,7 +169,7 @@
     
     <categories>
       
-      <category>学业，技术，娱乐，新事物，笔记</category>
+      <category>笔记</category>
       
     </categories>
     
